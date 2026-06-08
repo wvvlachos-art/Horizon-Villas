@@ -9,114 +9,113 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <script>document.documentElement.className += ' js';</script>
 
-<header class="site-header">
+<!-- ============ HEADER (transparent over hero, solidifies on scroll) ============ -->
+<header class="site-header over-hero" id="siteHeader">
   <div class="nav">
     <div class="nav-left"><a class="menu-toggle" href="accommodations.html"><i class="ti ti-chevron-left"></i> All houses</a></div>
     <a class="brand" href="index.html"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
-    <div class="nav-right"><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
+    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
+  <nav class="navlinks">
+    <a href="accommodations.html">The houses</a><a href="index.html#pool">The pool</a><a href="index.html#tinos">Tinos</a><a href="index.html#offers">Offers</a><a href="index.html#contact">Contact</a>
+  </nav>
 </header>
 
-<!-- ============ HOUSE HERO (gallery) ============ -->
+<!-- ============ FULL-SCREEN HERO GALLERY ============ -->
+<!-- swap background for the house gallery slider; arrows cycle photos -->
 <section class="house-hero">
   <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
   <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
   <span class="count">[ house gallery — 1 / 9 ]</span>
-  <div>
-    <p class="eyebrow on-beige">Horizon · House</p>
+  <div class="hero-caption">
+    <p class="eyebrow" style="color:#EBCFA6;">Horizon · House</p>
     <h1>Villa Zoe</h1>
-    <p style="color:var(--text); margin:4px 0 0;">A bright two-bedroom opening onto the pool</p>
+    <p class="sub">A bright two-bedroom opening onto the shared pool</p>
   </div>
 </section>
 
-<!-- ============ STICKY BOOKING BAR (Lodgify per-house BOOKING BOX mounts here) ============ -->
-<div id="book" style="position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:0.5px solid var(--line);">
-  <div class="container" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; padding-top:12px; padding-bottom:12px;">
-    <span style="font-size:12px; color:var(--muted); margin-right:4px;">Villa Zoe</span>
-    <span class="field" style="border:0.5px solid var(--line-strong); border-radius:var(--radius); padding:9px 12px; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); min-width:110px;">Arrival</span>
-    <span class="field" style="border:0.5px solid var(--line-strong); border-radius:var(--radius); padding:9px 12px; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); min-width:110px;">Departure</span>
-    <span class="field" style="border:0.5px solid var(--line-strong); border-radius:var(--radius); padding:9px 12px; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); min-width:80px;">Guests</span>
-    <a class="btn btn-primary" href="#">Check availability</a>
-  </div>
+<!-- ============ FLOATING BOOKING BAR (Lodgify booking box mounts here) ============ -->
+<div id="book" class="book-float">
+  <div class="bf"><span class="l">House</span><span class="v">Villa Zoe</span></div>
+  <div class="sep"></div>
+  <div class="bf"><span class="l">Arrival</span><span class="v muted">Add date</span></div>
+  <div class="sep"></div>
+  <div class="bf"><span class="l">Departure</span><span class="v muted">Add date</span></div>
+  <div class="sep"></div>
+  <div class="bf"><span class="l">Guests</span><span class="v muted">2</span></div>
+  <a class="btn btn-primary" href="#">Check availability</a>
 </div>
 
-<!-- ============ DESCRIPTION ============ -->
-<section class="section tight center reveal">
+<!-- ============ DESCRIPTION + FACTS ============ -->
+<section class="section reveal">
   <div class="container">
-    <p class="eyebrow">The house</p>
-    <p class="lead" style="font-size:18px;">The brightest of the six, Villa Zoe opens straight onto the shared terrace and pool, with the Aegean filling its windows. Two bedrooms, a full kitchen, and a shaded outdoor table for long, slow dinners.</p>
-  </div>
-</section>
-
-<!-- ============ FACTS STRIP ============ -->
-<section style="padding:0 0 8px;">
-  <div class="container">
-    <div class="factstrip">
+    <div class="detail-intro">
+      <div>
+        <div class="k">The house</div>
+        <p>The brightest of the six, Villa Zoe opens straight onto the shared pool terrace, with the Aegean filling its windows. Two bedrooms, a full kitchen, and a shaded outdoor table made for long, slow dinners.</p>
+      </div>
       <div><div class="k">Sleeps</div><div class="v">4</div></div>
       <div><div class="k">Bedrooms</div><div class="v">2</div></div>
-      <div><div class="k">Bathrooms</div><div class="v">1</div></div>
-      <div><div class="k">Size</div><div class="v">70m²</div></div>
       <div><div class="k">View</div><div class="v">Sea</div></div>
-      <div><div class="k">From</div><div class="v price">€180</div></div>
+      <div><div class="k">From</div><div class="v price">&euro;180</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ HIGHLIGHTS ============ -->
+<!-- ============ WHAT'S INCLUDED (grouped) + PHOTO ============ -->
+<section class="section band-beige reveal">
+  <div class="container">
+    <p class="eyebrow on-beige">What's included</p>
+    <div class="detail-amen">
+      <div>
+        <div class="grp">
+          <h4 class="grp-title">In the house</h4>
+          <ul><li>Full kitchen</li><li>Coffee machine</li><li>Fast wifi</li><li>Air-conditioning</li><li>Smart TV</li><li>Hairdryer</li></ul>
+        </div>
+        <div class="grp">
+          <h4 class="grp-title">Comfort &amp; service</h4>
+          <ul><li>Daily cleaning</li><li>Fresh linens &amp; towels</li><li>Welcome basket on arrival</li><li>Free parking</li></ul>
+        </div>
+      </div>
+      <div>
+        <div class="grp">
+          <h4 class="grp-title">Pool &amp; outdoors</h4>
+          <ul><li>Access to the shared pool</li><li>Sun loungers</li><li>Shaded private terrace</li><li>Outdoor dining table</li></ul>
+        </div>
+        <div class="grp">
+          <h4 class="grp-title">Good to know</h4>
+          <ul><li>Check-in from 3:00 pm</li><li>Check-out by 11:00 am</li><li>Sleeps up to 4</li><li>Five minutes to the beach</li></ul>
+        </div>
+      </div>
+      <div class="photo">[ interior / terrace photo ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A NOTE ============ -->
 <section class="section tight reveal">
   <div class="container">
-    <p class="eyebrow">Highlights</p>
-    <div class="checks">
-      <span><i class="ti ti-check"></i>Steps from the shared pool</span>
-      <span><i class="ti ti-check"></i>Sea views from both bedrooms</span>
-      <span><i class="ti ti-check"></i>Full kitchen &amp; outdoor dining</span>
-      <span><i class="ti ti-check"></i>Shaded private terrace</span>
+    <div class="note-block">
+      <p class="eyebrow">A note</p>
+      <p>The six houses share one design and one pool, so the feel carries across all of them. Photos are representative of Villa Zoe and small details may vary. For anything specific — a travel cot, an earlier check-in, help with the ferry — message us on WhatsApp and we'll arrange it before you arrive.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ AMENITIES (icons + show more) ============ -->
-<section class="section tight band-beige reveal">
-  <div class="container">
-    <p class="eyebrow on-beige">Amenities</p>
-    <div class="amen">
-      <span><i class="ti ti-wifi"></i>Fast wifi</span>
-      <span><i class="ti ti-snowflake"></i>Air-con</span>
-      <span><i class="ti ti-tools-kitchen-2"></i>Full kitchen</span>
-      <span><i class="ti ti-coffee"></i>Coffee machine</span>
-      <span><i class="ti ti-device-tv"></i>Smart TV</span>
-      <span><i class="ti ti-car"></i>Free parking</span>
-    </div>
-    <p style="margin-top:18px;"><a class="link amber" href="#">Show all amenities <i class="ti ti-chevron-down" style="font-size:12px;"></i></a></p>
-  </div>
-</section>
-
-<!-- ============ GALLERY ============ -->
-<section class="section tight center reveal">
-  <div class="container">
-    <p class="eyebrow">Gallery</p>
-    <div class="gallery">
-      <div class="photo"></div>
-      <div class="photo" style="background:#DFD0B3;"></div>
-      <div class="photo" style="background:#DACAAD;"></div>
-      <div class="photo cap-tr" style="background:#D5C3A2;">+5</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CROSS-SELL (other houses) ============ -->
+<!-- ============ THE OTHER HOUSES ============ -->
 <section class="section tight band-beige reveal">
   <div class="container">
     <p class="eyebrow on-beige center">The other houses</p>
     <div class="cards">
-      <a class="card" href="house.html"><div class="photo">[ photo ]</div><div class="meta"><h3>Villa Diana</h3><div class="price">Sleeps 6 · from €240</div></div></a>
-      <a class="card" href="house.html"><div class="photo" style="background:#DFD0B3;">[ photo ]</div><div class="meta"><h3>Villa Regina</h3><div class="price">Sleeps 4 · from €190</div></div></a>
-      <a class="card" href="house.html"><div class="photo" style="background:#DACAAD;">[ photo ]</div><div class="meta"><h3>Villa Celine</h3><div class="price">Sleeps 4 · from €185</div></div></a>
+      <a class="card" href="house.html"><div class="photo"></div><div class="meta"><h3>Villa Diana</h3><div class="price">Sleeps 6 &middot; from &euro;240</div></div></a>
+      <a class="card" href="house.html"><div class="photo"></div><div class="meta"><h3>Villa Regina</h3><div class="price">Sleeps 4 &middot; from &euro;190</div></div></a>
+      <a class="card" href="house.html"><div class="photo"></div><div class="meta"><h3>Villa Celine</h3><div class="price">Sleeps 4 &middot; from &euro;185</div></div></a>
     </div>
   </div>
 </section>
@@ -124,7 +123,7 @@
 <!-- ============ CLOSE ============ -->
 <section class="section tight band-dark center reveal">
   <div class="container">
-    <h2 style="font-size:22px; color:#D9A969; margin-bottom:16px;">Stay at Villa Zoe</h2>
+    <h2 style="font-size:clamp(20px,2.2vw,26px); color:#D9A969; margin-bottom:18px;">Stay at Villa Zoe</h2>
     <a class="btn btn-primary" href="#book" style="margin-right:10px;">Check availability</a>
     <a class="btn btn-outline-light" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
   </div>
@@ -132,8 +131,8 @@
 
 <footer class="footer">
   <div class="word">HORIZON VILLAS</div>
-  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971</div>
-  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+  <div class="row">Agios Ioannis, Tinos &middot; +30 690 777 7971</div>
+  <div class="fine">EN &middot; FR &middot; DE &middot; EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy &middot; Cookies &middot; &copy; Horizon Villas</div>
 </footer>
 
 <div class="mobile-cta">
@@ -142,10 +141,16 @@
 </div>
 
 <script>
+  // scroll reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // transparent hero nav -> solid on scroll
+  const hdr = document.getElementById('siteHeader');
+  const onScroll = () => { hdr.classList.toggle('solid', window.scrollY > window.innerHeight * 0.7); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 </script>
 </body>
 </html>

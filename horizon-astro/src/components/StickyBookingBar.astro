@@ -1,5 +1,6 @@
 ---
-// Per-house sticky booking bar on the detail page.
+// Per-house floating booking bar on the detail page — a raised card that
+// overlaps the bottom of the full-screen hero.
 //
 // ===== LODGIFY MOUNT POINT (CLAUDE_NOTES §2) =====
 // Replace the static fields below with the Lodgify per-house BOOKING BOX embed
@@ -11,12 +12,13 @@ const { houseName } = Astro.props;
 ---
 
 <!-- LODGIFY: replace the fields with the per-house Lodgify BOOKING BOX embed -->
-<div id="book" style="position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:0.5px solid var(--line);">
-  <div class="container" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; padding-top:12px; padding-bottom:12px;">
-    <span style="font-size:12px; color:var(--muted); margin-right:4px;">{houseName}</span>
-    <span class="field" style="border:0.5px solid var(--line-strong); border-radius:var(--radius); padding:9px 12px; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); min-width:110px;">Arrival</span>
-    <span class="field" style="border:0.5px solid var(--line-strong); border-radius:var(--radius); padding:9px 12px; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); min-width:110px;">Departure</span>
-    <span class="field" style="border:0.5px solid var(--line-strong); border-radius:var(--radius); padding:9px 12px; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); min-width:80px;">Guests</span>
-    <a class="btn btn-primary" href="#">Check availability</a>
-  </div>
+<div id="book" class="book-float">
+  <div class="bf"><span class="l">House</span><span class="v">{houseName}</span></div>
+  <div class="sep"></div>
+  <div class="bf"><span class="l">Arrival</span><span class="v muted">Add date</span></div>
+  <div class="sep"></div>
+  <div class="bf"><span class="l">Departure</span><span class="v muted">Add date</span></div>
+  <div class="sep"></div>
+  <div class="bf"><span class="l">Guests</span><span class="v muted">2</span></div>
+  <a class="btn btn-primary" href="#">Check availability</a>
 </div>

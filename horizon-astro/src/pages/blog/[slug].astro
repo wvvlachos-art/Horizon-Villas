@@ -1,0 +1,91 @@
+---
+// Article detail (Belmond story pattern, brand-adapted): centred title block →
+// hero image → narrow reading column (standfirst, subheads, pull quotes, inline
+// images) → "more stories" related grid.
+//
+// One static page per article via getStaticPaths. Data-driven from
+// src/data/articles.ts; the body renderer below maps the Block union to markup
+// (the same shape a Sanity Portable-Text serializer would target later).
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { articles } from '../../data/articles';
+
+export const getStaticPaths = (() =>
+  articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }))) satisfies GetStaticPaths;
+
+const { article } = Astro.props;
+
+// Up to three other stories for the "more stories" footer grid.
+const more = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
+---
+
+<Base title={`${article.title} — Horizon Villas Blog`} description={article.excerpt}>
+  <Nav />
+
+  <!-- ============ ARTICLE HEAD ============ -->
+  <section class="section tight" style="padding-bottom:0;">
+    <div class="container">
+      <div class="article-head">
+        <p class="cat">{article.category}</p>
+        <h1>{article.title}</h1>
+        <div class="article-meta">
+          <span>Words by {article.author}</span>
+          <span>{article.date}</span>
+          <span>{article.readMinutes} min read</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERO IMAGE ============ -->
+  <section style="padding:0;">
+    <div class="container">
+      <!-- TODO: swap for the article's cover <picture> -->
+      <div class="photo article-hero" style={article.photoBg ? `background:${article.photoBg};` : undefined}>[ cover image ]</div>
+    </div>
+  </section>
+
+  <!-- ============ ARTICLE BODY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="article-body">
+        {article.body.map((b) => (
+          <>
+            {b.type === 'standfirst' && <p class="standfirst">{b.text}</p>}
+            {b.type === 'p' && <p>{b.text}</p>}
+            {b.type === 'h2' && <h2>{b.text}</h2>}
+            {b.type === 'list' && <ul>{b.items.map((i) => <li>{i}</li>)}</ul>}
+            {b.type === 'image' && (
+              <figure>
+                <div class="photo" style={b.bg ? `background:${b.bg};` : undefined}>{b.label}</div>
+                {b.caption && <figcaption>{b.caption}</figcaption>}
+              </figure>
+            )}
+            {b.type === 'quote' && (
+              <blockquote>{b.text}{b.cite && <cite>{b.cite}</cite>}</blockquote>
+            )}
+          </>
+        ))}
+        <p class="article-foot"><a class="link amber" href="/blog">← All posts</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MORE STORIES ============ -->
+  <section class="section tight band-beige reveal">
+    <div class="container">
+      <p class="eyebrow on-beige center">You might also enjoy</p>
+      <div class="journal-grid">
+        {more.map((a) => <ArticleCard article={a} />)}
+      </div>
+    </div>
+  </section>
+
+  <Footer id="contact" />
+</Base>

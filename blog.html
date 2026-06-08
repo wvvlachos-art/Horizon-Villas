@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Horizon Villas Tinos</title>
+<meta name="description" content="Stories from Horizon Villas and the island of Tinos — the seasons, the food, the walks and the slow days, from the family who live here.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>document.documentElement.className += ' js';</script>
+
+<header class="site-header">
+  <div class="nav">
+    <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
+    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#">Book now</a></div>
+  </div>
+  <nav class="navlinks">
+    <a href="accommodations.html">The houses</a><a href="index.html#pool">The pool</a><a href="index.html#tinos">Tinos</a><a href="index.html#offers">Offers</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="section tight center">
+  <div class="container">
+    <p class="eyebrow">Blog</p>
+    <h1 style="font-size:clamp(32px,4vw,52px); margin-bottom:16px;">Stories from the hillside</h1>
+    <p class="lead">Notes on Tinos and life at Horizon — the seasons, the food, the walks and the slow days, written by the family who live here.</p>
+  </div>
+</section>
+
+<!-- ============ TOPIC FILTER ============ -->
+<section class="section tight" style="padding-top:0;">
+  <div class="container">
+    <div class="filter journal-filter">
+      <span class="active" data-filter="all">All</span>
+      <span data-filter="Island life">Island life</span>
+      <span data-filter="Food &amp; drink">Food &amp; drink</span>
+      <span data-filter="Things to do">Things to do</span>
+      <span data-filter="Seasons">Seasons</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY GRID ============ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="journal-grid">
+
+      <a class="acard" href="article.html" data-category="Seasons">
+        <div class="photo">[ photo ]</div>
+        <p class="cat">Seasons</p>
+        <h3>Tinos in spring, before the season turns</h3>
+        <p class="rt">5 min read</p>
+      </a>
+
+      <a class="acard" href="article.html" data-category="Island life">
+        <div class="photo" style="background:#DFD0B3;">[ photo ]</div>
+        <p class="cat">Island life</p>
+        <h3>A day at Agios Ioannis</h3>
+        <p class="rt">4 min read</p>
+      </a>
+
+      <a class="acard" href="article.html" data-category="Food &amp; drink">
+        <div class="photo" style="background:#DACAAD;">[ photo ]</div>
+        <p class="cat">Food &amp; drink</p>
+        <h3>Where we eat on Tinos</h3>
+        <p class="rt">6 min read</p>
+      </a>
+
+      <a class="acard" href="article.html" data-category="Things to do">
+        <div class="photo" style="background:#D5C3A2;">[ photo ]</div>
+        <p class="cat">Things to do</p>
+        <h3>Walking the marble villages</h3>
+        <p class="rt">5 min read</p>
+      </a>
+
+      <a class="acard" href="article.html" data-category="Island life">
+        <div class="photo" style="background:#E0D0B6;">[ photo ]</div>
+        <p class="cat">Island life</p>
+        <h3>The pool, from morning to night</h3>
+        <p class="rt">3 min read</p>
+      </a>
+
+      <a class="acard" href="article.html" data-category="Seasons">
+        <div class="photo" style="background:#D2BF9F;">[ photo ]</div>
+        <p class="cat">Seasons</p>
+        <h3>Why autumn might be the best time of all</h3>
+        <p class="rt">4 min read</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact" class="footer">
+  <div class="word">HORIZON VILLAS</div>
+  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971</div>
+  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="index.html#book">Check availability</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+</div>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // topic filter: show only cards whose data-category matches (or all)
+  const chips = document.querySelectorAll('.journal-filter span');
+  const cards = document.querySelectorAll('.journal-grid .acard');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    const f = chip.getAttribute('data-filter');
+    chips.forEach(c => c.classList.toggle('active', c === chip));
+    cards.forEach(card => { card.style.display = (f === 'all' || card.getAttribute('data-category') === f) ? '' : 'none'; });
+  }));
+</script>
+</body>
+</html>

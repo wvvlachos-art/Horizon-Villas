@@ -1,29 +1,47 @@
 ---
-// Uniform accommodations-index row (photo-left, Canaves listing pattern).
-// Facts strip is derived from the House record.
+// Accommodations listing row — Canaves 3-column pattern: photo · body · facts.
+// The body carries per-row Description / Highlights / Amenities tabs whose
+// panels are toggled by the inline script on the accommodations page.
 //
-// TODO: the "Description · Highlights · Amenities" tabs are a label only for
-// now; wire them up when the detail content is in place.
+// Fully data-driven from the House record (see src/data/houses.ts).
 import type { House } from '../data/houses';
+import { standardAmenities } from '../data/houses';
 
 interface Props {
   house: House;
 }
 const { house } = Astro.props;
+
+const view = house.view.replace(' view', '');
+const amenities = house.amenities ?? standardAmenities;
 ---
 
 <article class="house-row reveal">
-  <div class="photo" style={house.photoBg ? `background:${house.photoBg};` : undefined}>[ photo ]</div>
+  <div class="photo">
+    <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+    <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+    <span class="count">1 / 5</span>
+    [ photo ]
+  </div>
   <div class="body">
     <h3>{house.name}</h3>
-    <div class="tabs">Description · Highlights · Amenities</div>
-    <p style="margin:0;">{house.blurb}</p>
-    <div class="facts">
-      <span>Sleeps {house.sleeps}</span>
-      <span>{house.view}</span>
-      <span>{house.size}</span>
-      <span class="price">from €{house.priceFrom}</span>
+    <div class="r-tabs">
+      <button class="active">Description</button>
+      <button>Highlights</button>
+      <button>Amenities</button>
     </div>
-    <a class="link" href={`/${house.slug}`} style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href={`/${house.slug}#book`}>Check dates</a>
+    <div class="r-panel active"><p>{house.description}</p></div>
+    <div class="r-panel"><ul>{house.highlights.map((h) => <li>{h}</li>)}</ul></div>
+    <div class="r-panel"><ul>{amenities.map((a) => <li>{a}</li>)}</ul></div>
+    <div class="r-cta">
+      <a class="btn btn-outline btn-sm" href={`/${house.slug}`}>View house</a>
+      <a class="btn btn-primary btn-sm" href={`/${house.slug}#book`}>Check dates</a>
+    </div>
+  </div>
+  <div class="r-facts">
+    <div>Sleeps<b>{house.sleeps}</b></div>
+    <div>View<b>{view}</b></div>
+    <div>Size<b>{house.size}</b></div>
+    <div>From<b class="price">€{house.priceFrom}</b></div>
   </div>
 </article>

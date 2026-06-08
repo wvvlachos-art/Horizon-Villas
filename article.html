@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tinos in spring — Horizon Villas Blog</title>
+<meta name="description" content="Wildflowers on the terraces, empty beaches and long lunches — the case for coming to Tinos early.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>document.documentElement.className += ' js';</script>
+
+<header class="site-header">
+  <div class="nav">
+    <div class="nav-left"><a class="menu-toggle" href="blog.html"><i class="ti ti-chevron-left"></i> Blog</a></div>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
+    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#">Book now</a></div>
+  </div>
+  <nav class="navlinks">
+    <a href="accommodations.html">The houses</a><a href="index.html#pool">The pool</a><a href="index.html#tinos">Tinos</a><a href="index.html#offers">Offers</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ ARTICLE HEAD ============ -->
+<section class="section tight" style="padding-bottom:0;">
+  <div class="container">
+    <div class="article-head">
+      <p class="cat">Seasons</p>
+      <h1>Tinos in spring, before the season turns</h1>
+      <div class="article-meta">
+        <span>Words by the Horizon family</span>
+        <span>April 2026</span>
+        <span>5 min read</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERO IMAGE ============ -->
+<section style="padding:0;">
+  <div class="container">
+    <div class="photo article-hero">[ cover image ]</div>
+  </div>
+</section>
+
+<!-- ============ ARTICLE BODY ============ -->
+<section class="section">
+  <div class="container">
+    <div class="article-body">
+      <p class="standfirst">There is a stretch of weeks — roughly mid-April to early June — when Tinos is at its most generous and least crowded. The hills are still green, the sea is warm enough by late May, and the tavernas are open but unhurried.</p>
+      <p>Spring is the island showing off quietly. The terraced fields above Agios Ioannis fill with wildflowers, the footpaths are soft underfoot, and the light has that clean, washed quality you only get before the heat settles in.</p>
+      <p>From the pool you can watch the weather move across the water for hours. Mornings are for coffee and a book; afternoons for the beach five minutes below; evenings for a slow dinner on the terrace as the hills go gold.</p>
+      <h2>What to do with a slow week</h2>
+      <p>You do not need a plan. But if you want one: walk a different village each morning, swim in the afternoon, and let dinner take as long as it takes. The island rewards the unhurried.</p>
+      <ul>
+        <li>Walk the marble villages of the interior</li>
+        <li>Swim at a different cove each day</li>
+        <li>Find the bakery in Pyrgos</li>
+        <li>Watch the sunset from the top of the hillside</li>
+      </ul>
+      <figure>
+        <div class="photo" style="background:#D8C9AC;">[ wildflowers on the terraces ]</div>
+        <figcaption>The terraces above Agios Ioannis in late April.</figcaption>
+      </figure>
+      <blockquote>Come in spring once and you will stop thinking of August as the season.<cite>Dinos, on-site</cite></blockquote>
+      <p>If you are weighing dates, this is our honest recommendation: the shoulder weeks give you the best of the island and the best of the houses, without the crowds or the heat. Book direct and we will help you plan the rest.</p>
+      <p class="article-foot"><a class="link amber" href="blog.html">← All posts</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORE STORIES ============ -->
+<section class="section tight band-beige reveal">
+  <div class="container">
+    <p class="eyebrow on-beige center">You might also enjoy</p>
+    <div class="journal-grid">
+      <a class="acard" href="article.html"><div class="photo" style="background:#DFD0B3;">[ photo ]</div><p class="cat">Island life</p><h3>A day at Agios Ioannis</h3><p class="rt">4 min read</p></a>
+      <a class="acard" href="article.html"><div class="photo" style="background:#DACAAD;">[ photo ]</div><p class="cat">Food &amp; drink</p><h3>Where we eat on Tinos</h3><p class="rt">6 min read</p></a>
+      <a class="acard" href="article.html"><div class="photo" style="background:#D5C3A2;">[ photo ]</div><p class="cat">Things to do</p><h3>Walking the marble villages</h3><p class="rt">5 min read</p></a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact" class="footer">
+  <div class="word">HORIZON VILLAS</div>
+  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971</div>
+  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="index.html#book">Check availability</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

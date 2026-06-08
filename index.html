@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,10 +20,12 @@
   <div class="nav">
     <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
     <a class="brand" href="index.html">
+      <img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()">
       <div class="word">HORIZON</div>
       <div class="sub">VILLAS</div>
     </a>
     <div class="nav-right">
+      <a class="nav-aux" href="blog.html">Blog</a>
       <span class="lang">EN · FR</span>
       <a class="btn btn-outline btn-sm" href="#book">Book now</a>
     </div>
@@ -39,6 +42,12 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <!-- swap .photo for a <picture> with art-directed desktop + portrait mobile crops -->
+  <!-- TRUST SIGNALS: replace placeholder scores with live ratings (Booking / Airbnb / Google) -->
+  <div class="hero-trust">
+    <div class="trust-badge"><span class="src">Booking.com</span><span class="score">9.4</span></div>
+    <div class="trust-badge"><span class="src">Airbnb</span><span class="score">4.9<span class="star">★</span></span></div>
+    <div class="trust-badge"><span class="src">Google</span><span class="score">4.8<span class="star">★</span></span></div>
+  </div>
   <p class="eyebrow">Agios Ioannis · Tinos</p>
   <h1>Six houses, one pool, above the Aegean</h1>
   <a class="btn btn-outline" href="#book">Check availability</a>
@@ -49,6 +58,7 @@
 <section class="section center reveal">
   <div class="container">
     <p class="eyebrow">The place</p>
+    <h2 style="font-size:clamp(30px,3.2vw,44px); margin-bottom:20px;">The quiet side of the Cyclades</h2>
     <p class="lead">Horizon is a small collection of six modern houses, gathered by our family around one shared pool on a quiet hillside above Agios Ioannis. Five minutes from the beach, a world away from the crowds — the Cyclades at its most unhurried.</p>
   </div>
 </section>
@@ -67,22 +77,71 @@
 <section class="section center reveal">
   <div class="container">
     <p class="eyebrow">The houses</p>
-    <h2 style="font-size:26px; margin-bottom:30px;">Six houses, one design, from €180</h2>
-    <div class="cards" style="text-align:left;">
-      <a class="card" href="house.html">
-        <div class="photo">[ photo ]</div>
-        <div class="meta"><h3>Villa Zoe</h3><div class="price">Sleeps 4 · from €180</div></div>
-      </a>
-      <a class="card" href="house.html">
-        <div class="photo" style="background:#DFD0B3;">[ photo ]</div>
-        <div class="meta"><h3>Villa Diana</h3><div class="price">Sleeps 6 · from €240</div></div>
-      </a>
-      <a class="card" href="house.html">
-        <div class="photo" style="background:#DACAAD;">[ photo ]</div>
-        <div class="meta"><h3>Villa Regina</h3><div class="price">Sleeps 4 · from €190</div></div>
-      </a>
+    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:6px;">Six houses, one design, from €180</h2>
+    <div class="house-carousel">
+      <div class="hc-track">
+        <button class="hc-arrow l" aria-label="Previous house"><i class="ti ti-chevron-left"></i></button>
+        <button class="hc-arrow r" aria-label="Next house"><i class="ti ti-chevron-right"></i></button>
+        <div class="hc-slide active">
+          <div class="hc-photo">[ photo ]</div>
+          <div class="hc-info">
+            <h3>Villa Zoe</h3><p class="hc-facts">Sleeps 4 · Sea · 70 m²</p>
+            <p>The brightest of the six, opening straight onto the shared pool terrace with the sea in the windows.</p>
+            <p class="hc-price">from €180 <span>/ night</span></p>
+            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
+          </div>
+        </div>
+        <div class="hc-slide">
+          <div class="hc-photo" style="background:#DFD0B3;">[ photo ]</div>
+          <div class="hc-info">
+            <h3>Villa Diana</h3><p class="hc-facts">Sleeps 6 · Garden · 95 m²</p>
+            <p>The largest of the collection — a separate living room and room for a whole family, steps from the pool.</p>
+            <p class="hc-price">from €240 <span>/ night</span></p>
+            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
+          </div>
+        </div>
+        <div class="hc-slide">
+          <div class="hc-photo" style="background:#DACAAD;">[ photo ]</div>
+          <div class="hc-info">
+            <h3>Villa Regina</h3><p class="hc-facts">Sleeps 4 · Sea · 72 m²</p>
+            <p>A calm corner house with sea views and a shaded terrace for slow mornings.</p>
+            <p class="hc-price">from €190 <span>/ night</span></p>
+            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
+          </div>
+        </div>
+        <div class="hc-slide">
+          <div class="hc-photo" style="background:#D5C3A2;">[ photo ]</div>
+          <div class="hc-info">
+            <h3>Villa Celine</h3><p class="hc-facts">Sleeps 4 · Garden · 68 m²</p>
+            <p>Tucked into the garden, quiet and green, a few steps from the water.</p>
+            <p class="hc-price">from €185 <span>/ night</span></p>
+            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
+          </div>
+        </div>
+        <div class="hc-slide">
+          <div class="hc-photo" style="background:#E0D0B6;">[ photo ]</div>
+          <div class="hc-info">
+            <h3>Villa Roxana</h3><p class="hc-facts">Sleeps 2 · Sea · 55 m²</p>
+            <p>A snug one-bedroom for two, with the best of the light in the afternoon.</p>
+            <p class="hc-price">from €160 <span>/ night</span></p>
+            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
+          </div>
+        </div>
+        <div class="hc-slide">
+          <div class="hc-photo" style="background:#D2BF9F;">[ photo ]</div>
+          <div class="hc-info">
+            <h3>Villa Astra</h3><p class="hc-facts">Sleeps 6 · Sea · 98 m²</p>
+            <p>Top of the hillside, the widest views of the lot and space for six.</p>
+            <p class="hc-price">from €250 <span>/ night</span></p>
+            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
+          </div>
+        </div>
+      </div>
+      <div class="hc-dots">
+        <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
     </div>
-    <p style="margin-top:28px;"><a class="link amber" href="accommodations.html">See all six houses</a></p>
+    <p style="margin-top:30px;"><a class="link amber" href="accommodations.html">See all six houses</a></p>
   </div>
 </section>
 
@@ -97,6 +156,21 @@
   </div>
 </section>
 
+<!-- ============ THE LOCAL AREA (around Agios Ioannis) ============ -->
+<section class="section center reveal">
+  <div class="container">
+    <p class="eyebrow">The local area</p>
+    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:14px;">Five minutes from the good stuff</h2>
+    <p class="lead" style="margin-bottom:6px;">Agios Ioannis keeps everything close — the water, a few good tavernas, and the rest of the island just up the road.</p>
+    <div class="local">
+      <div><h4>Agios Ioannis beach</h4><p>A five-minute walk down to a quiet swimming cove and a beach taverna.</p></div>
+      <div><h4>Eat &amp; shop</h4><p>Family tavernas, a bakery and a small market within the village.</p></div>
+      <div><h4>Tinos Town &amp; port</h4><p>The harbour, ferries and the main shops, about fifteen minutes by car.</p></div>
+      <div><h4>Villages &amp; trails</h4><p>Marble villages, dovecotes and footpaths over the hills to explore.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ INCLUDED (dark band) ============ -->
 <section class="section tight band-dark center reveal">
   <div class="container">
@@ -106,10 +180,10 @@
 </section>
 
 <!-- ============ BOOK DIRECT ============ -->
-<section id="offers" class="section center reveal">
+<section id="offers" class="section tight center reveal">
   <div class="container">
-    <h2 style="font-size:26px; margin-bottom:18px;">Book direct, book better</h2>
-    <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; font-size:14px; color:var(--text);">
+    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:18px;">Book direct, book better</h2>
+    <div style="display:flex; justify-content:center; gap:36px; flex-wrap:wrap; font-size:15px; color:var(--text);">
       <span>Best rate, no commission</span><span>Talk to the family directly</span><span>Flexible dates</span><span>Secure payment</span>
     </div>
   </div>
@@ -132,7 +206,8 @@
 <!-- ============ PLAN YOUR STAY (booking — Lodgify search widget mounts here) ============ -->
 <section id="book" class="section band-beige center reveal">
   <div class="container">
-    <h2 style="font-size:26px; margin-bottom:20px;">Plan your stay</h2>
+    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:10px;">Plan your stay</h2>
+    <p style="color:var(--text); margin:0 0 30px;">Check dates and rates across all six houses — book direct for the best price.</p>
     <!-- Replace .bookbar with the Lodgify SEARCH widget embed -->
     <div class="bookbar">
       <span class="field">Arrival</span>
@@ -161,6 +236,22 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // houses carousel: arrows + dots swap the active house slide
+  const car = document.querySelector('.house-carousel');
+  if (car) {
+    const slides = Array.from(car.querySelectorAll('.hc-slide'));
+    const dots = Array.from(car.querySelectorAll('.hc-dots span'));
+    let i = 0;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('active', k === i));
+      dots.forEach((d, k) => d.classList.toggle('active', k === i));
+    };
+    car.querySelector('.hc-arrow.l').addEventListener('click', () => show(i - 1));
+    car.querySelector('.hc-arrow.r').addEventListener('click', () => show(i + 1));
+    dots.forEach((d, k) => d.addEventListener('click', () => show(k)));
+  }
 </script>
 </body>
 </html>

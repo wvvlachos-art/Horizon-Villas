@@ -1,19 +1,23 @@
 ---
 // Site header / nav. Two variants:
-//   "default" — full nav with menu toggle + navlinks (landing, accommodations)
-//   "house"   — minimal, with a back-link to the houses index, no navlinks row
+//   "default" — sticky cream header, "Menu" toggle in nav-left
+//   "house"   — transparent over the full-screen detail hero ("over-hero"),
+//               back-link to the houses index, solidifies on scroll (the
+//               toggle is driven by the inline script on the house page)
+// Both variants show the navlinks row.
 //
 // MOUNT POINT: the "Menu" button is the future nav drawer toggle (CLAUDE_NOTES §7).
 interface Props {
   variant?: 'default' | 'house';
 }
 const { variant = 'default' } = Astro.props;
+const isHouse = variant === 'house';
 ---
 
-<header class="site-header">
+<header class={`site-header${isHouse ? ' over-hero' : ''}`} id={isHouse ? 'siteHeader' : undefined}>
   <div class="nav">
     <div class="nav-left">
-      {variant === 'house' ? (
+      {isHouse ? (
         <a class="menu-toggle" href="/accommodations"><i class="ti ti-chevron-left"></i> All houses</a>
       ) : (
         <!-- TODO: wire up the nav drawer (CLAUDE_NOTES §7) -->
@@ -21,22 +25,27 @@ const { variant = 'default' } = Astro.props;
       )}
     </div>
     <a class="brand" href="/">
+      {/* Logo (amber lockup on cream) blends on the cream header. The house
+          over-hero nav keeps the light text wordmark — the logo has a cream
+          background that would box over the hero photo. */}
+      {!isHouse && (
+        <img class="brand-logo" src="/logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()" />
+      )}
       <div class="word">HORIZON</div>
       <div class="sub">VILLAS</div>
     </a>
     <div class="nav-right">
+      <a class="nav-aux" href="/blog">Blog</a>
       <span class="lang">EN · FR</span>
       <a class="btn btn-outline btn-sm" href="#book">Book now</a>
     </div>
   </div>
 
-  {variant !== 'house' && (
-    <nav class="navlinks">
-      <a href="/accommodations">The houses</a>
-      <a href="/#pool">The pool</a>
-      <a href="/#tinos">Tinos</a>
-      <a href="/#offers">Offers</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-  )}
+  <nav class="navlinks">
+    <a href="/accommodations">The houses</a>
+    <a href="/#pool">The pool</a>
+    <a href="/#tinos">Tinos</a>
+    <a href="/#offers">Offers</a>
+    <a href="/#contact">Contact</a>
+  </nav>
 </header>

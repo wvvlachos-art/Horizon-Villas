@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,105 +18,215 @@
 <header class="site-header">
   <div class="nav">
     <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
-    <a class="brand" href="index.html"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
-    <div class="nav-right"><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
+    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
   <nav class="navlinks">
     <a href="accommodations.html">The houses</a><a href="index.html#pool">The pool</a><a href="index.html#tinos">Tinos</a><a href="index.html#offers">Offers</a><a href="index.html#contact">Contact</a>
   </nav>
 </header>
 
-<!-- ============ PAGE HEADER ============ -->
 <section class="section tight center">
   <div class="container">
     <p class="eyebrow">Accommodations</p>
-    <h1 style="font-size:32px; margin-bottom:14px;">The six houses</h1>
-    <p class="lead" style="font-size:17px;">Six modern houses sharing one pool and one hillside above Agios Ioannis — the same design language throughout, in sizes for couples and families alike.</p>
-    <!-- Optional filter by capacity (adaptation of Canaves's tier-tabs) -->
+    <h1 style="font-size:clamp(30px,3.6vw,44px); margin-bottom:16px;">The six houses</h1>
+    <p class="lead" style="font-size:clamp(18px,1.9vw,21px);">Six modern houses sharing one pool and one hillside above Agios Ioannis — the same design language throughout, in sizes for couples and families alike.</p>
     <div class="filter">
       <span class="active">All</span><span>For couples</span><span>For families</span>
     </div>
   </div>
 </section>
 
-<!-- ============ LISTING (all six, uniform) ============ -->
 <section class="section" style="padding-top:8px;">
-  <div class="container">
+  <div class="container listing">
 
     <article class="house-row reveal">
-      <div class="photo">[ photo ]</div>
+      <div class="photo">
+        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 5</span>
+        [ photo ]
+      </div>
       <div class="body">
         <h3>Villa Zoe</h3>
-        <div class="tabs">Description · Highlights · Amenities</div>
-        <p style="margin:0;">The brightest of the six, opening straight onto the shared pool terrace with the sea in the windows.</p>
-        <div class="facts"><span>Sleeps 4</span><span>Sea view</span><span>70m²</span><span class="price">from €180</span></div>
-        <a class="link" href="house.html" style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        <div class="r-tabs">
+          <button class="active">Description</button>
+          <button>Highlights</button>
+          <button>Amenities</button>
+        </div>
+        <div class="r-panel active"><p>The brightest of the six, Villa Zoe opens straight onto the shared pool terrace with the Aegean in its windows — two bedrooms, a full kitchen and a shaded table for slow dinners.</p></div>
+        <div class="r-panel"><ul><li>Steps from the shared pool</li><li>Sea views from both bedrooms</li><li>Full kitchen & outdoor dining</li><li>Shaded private terrace</li><li>Two double bedrooms</li></ul></div>
+        <div class="r-panel"><ul><li>Fast wifi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Smart TV</li><li>Free parking</li><li>Daily cleaning</li><li>Fresh linens</li><li>Welcome basket</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-cta">
+          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        </div>
+      </div>
+      <div class="r-facts">
+        <div>Sleeps<b>4</b></div>
+        <div>View<b>Sea</b></div>
+        <div>Size<b>70 m²</b></div>
+        <div>From<b class="price">€180</b></div>
       </div>
     </article>
 
     <article class="house-row reveal">
-      <div class="photo" style="background:#DFD0B3;">[ photo ]</div>
+      <div class="photo">
+        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 5</span>
+        [ photo ]
+      </div>
       <div class="body">
         <h3>Villa Diana</h3>
-        <div class="tabs">Description · Highlights · Amenities</div>
-        <p style="margin:0;">The largest of the collection — a separate living room and room for a whole family, steps from the pool.</p>
-        <div class="facts"><span>Sleeps 6</span><span>Garden view</span><span>95m²</span><span class="price">from €240</span></div>
-        <a class="link" href="house.html" style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        <div class="r-tabs">
+          <button class="active">Description</button>
+          <button>Highlights</button>
+          <button>Amenities</button>
+        </div>
+        <div class="r-panel active"><p>The largest of the collection — a separate living room and room for a whole family, a few steps through the garden to the pool.</p></div>
+        <div class="r-panel"><ul><li>Separate living room</li><li>Sleeps up to six</li><li>Two bathrooms</li><li>Garden-facing terrace</li><li>Easy, family-friendly layout</li><li>Steps from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast wifi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Smart TV</li><li>Free parking</li><li>Daily cleaning</li><li>Fresh linens</li><li>Welcome basket</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-cta">
+          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        </div>
+      </div>
+      <div class="r-facts">
+        <div>Sleeps<b>6</b></div>
+        <div>View<b>Garden</b></div>
+        <div>Size<b>95 m²</b></div>
+        <div>From<b class="price">€240</b></div>
       </div>
     </article>
 
     <article class="house-row reveal">
-      <div class="photo" style="background:#DACAAD;">[ photo ]</div>
+      <div class="photo">
+        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 5</span>
+        [ photo ]
+      </div>
       <div class="body">
         <h3>Villa Regina</h3>
-        <div class="tabs">Description · Highlights · Amenities</div>
-        <p style="margin:0;">A calm corner house with sea views and a shaded terrace for slow mornings.</p>
-        <div class="facts"><span>Sleeps 4</span><span>Sea view</span><span>72m²</span><span class="price">from €190</span></div>
-        <a class="link" href="house.html" style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        <div class="r-tabs">
+          <button class="active">Description</button>
+          <button>Highlights</button>
+          <button>Amenities</button>
+        </div>
+        <div class="r-panel active"><p>A calm corner house with open sea views and a shaded terrace made for slow mornings and long, late afternoons.</p></div>
+        <div class="r-panel"><ul><li>Quiet corner position</li><li>Sea-view terrace</li><li>Two bedrooms</li><li>Morning shade, afternoon sun</li><li>Close to the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast wifi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Smart TV</li><li>Free parking</li><li>Daily cleaning</li><li>Fresh linens</li><li>Welcome basket</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-cta">
+          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        </div>
+      </div>
+      <div class="r-facts">
+        <div>Sleeps<b>4</b></div>
+        <div>View<b>Sea</b></div>
+        <div>Size<b>72 m²</b></div>
+        <div>From<b class="price">€190</b></div>
       </div>
     </article>
 
     <article class="house-row reveal">
-      <div class="photo" style="background:#D5C3A2;">[ photo ]</div>
+      <div class="photo">
+        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 5</span>
+        [ photo ]
+      </div>
       <div class="body">
         <h3>Villa Celine</h3>
-        <div class="tabs">Description · Highlights · Amenities</div>
-        <p style="margin:0;">Tucked into the garden, quiet and green, a few steps from the water.</p>
-        <div class="facts"><span>Sleeps 4</span><span>Garden view</span><span>68m²</span><span class="price">from €185</span></div>
-        <a class="link" href="house.html" style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        <div class="r-tabs">
+          <button class="active">Description</button>
+          <button>Highlights</button>
+          <button>Amenities</button>
+        </div>
+        <div class="r-panel active"><p>Tucked into the garden, quiet and green, with extra privacy and just a few steps down to the water.</p></div>
+        <div class="r-panel"><ul><li>Sheltered garden setting</li><li>Extra privacy</li><li>Two bedrooms</li><li>Shaded outdoor seating</li><li>A short walk to the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast wifi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Smart TV</li><li>Free parking</li><li>Daily cleaning</li><li>Fresh linens</li><li>Welcome basket</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-cta">
+          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        </div>
+      </div>
+      <div class="r-facts">
+        <div>Sleeps<b>4</b></div>
+        <div>View<b>Garden</b></div>
+        <div>Size<b>68 m²</b></div>
+        <div>From<b class="price">€185</b></div>
       </div>
     </article>
 
     <article class="house-row reveal">
-      <div class="photo" style="background:#E0D0B6;">[ photo ]</div>
+      <div class="photo">
+        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 5</span>
+        [ photo ]
+      </div>
       <div class="body">
         <h3>Villa Roxana</h3>
-        <div class="tabs">Description · Highlights · Amenities</div>
-        <p style="margin:0;">A snug one-bedroom for two, with the best of the light in the afternoon.</p>
-        <div class="facts"><span>Sleeps 2</span><span>Sea view</span><span>55m²</span><span class="price">from €160</span></div>
-        <a class="link" href="house.html" style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        <div class="r-tabs">
+          <button class="active">Description</button>
+          <button>Highlights</button>
+          <button>Amenities</button>
+        </div>
+        <div class="r-panel active"><p>A snug one-bedroom for two with the best of the late-afternoon light — the pick of the houses for a couple.</p></div>
+        <div class="r-panel"><ul><li>Ideal for couples</li><li>Best afternoon light</li><li>Open sea view</li><li>One double bedroom</li><li>Compact and private</li></ul></div>
+        <div class="r-panel"><ul><li>Fast wifi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Smart TV</li><li>Free parking</li><li>Daily cleaning</li><li>Fresh linens</li><li>Welcome basket</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-cta">
+          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        </div>
+      </div>
+      <div class="r-facts">
+        <div>Sleeps<b>2</b></div>
+        <div>View<b>Sea</b></div>
+        <div>Size<b>55 m²</b></div>
+        <div>From<b class="price">€160</b></div>
       </div>
     </article>
 
     <article class="house-row reveal">
-      <div class="photo" style="background:#D2BF9F;">[ photo ]</div>
+      <div class="photo">
+        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 5</span>
+        [ photo ]
+      </div>
       <div class="body">
         <h3>Villa Astra</h3>
-        <div class="tabs">Description · Highlights · Amenities</div>
-        <p style="margin:0;">Top of the hillside, the widest views of the lot and space for six.</p>
-        <div class="facts"><span>Sleeps 6</span><span>Sea view</span><span>98m²</span><span class="price">from €250</span></div>
-        <a class="link" href="house.html" style="margin-right:14px;">View house</a><a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        <div class="r-tabs">
+          <button class="active">Description</button>
+          <button>Highlights</button>
+          <button>Amenities</button>
+        </div>
+        <div class="r-panel active"><p>At the top of the hillside, Villa Astra takes in the widest views of the lot, with room for six and a generous terrace for sunset.</p></div>
+        <div class="r-panel"><ul><li>Highest position on the hill</li><li>Widest sea views</li><li>Sleeps up to six</li><li>Two bathrooms</li><li>Large sunset terrace</li><li>Steps from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast wifi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Smart TV</li><li>Free parking</li><li>Daily cleaning</li><li>Fresh linens</li><li>Welcome basket</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-cta">
+          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+        </div>
+      </div>
+      <div class="r-facts">
+        <div>Sleeps<b>6</b></div>
+        <div>View<b>Sea</b></div>
+        <div>Size<b>98 m²</b></div>
+        <div>From<b class="price">€250</b></div>
       </div>
     </article>
 
   </div>
 </section>
 
-<!-- ============ HELP / BOOKING CLOSE ============ -->
 <section id="book" class="section band-beige center reveal">
   <div class="container">
-    <h2 style="font-size:24px; margin-bottom:14px;">Not sure which house?</h2>
-    <p style="margin:0 0 22px; color:var(--text);">Tell us your dates and group — we'll point you to the right one.</p>
+    <h2 style="font-size:clamp(22px,2.4vw,28px); margin-bottom:14px;">Not sure which house?</h2>
+    <p style="margin:0 0 24px; color:var(--text);">Tell us your dates and group — we'll point you to the right one.</p>
     <a class="btn btn-primary" href="#" style="margin-right:10px;">Check availability</a>
     <a class="btn btn-outline" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
   </div>
@@ -133,10 +244,23 @@
 </div>
 
 <script>
+  // scroll reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // per-row Description / Highlights / Amenities tabs
+  document.querySelectorAll('.house-row').forEach(row => {
+    const tabs = row.querySelectorAll('.r-tabs button');
+    const panels = row.querySelectorAll('.r-panel');
+    tabs.forEach((t, i) => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      panels.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      panels[i].classList.add('active');
+    }));
+  });
 </script>
 </body>
 </html>
