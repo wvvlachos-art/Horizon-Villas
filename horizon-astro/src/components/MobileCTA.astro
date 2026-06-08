@@ -1,0 +1,10 @@
+---
+// Mobile sticky CTA (conversion-first on small screens, CLAUDE_NOTES §4).
+// Hidden above 860px by styles.css; the booking link jumps to the #book mount.
+import { site } from '../data/site';
+---
+
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="#book">Check availability</a>
+  <a class="wa" href={site.whatsapp} aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+</div>

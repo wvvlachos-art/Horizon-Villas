@@ -1,0 +1,42 @@
+---
+// Site header / nav. Two variants:
+//   "default" — full nav with menu toggle + navlinks (landing, accommodations)
+//   "house"   — minimal, with a back-link to the houses index, no navlinks row
+//
+// MOUNT POINT: the "Menu" button is the future nav drawer toggle (CLAUDE_NOTES §7).
+interface Props {
+  variant?: 'default' | 'house';
+}
+const { variant = 'default' } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="nav">
+    <div class="nav-left">
+      {variant === 'house' ? (
+        <a class="menu-toggle" href="/accommodations"><i class="ti ti-chevron-left"></i> All houses</a>
+      ) : (
+        <!-- TODO: wire up the nav drawer (CLAUDE_NOTES §7) -->
+        <button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button>
+      )}
+    </div>
+    <a class="brand" href="/">
+      <div class="word">HORIZON</div>
+      <div class="sub">VILLAS</div>
+    </a>
+    <div class="nav-right">
+      <span class="lang">EN · FR</span>
+      <a class="btn btn-outline btn-sm" href="#book">Book now</a>
+    </div>
+  </div>
+
+  {variant !== 'house' && (
+    <nav class="navlinks">
+      <a href="/accommodations">The houses</a>
+      <a href="/#pool">The pool</a>
+      <a href="/#tinos">Tinos</a>
+      <a href="/#offers">Offers</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  )}
+</header>

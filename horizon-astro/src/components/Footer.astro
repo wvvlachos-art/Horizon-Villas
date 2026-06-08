@@ -1,0 +1,19 @@
+---
+// Site footer. The landing footer also shows the email address; detail pages
+// drop it. `id` lets the landing/accommodations footers anchor "#contact".
+import { site } from '../data/site';
+
+interface Props {
+  id?: string;
+  showEmail?: boolean;
+}
+const { id, showEmail = false } = Astro.props;
+---
+
+<footer id={id} class="footer">
+  <div class="word">HORIZON VILLAS</div>
+  <div class="row">
+    {site.location} · {site.phoneDisplay}{showEmail ? ` · ${site.email}` : ''}
+  </div>
+  <div class="fine">{site.langs}&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+</footer>

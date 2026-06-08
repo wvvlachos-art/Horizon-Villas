@@ -1,0 +1,124 @@
+---
+// House detail template (Villa Zoe). Canaves suite pattern (CLAUDE_NOTES §4).
+//
+// For now this is a single static house. When Sanity / per-house routing lands,
+// this becomes a dynamic [slug].astro driven by the houses collection.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import StickyBookingBar from '../components/StickyBookingBar.astro';
+import HouseCard from '../components/HouseCard.astro';
+import { site } from '../data/site';
+import { houses } from '../data/houses';
+
+// Cross-sell: the next three houses after Villa Zoe.
+const others = houses.slice(1, 4);
+---
+
+<Base
+  title="Villa Zoe — Horizon Villas Tinos"
+  description="Villa Zoe at Horizon Villas: a bright two-bedroom house opening onto the shared pool, with sea views, on Tinos. Sleeps 4, from €180/night."
+>
+  <Nav variant="house" />
+
+  <!-- ============ HOUSE HERO (gallery) ============ -->
+  <section class="house-hero">
+    <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
+    <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
+    <span class="count">[ house gallery — 1 / 9 ]</span>
+    <div>
+      <p class="eyebrow on-beige">Horizon · House</p>
+      <h1>Villa Zoe</h1>
+      <p style="color:var(--text); margin:4px 0 0;">A bright two-bedroom opening onto the pool</p>
+    </div>
+  </section>
+
+  <!-- ============ STICKY BOOKING BAR (Lodgify per-house BOOKING BOX mounts here) ============ -->
+  <StickyBookingBar houseName="Villa Zoe" />
+
+  <!-- ============ DESCRIPTION ============ -->
+  <section class="section tight center reveal">
+    <div class="container">
+      <p class="eyebrow">The house</p>
+      <p class="lead" style="font-size:18px;">The brightest of the six, Villa Zoe opens straight onto the shared terrace and pool, with the Aegean filling its windows. Two bedrooms, a full kitchen, and a shaded outdoor table for long, slow dinners.</p>
+    </div>
+  </section>
+
+  <!-- ============ FACTS STRIP ============ -->
+  <section style="padding:0 0 8px;">
+    <div class="container">
+      <div class="factstrip">
+        <div><div class="k">Sleeps</div><div class="v">4</div></div>
+        <div><div class="k">Bedrooms</div><div class="v">2</div></div>
+        <div><div class="k">Bathrooms</div><div class="v">1</div></div>
+        <div><div class="k">Size</div><div class="v">70m²</div></div>
+        <div><div class="k">View</div><div class="v">Sea</div></div>
+        <div><div class="k">From</div><div class="v price">€180</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HIGHLIGHTS ============ -->
+  <section class="section tight reveal">
+    <div class="container">
+      <p class="eyebrow">Highlights</p>
+      <div class="checks">
+        <span><i class="ti ti-check"></i>Steps from the shared pool</span>
+        <span><i class="ti ti-check"></i>Sea views from both bedrooms</span>
+        <span><i class="ti ti-check"></i>Full kitchen &amp; outdoor dining</span>
+        <span><i class="ti ti-check"></i>Shaded private terrace</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AMENITIES (icons + show more) ============ -->
+  <section class="section tight band-beige reveal">
+    <div class="container">
+      <p class="eyebrow on-beige">Amenities</p>
+      <div class="amen">
+        <span><i class="ti ti-wifi"></i>Fast wifi</span>
+        <span><i class="ti ti-snowflake"></i>Air-con</span>
+        <span><i class="ti ti-tools-kitchen-2"></i>Full kitchen</span>
+        <span><i class="ti ti-coffee"></i>Coffee machine</span>
+        <span><i class="ti ti-device-tv"></i>Smart TV</span>
+        <span><i class="ti ti-car"></i>Free parking</span>
+      </div>
+      <!-- TODO: wire the "show all amenities" toggle (CLAUDE_NOTES §7) -->
+      <p style="margin-top:18px;"><a class="link amber" href="#">Show all amenities <i class="ti ti-chevron-down" style="font-size:12px;"></i></a></p>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section tight center reveal">
+    <div class="container">
+      <p class="eyebrow">Gallery</p>
+      <div class="gallery">
+        <div class="photo"></div>
+        <div class="photo" style="background:#DFD0B3;"></div>
+        <div class="photo" style="background:#DACAAD;"></div>
+        <div class="photo cap-tr" style="background:#D5C3A2;">+5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CROSS-SELL (other houses) ============ -->
+  <section class="section tight band-beige reveal">
+    <div class="container">
+      <p class="eyebrow on-beige center">The other houses</p>
+      <div class="cards">
+        {others.map((house) => <HouseCard house={house} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSE ============ -->
+  <section class="section tight band-dark center reveal">
+    <div class="container">
+      <h2 style="font-size:22px; color:#D9A969; margin-bottom:16px;">Stay at Villa Zoe</h2>
+      <a class="btn btn-primary" href="#book" style="margin-right:10px;">Check availability</a>
+      <a class="btn btn-outline-light" href={site.whatsapp}><i class="ti ti-message-circle"></i> WhatsApp</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

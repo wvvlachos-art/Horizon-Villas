@@ -1,0 +1,103 @@
+---
+// Landing page. Desktop = narrative-first (CLAUDE_NOTES §4):
+// hero → the place → the pool → houses preview → Tinos → included →
+// book direct → reviews → plan your stay (booking) → footer.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SplitSection from '../components/SplitSection.astro';
+import HouseCard from '../components/HouseCard.astro';
+import BookingBar from '../components/BookingBar.astro';
+import { houses } from '../data/houses';
+
+const preview = houses.slice(0, 3);
+---
+
+<Base
+  title="Horizon Villas Tinos — six houses, one pool, above the Aegean"
+  description="A small family-run collection of six modern houses around one shared pool, above Agios Ioannis on Tinos. Daily cleaning, minutes from the beach — the quiet side of the Cyclades."
+>
+  <Nav />
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <!-- TODO: swap .photo for a <picture> with art-directed desktop + portrait mobile crops -->
+    <p class="eyebrow">Agios Ioannis · Tinos</p>
+    <h1>Six houses, one pool, above the Aegean</h1>
+    <a class="btn btn-outline" href="#book">Check availability</a>
+    <span class="photo-note">[ full-screen cinematic hero — the pool &amp; houses at dusk ]</span>
+  </section>
+
+  <!-- ============ THE PLACE (intro narrative) ============ -->
+  <section class="section center reveal">
+    <div class="container">
+      <p class="eyebrow">The place</p>
+      <p class="lead">Horizon is a small collection of six modern houses, gathered by our family around one shared pool on a quiet hillside above Agios Ioannis. Five minutes from the beach, a world away from the crowds — the Cyclades at its most unhurried.</p>
+    </div>
+  </section>
+
+  <!-- ============ THE POOL (its own moment) ============ -->
+  <SplitSection id="pool" eyebrow="The pool" heading="The heart of it" photoLabel="[ the shared pool ]">
+    <p>Where the day slows down — coffee in the morning, the children in the afternoon, a drink as the sun drops behind the hills. The one place all six houses share.</p>
+  </SplitSection>
+
+  <!-- ============ THE HOUSES (light preview → index) ============ -->
+  <section class="section center reveal">
+    <div class="container">
+      <p class="eyebrow">The houses</p>
+      <h2 style="font-size:26px; margin-bottom:30px;">Six houses, one design, from €180</h2>
+      <div class="cards" style="text-align:left;">
+        {preview.map((house) => <HouseCard house={house} />)}
+      </div>
+      <p style="margin-top:28px;"><a class="link amber" href="/accommodations">See all six houses</a></p>
+    </div>
+  </section>
+
+  <!-- ============ TINOS (full establishing section) ============ -->
+  <SplitSection id="tinos" flip eyebrow="The island" heading="The Cyclades, quietly" photoLabel="[ a Tinos village ]" photoBg="#D2BF9F">
+    <p>Marble villages and dovecotes, a serious food scene, footpaths over the hills, and beaches you can still have to yourself. Tinos rewards the traveller who skips Mykonos — never more so than in spring and autumn.</p>
+    <p style="margin-top:18px;"><a class="link amber" href="#">Explore Tinos</a></p>
+  </SplitSection>
+
+  <!-- ============ INCLUDED (dark band) ============ -->
+  <section class="section tight band-dark center reveal">
+    <div class="container">
+      <p class="eyebrow" style="color:#D9A969;">Included in every stay</p>
+      <p style="color:var(--beige); font-size:15px; margin:0;">Daily cleaning&nbsp;&nbsp;·&nbsp;&nbsp;Fresh linens&nbsp;&nbsp;·&nbsp;&nbsp;Fast wifi&nbsp;&nbsp;·&nbsp;&nbsp;Free parking&nbsp;&nbsp;·&nbsp;&nbsp;Welcome basket</p>
+    </div>
+  </section>
+
+  <!-- ============ BOOK DIRECT ============ -->
+  <section id="offers" class="section center reveal">
+    <div class="container">
+      <h2 style="font-size:26px; margin-bottom:18px;">Book direct, book better</h2>
+      <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; font-size:14px; color:var(--text);">
+        <span>Best rate, no commission</span><span>Talk to the family directly</span><span>Flexible dates</span><span>Secure payment</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section tight reveal" style="padding-top:0;">
+    <div class="container cards">
+      <div class="card" style="padding:18px 20px;">
+        <div style="color:var(--amber); font-size:13px; margin-bottom:6px;"><i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i></div>
+        <p style="font-size:14px; line-height:1.6; color:var(--ink); font-style:italic; margin:0;">"Quiet, spotless, and the pool was perfect for the kids." <span style="color:var(--muted); font-style:normal;">[ sample ]</span></p>
+      </div>
+      <div class="card" style="padding:18px 20px;">
+        <div style="color:var(--amber); font-size:13px; margin-bottom:6px;"><i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i></div>
+        <p style="font-size:14px; line-height:1.6; color:var(--ink); font-style:italic; margin:0;">"Booking direct was easy and they replied on WhatsApp in minutes." <span style="color:var(--muted); font-style:normal;">[ sample ]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAN YOUR STAY (booking — Lodgify search widget mounts here) ============ -->
+  <section id="book" class="section band-beige center reveal">
+    <div class="container">
+      <h2 style="font-size:26px; margin-bottom:20px;">Plan your stay</h2>
+      <BookingBar />
+    </div>
+  </section>
+
+  <Footer id="contact" showEmail />
+</Base>

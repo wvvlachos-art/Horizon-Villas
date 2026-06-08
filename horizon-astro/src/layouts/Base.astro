@@ -1,0 +1,56 @@
+---
+// Base layout: head (fonts, icons, meta), global styles, mobile CTA, and the
+// scroll-reveal script. Every page wraps its content in this.
+//
+// Nav and Footer are rendered per-page (they vary by page), so they are NOT
+// baked in here — pages compose them around the <slot/>.
+//
+// MOUNT POINTS (left intentionally un-wired, CLAUDE_NOTES §7):
+//   - Umami / Microsoft Clarity analytics snippets
+//   - Google Search Console verification
+import '../styles/styles.css';
+import MobileCTA from '../components/MobileCTA.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Hide the mobile sticky CTA on pages that don't need it (default: show). */
+  mobileCta?: boolean;
+}
+const { title, description, mobileCta = true } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet" />
+
+  <!-- ANALYTICS MOUNT POINT: Umami + Microsoft Clarity snippets go here (CLAUDE_NOTES §2). -->
+  <!-- SEO MOUNT POINT: Google Search Console verification meta/DNS goes here. -->
+
+  <!-- Add the `js` class up-front so reveal elements start hidden without a flash. -->
+  <script is:inline>document.documentElement.className += ' js';</script>
+</head>
+<body>
+  <slot />
+
+  {mobileCta && <MobileCTA />}
+
+  <script is:inline>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>

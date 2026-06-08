@@ -1,0 +1,29 @@
+---
+// Split section: image on one side, copy band on the other (the pool & Tinos
+// "moments" on the landing page). `flip` puts the photo on the right.
+//
+// The eyebrow + heading are props; body copy goes in the default slot so a
+// section can carry one or more paragraphs (and an inline link).
+//
+// TODO: swap the .photo placeholder for a <picture> with art-directed crops.
+interface Props {
+  id?: string;
+  flip?: boolean;
+  eyebrow: string;
+  heading: string;
+  /** Placeholder caption text shown inside the .photo block. */
+  photoLabel: string;
+  /** Inline background override for the .photo placeholder. */
+  photoBg?: string;
+}
+const { id, flip = false, eyebrow, heading, photoLabel, photoBg } = Astro.props;
+---
+
+<section id={id} class={`split reveal${flip ? ' flip' : ''}`}>
+  <div class="photo" style={photoBg ? `background:${photoBg};` : undefined}>{photoLabel}</div>
+  <div class="copy band-beige">
+    <p class="eyebrow on-beige">{eyebrow}</p>
+    <h2>{heading}</h2>
+    <slot />
+  </div>
+</section>
