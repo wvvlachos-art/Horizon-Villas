@@ -1,0 +1,10 @@
+# Netlify build config.
+# The Astro project lives in the horizon-astro/ subfolder, so we point
+# Netlify's build there. `publish` is relative to `base`.
+[build]
+  base = "horizon-astro"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"

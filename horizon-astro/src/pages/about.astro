@@ -1,0 +1,122 @@
+---
+// About page — editorial, text-forward (Canaves "About" pattern), premium-not-
+// luxury voice (no personal/family detail). Reuses the article reading column
+// (with inline figures), the .usp left-aligned selling-points list, and a native
+// <details> FAQ. No hero image, like the Canaves page.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="About — Horizon Villas Tinos"
+  description="A small collection of six houses around one shared pool above Agios Ioannis on Tinos — premium, not luxury, and honest about the difference."
+>
+  <Nav />
+
+  <!-- ============ HEADER ============ -->
+  <section class="section tight center">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1 style="font-size:clamp(30px,3.4vw,44px); margin-bottom:16px;">A hillside, a pool, six houses</h1>
+      <p class="lead">Horizon is a small collection of six modern houses, gathered around one shared pool above Agios Ioannis — the quiet side of the Cyclades.</p>
+    </div>
+  </section>
+
+  <!-- ============ OUR STORY ============ -->
+  <section class="section" style="padding-top:8px;">
+    <div class="container">
+      <div class="article-body">
+        <p class="standfirst">Horizon began the way these things often do on a Greek island — slowly, one house at a time.</p>
+        <p>It sits on a quiet hillside above Agios Ioannis. Over the years six houses were built and gathered around a single pool — the same honest design throughout, framed by the same view of the Aegean. They're named Zoe, Diana, Regina, Celine, Roxana and Astra.</p>
+        <figure>
+          <div class="photo" style="background:#D2BF9F;">[ the houses on the hillside ]</div>
+          <figcaption>The six houses, gathered around one pool above Agios Ioannis.</figcaption>
+        </figure>
+        <h2>Premium, not luxury</h2>
+        <p>We're not a resort, and we don't pretend to be. There's no spa, no restaurant, no private pools — just six comfortable houses, one shared pool, and five minutes between you and the beach.</p>
+        <figure>
+          <div class="photo">[ the shared pool at dusk ]</div>
+          <figcaption>One pool, shared by all six houses — the heart of the place.</figcaption>
+        </figure>
+        <p>Premium, the way we see it, is getting the basics right and being honest about the rest: daily cleaning, fresh linens, a welcome basket on arrival, and a quick reply on WhatsApp when you need one.</p>
+        <blockquote>We'd rather promise a little less and surprise you, than the other way around.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE DO THINGS ============ -->
+  <section class="section tight reveal">
+    <div class="container">
+      <div class="usp">
+        <p class="eyebrow">How we do things</p>
+        <h2 style="font-size:clamp(26px,2.8vw,34px); margin-bottom:4px;">What we believe</h2>
+        <div class="usp-list">
+          <div><h3>Premium, not luxury</h3><p>We're honest about what we are, and what we aren't. No spa, no restaurant, no private pools — just six comfortable houses done well, where the promise matches the place.</p></div>
+          <div><h3>Hands-on, on site</h3><p>There's no front desk and no call centre. Someone is nearby when you need them, and a message on WhatsApp gets a real answer, usually within minutes.</p></div>
+          <div><h3>One estate, six houses</h3><p>Horizon is one place, not a marketplace of listings. The six houses share a single design and a single pool; each is a variation on the same quiet idea.</p></div>
+          <div><h3>Book direct</h3><p>Booking with us directly is always the best rate — no commission, no middleman — and it means a real conversation about your stay rather than a form to fill in.</p></div>
+          <div><h3>Quiet by design</h3><p>This is the anti-Mykonos: a hillside above a small village, never busier than it should be, and at its best in the soft light of spring and autumn.</p></div>
+          <div><h3>The essentials, done well</h3><p>Daily cleaning, fresh linens, fast wifi, free parking and a welcome basket on arrival — included in every house, every stay, without the fuss.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section tight band-beige reveal">
+    <div class="container">
+      <p class="eyebrow on-beige center">Good to know</p>
+      <div class="faq">
+        <details class="faq-item" open>
+          <summary>How many houses are there?</summary>
+          <p>Six — Zoe, Diana, Regina, Celine, Roxana and Astra — all on one hillside around a single shared pool.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do all the houses share the pool?</summary>
+          <p>Yes. There's one pool, shared by all six houses, a few steps from each door. It's the heart of the place.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's included in a stay?</summary>
+          <p>Daily cleaning, fresh linens, fast wifi, free parking and a welcome basket on arrival — in every house, every stay.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is it suitable for families?</summary>
+          <p>Very. Several houses sleep up to six, the pool is the centre of the day, and the beach is a five-minute walk down.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do we get there?</summary>
+          <p>Fly to Athens or Mykonos, then take the ferry to Tinos. We're about fifteen minutes from the port, above Agios Ioannis — and we'll help you plan the journey.</p>
+        </details>
+        <details class="faq-item">
+          <summary>When is the best time to visit?</summary>
+          <p>Spring (April to early June) and autumn (mid-September to October) are our favourites — warm, quiet, and the island at its best.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How far is the beach?</summary>
+          <p>About five minutes on foot — a quiet swimming cove below the village, with a beach taverna for lunch.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a minimum stay?</summary>
+          <p>Usually a few nights, and it varies by season. Tell us your dates and we'll let you know what works.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can we book directly?</summary>
+          <p>Always — and it's the best price. Book direct and you deal with us directly, with no commission in between.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSE ============ -->
+  <section class="section tight band-dark center reveal">
+    <div class="container">
+      <h2 style="font-size:clamp(22px,2.4vw,28px); color:#D9A969; margin-bottom:18px;">Come and see for yourself</h2>
+      <a class="btn btn-primary" href="/#book" style="margin-right:10px;">Check availability</a>
+      <a class="btn btn-outline-light" href={site.whatsapp}><i class="ti ti-message-circle"></i> WhatsApp</a>
+    </div>
+  </section>
+
+  <Footer id="contact" />
+</Base>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offers — Horizon Villas Tinos</title>
+<meta name="description" content="Book direct with the family for the best price — no commission, flexible dates, and a few seasonal offers on Tinos worth planning around.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>document.documentElement.className += ' js';</script>
+
+<header class="site-header">
+  <div class="nav">
+    <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
+    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
+  </div>
+  <nav class="navlinks">
+    <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="index.html#tinos">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ HEADER ============ -->
+<section class="section tight center">
+  <div class="container">
+    <p class="eyebrow">Offers</p>
+    <h1 style="font-size:clamp(32px,4vw,52px); margin-bottom:16px;">Offers &amp; direct rates</h1>
+    <p class="lead">Book direct with the family for the best price — no commission, flexible dates, and a few seasonal offers worth planning around.</p>
+  </div>
+</section>
+
+<!-- ============ OFFER GRID ============ -->
+<section class="section" style="padding-top:8px;">
+  <div class="container">
+    <div class="offer-grid">
+
+      <article class="offer" id="autumn">
+        <div class="photo">[ photo ]</div>
+        <div class="body">
+          <p class="tag">Seasonal</p>
+          <h3>Autumn on Tinos</h3>
+          <p class="dates">1–20 October 2026</p>
+          <p>Thirty per cent off our standard rates for the island's quietest, warmest weeks — soft light, empty beaches and the sea at its best.</p>
+          <div class="cta"><a class="btn btn-primary btn-sm" href="index.html#book">Check availability</a></div>
+        </div>
+      </article>
+
+      <article class="offer" id="long-week">
+        <div class="photo" style="background:#DFD0B3;">[ photo ]</div>
+        <div class="body">
+          <p class="tag">Long stays</p>
+          <h3>Stay seven, pay six</h3>
+          <p class="dates">Any week, year-round</p>
+          <p>Settle in. Book seven nights in any house and the seventh is on us — the island rewards the unhurried.</p>
+          <div class="cta"><a class="btn btn-primary btn-sm" href="index.html#book">Check availability</a></div>
+        </div>
+      </article>
+
+      <article class="offer" id="spring">
+        <div class="photo" style="background:#DACAAD;">[ photo ]</div>
+        <div class="body">
+          <p class="tag">Seasonal</p>
+          <h3>Early spring rates</h3>
+          <p class="dates">April – May 2026</p>
+          <p>Wildflowers, footpaths and long lunches before the season turns — reduced rates across all six houses.</p>
+          <div class="cta"><a class="btn btn-primary btn-sm" href="index.html#book">Check availability</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY BOOK DIRECT ============ -->
+<section class="section tight band-beige center reveal">
+  <div class="container">
+    <p class="eyebrow on-beige">Why book direct</p>
+    <div style="display:flex; justify-content:center; gap:36px; flex-wrap:wrap; font-size:15px; color:var(--ink); margin-top:6px;">
+      <span>Best rate, no commission</span><span>Talk to the family directly</span><span>Flexible dates</span><span>Secure payment</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING CLOSE ============ -->
+<section id="book" class="section tight center reveal">
+  <div class="container">
+    <h2 style="font-size:clamp(22px,2.4vw,28px); margin-bottom:14px;">Found your dates?</h2>
+    <p style="margin:0 0 24px; color:var(--text);">Tell us when you'd like to come and which house — we'll sort the rest.</p>
+    <a class="btn btn-primary" href="index.html#book" style="margin-right:10px;">Check availability</a>
+    <a class="btn btn-outline" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
+  </div>
+</section>
+
+<footer id="contact" class="footer">
+  <div class="word">HORIZON VILLAS</div>
+  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971</div>
+  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="index.html#book">Check availability</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

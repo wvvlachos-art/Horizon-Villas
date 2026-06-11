@@ -1,0 +1,67 @@
+---
+// Offers page — seasonal rates & direct-booking deals.
+// Data-driven from src/data/offers.ts (Sanity-backed later — see that file).
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { offers } from '../data/offers';
+---
+
+<Base
+  title="Offers — Horizon Villas Tinos"
+  description="Book direct with the family for the best price — no commission, flexible dates, and a few seasonal offers on Tinos worth planning around."
+>
+  <Nav />
+
+  <!-- ============ HEADER ============ -->
+  <section class="section tight center">
+    <div class="container">
+      <p class="eyebrow">Offers</p>
+      <h1 style="font-size:clamp(32px,4vw,52px); margin-bottom:16px;">Offers &amp; direct rates</h1>
+      <p class="lead">Book direct with the family for the best price — no commission, flexible dates, and a few seasonal offers worth planning around.</p>
+    </div>
+  </section>
+
+  <!-- ============ OFFER GRID ============ -->
+  <section class="section" style="padding-top:8px;">
+    <div class="container">
+      <div class="offer-grid">
+        {offers.map((offer) => (
+          <article class="offer" id={offer.id}>
+            <div class="photo" style={offer.photoBg ? `background:${offer.photoBg};` : undefined}>[ photo ]</div>
+            <div class="body">
+              <p class="tag">{offer.tag}</p>
+              <h3>{offer.title}</h3>
+              <p class="dates">{offer.dates}</p>
+              <p>{offer.description}</p>
+              <div class="cta"><a class="btn btn-primary btn-sm" href="/#book">Check availability</a></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY BOOK DIRECT ============ -->
+  <section class="section tight band-beige center reveal">
+    <div class="container">
+      <p class="eyebrow on-beige">Why book direct</p>
+      <div style="display:flex; justify-content:center; gap:36px; flex-wrap:wrap; font-size:15px; color:var(--ink); margin-top:6px;">
+        <span>Best rate, no commission</span><span>Talk to the family directly</span><span>Flexible dates</span><span>Secure payment</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING CLOSE ============ -->
+  <section id="book" class="section tight center reveal">
+    <div class="container">
+      <h2 style="font-size:clamp(22px,2.4vw,28px); margin-bottom:14px;">Found your dates?</h2>
+      <p style="margin:0 0 24px; color:var(--text);">Tell us when you'd like to come and which house — we'll sort the rest.</p>
+      <a class="btn btn-primary" href="/#book" style="margin-right:10px;">Check availability</a>
+      <a class="btn btn-outline" href={site.whatsapp}><i class="ti ti-message-circle"></i> WhatsApp</a>
+    </div>
+  </section>
+
+  <Footer id="contact" />
+</Base>

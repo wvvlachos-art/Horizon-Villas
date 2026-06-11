@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The pool — Horizon Villas Tinos</title>
+<meta name="description" content="One shared pool above Agios Ioannis, at the heart of Horizon Villas — where all six houses meet, from morning coffee to sunset drinks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>document.documentElement.className += ' js';</script>
+
+<header class="site-header">
+  <div class="nav">
+    <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
+    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#">Book now</a></div>
+  </div>
+  <nav class="navlinks">
+    <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="index.html#tinos">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ HEADER ============ -->
+<section class="section tight center">
+  <div class="container">
+    <p class="eyebrow">The pool</p>
+    <h1 style="font-size:clamp(32px,4vw,52px); margin-bottom:16px;">The heart of it</h1>
+    <p class="lead">One pool, shared by all six houses, on a quiet hillside above Agios Ioannis. It's where the day begins and ends at Horizon.</p>
+  </div>
+</section>
+
+<!-- ============ BANNER IMAGE ============ -->
+<section style="padding:0;">
+  <div class="container">
+    <div class="photo media">[ the shared pool at dusk ]</div>
+  </div>
+</section>
+
+<!-- ============ MORNINGS ============ -->
+<section class="split reveal">
+  <div class="photo">[ the pool in the morning ]</div>
+  <div class="copy band-beige">
+    <p class="eyebrow on-beige">Mornings</p>
+    <h2>Coffee, and a quiet swim</h2>
+    <p>The early hours belong to whoever is up first — a coffee on the terrace, a lap or two before the heat, the island still waking up below.</p>
+  </div>
+</section>
+
+<!-- ============ EVENINGS ============ -->
+<section class="split flip reveal">
+  <div class="photo" style="background:#D2BF9F;">[ the pool at sunset ]</div>
+  <div class="copy band-beige">
+    <p class="eyebrow on-beige">Evenings</p>
+    <h2>A drink as the sun drops</h2>
+    <p>Later, the pool is for the grown-ups — a drink in hand as the sun slips behind the hills and the water turns gold. The one place all six houses share.</p>
+  </div>
+</section>
+
+<!-- ============ AROUND THE POOL ============ -->
+<section class="section tight reveal">
+  <div class="container">
+    <p class="eyebrow">Around the pool</p>
+    <div class="checks">
+      <span><i class="ti ti-check"></i>Sun loungers &amp; parasols</span>
+      <span><i class="ti ti-check"></i>Shaded terrace</span>
+      <span><i class="ti ti-check"></i>Outdoor shower</span>
+      <span><i class="ti ti-check"></i>Towels provided</span>
+      <span><i class="ti ti-check"></i>Steps from every house</span>
+      <span><i class="ti ti-check"></i>Open through the season</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section tight center reveal">
+  <div class="container">
+    <p class="eyebrow">More of the pool</p>
+    <div class="gallery">
+      <div class="photo"></div>
+      <div class="photo" style="background:#DFD0B3;"></div>
+      <div class="photo" style="background:#DACAAD;"></div>
+      <div class="photo cap-tr" style="background:#D5C3A2;">+6</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section class="section tight band-dark center reveal">
+  <div class="container">
+    <h2 style="font-size:clamp(22px,2.4vw,28px); color:#D9A969; margin-bottom:18px;">Your spot by the water is waiting</h2>
+    <a class="btn btn-primary" href="index.html#book" style="margin-right:10px;">Check availability</a>
+    <a class="btn btn-outline-light" href="accommodations.html">See the houses</a>
+  </div>
+</section>
+
+<footer id="contact" class="footer">
+  <div class="word">HORIZON VILLAS</div>
+  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971</div>
+  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="index.html#book">Check availability</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
