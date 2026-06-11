@@ -1,10 +1,7 @@
-# Netlify build config.
-# The Astro project lives in the horizon-astro/ subfolder, so we point
-# Netlify's build there. `publish` is relative to `base`.
+# Netlify deploy config.
+# The live site is the static HTML at the repo root (index.html, about.html,
+# horizon-tinos.html, etc.) — these are the current source of truth. There's no
+# build step; Netlify just publishes the root directory.
+# The Astro port in horizon-astro/ is kept in the repo but is no longer deployed.
 [build]
-  base = "horizon-astro"
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "20"
+  publish = "."

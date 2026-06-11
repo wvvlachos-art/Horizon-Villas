@@ -4,25 +4,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Horizon Villas Tinos — six houses, one pool, above the Aegean</title>
-<meta name="description" content="A small family-run collection of six modern houses around one shared pool, above Agios Ioannis on Tinos. Daily cleaning, minutes from the beach — the quiet side of the Cyclades.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
-<link rel="icon" href="logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   LANDING v3 additions — same tokens, same vocabulary.
+   Portable: move this block into styles.css as-is.
+   ============================================================ */
+
+/* hero: bookbar docked on the hero's bottom edge */
+.hero { padding-bottom: 90px; }
+.hero .bookbar.dock {
+  position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 50%);
+  width: calc(100% - 48px); z-index: 5;
+}
+.hero .hero-sub {
+  font-size: clamp(15px, 1.7vw, 19px); color: var(--text);
+  max-width: 54ch; margin: 0 auto 8px;
+}
+.bookbar .field input, .bookbar .field select {
+  border: 0; background: transparent; width: 100%; outline: none;
+  font-family: var(--font-body); font-size: 14px; letter-spacing: .5px; color: var(--ink);
+}
+.bookbar .field .l { display: block; font-size: 10px; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
+.bookbar .field { flex-direction: column; align-items: stretch; justify-content: center; }
+.section.after-dock { padding-top: clamp(110px, 12vw, 160px); }
+
+/* a word from the host */
+.hostword { max-width: 720px; margin: 0 auto; }
+.hostword blockquote {
+  margin: 22px 0 26px;
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 32px); line-height: 1.5; color: var(--ink);
+}
+.hostword blockquote em { font-style: italic; color: var(--terracotta); }
+.hostword .rule { width: 56px; height: 1px; background: var(--amber); margin: 0 auto 20px; }
+.hostword .sign { font-size: 14px; color: var(--muted); }
+.hostword .sign b { color: var(--ink); font-weight: 600; }
+
+/* houses grid: facts line + foot row inside the existing .card */
+.cards.six { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1000px) { .cards.six { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .cards.six { grid-template-columns: 1fr; } }
+.card .meta .facts { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.card .meta p.desc { font-size: 14px; line-height: 1.65; color: var(--text); margin: 0 0 16px; min-height: 3.2em; }
+.card .meta .foot { display: flex; justify-content: space-between; align-items: baseline; border-top: 0.5px solid var(--line); padding-top: 13px; }
+.card .meta .foot .price { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--amber); }
+.card .meta .foot .price span { font-family: var(--font-body); font-size: 12px; color: var(--muted); }
+.sec-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: clamp(28px, 3.4vw, 46px); }
+.sec-row .from { font-family: var(--font-display); font-size: 19px; color: var(--text); }
+.sec-row .from b { color: var(--amber); font-weight: 500; }
+
+/* a day here — sun-path timeline */
+.sunpath { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(22px, 2.6vw, 38px); padding-top: 104px; text-align: left; }
+.sunpath::before { content: ""; position: absolute; top: 22px; left: 5%; right: 5%; height: 0.5px; background: var(--line-strong); }
+.stop { position: relative; }
+.stop::before {
+  content: ""; position: absolute; top: -86px; left: 50%; transform: translateX(-50%);
+  width: 9px; height: 9px; border-radius: 50%; background: var(--amber);
+  box-shadow: 0 0 0 5px var(--cream);
+}
+.band-beige .stop::before { box-shadow: 0 0 0 5px var(--beige); }
+.stop .time { position: absolute; top: -66px; left: 0; right: 0; text-align: center; font-family: var(--font-display); font-weight: 500; font-size: 23px; color: var(--amber); }
+.stop .photo { aspect-ratio: 3 / 4; height: auto; margin-bottom: 16px; }
+.stop h3 { font-size: 20px; color: var(--ink); margin-bottom: 8px; }
+.stop p { margin: 0; font-size: 14px; line-height: 1.65; color: var(--text); }
+
+/* the island — guide pulls reuse the .offer card without a photo */
+.offer .body.guide { padding: 26px 26px 24px; }
+.guide-note { max-width: 64ch; margin: 30px auto 0; font-size: 14.5px; line-height: 1.7; color: var(--text); text-align: center; }
+
+/* book direct — dark band */
+.band-dark { color: #C9BB9F; }
+.band-dark .eyebrow { color: #D9A969; }
+.band-dark h2 { color: #FFFDF9; }
+.direct-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(36px, 5vw, 80px); align-items: start; }
+.promises { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
+.promise b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 18px; color: #FFFDF9; margin-bottom: 4px; }
+.promise span { font-size: 13.5px; line-height: 1.6; color: #C9BB9F; }
+.included { margin: 34px 0 30px; padding-top: 20px; border-top: 0.5px solid rgba(201,187,159,.25); font-size: 13px; letter-spacing: .5px; color: #9A8B72; }
+.dq { background: rgba(255,253,249,.05); border: 0.5px solid rgba(201,187,159,.22); border-radius: var(--radius); padding: 26px 28px 22px; }
+.dq + .dq { margin-top: 18px; }
+.dq p { margin: 0 0 14px; font-family: var(--font-display); font-size: clamp(18px, 1.9vw, 22px); line-height: 1.5; color: #FFFDF9; }
+.dq .src { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #9A8B72; }
+
+/* plan your stay */
+.plan-sub { max-width: 48ch; margin: 14px auto 34px; color: var(--text); }
+.whats { margin-top: 24px; font-size: 14px; color: var(--text); }
+
+@media (max-width: 900px) {
+  .sunpath { grid-template-columns: 1fr; gap: 46px; padding-top: 4px; padding-left: 32px; }
+  .sunpath::before { top: 6px; bottom: 6px; left: 4px; right: auto; width: 0.5px; height: auto; }
+  .stop::before { top: 5px; left: -32px; transform: none; }
+  .stop .time { position: static; text-align: left; display: block; margin-bottom: 8px; }
+  .stop .photo { aspect-ratio: 16 / 10; }
+  .direct-grid { grid-template-columns: 1fr; }
+  .hero .bookbar.dock { width: calc(100% - 32px); }
+  .section.after-dock { padding-top: 150px; }
+}
+@media (max-width: 560px) { .promises { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .nav { padding: 14px 16px; gap: 8px; }
+  .nav-aux, .lang { display: none; }
+  .brand .word { font-size: 20px; letter-spacing: 3px; }
+}
+
+/* ---- mobile pass (audit fixes) ---- */
+.bookbar .field input, .bookbar .field select { font-size: 16px; }   /* prevents iOS focus zoom */
+.site-header .btn { white-space: nowrap; }
+.menu-toggle { padding: 14px 10px; margin: -14px -10px; }
+@media (max-width: 900px) {
+  /* working mobile menu — toggled by the Menu button */
+  .site-header.menu-open .navlinks {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; margin-top: 6px; padding: 6px 0 16px;
+  }
+  .site-header.menu-open .navlinks a { padding: 11px 16px; font-size: 13px; }
+  .site-header.menu-open { background: rgba(247,240,230,.97); backdrop-filter: blur(6px); border-bottom: 0.5px solid var(--line); }
+  .site-header.over-hero.menu-open .brand .word, .site-header.over-hero.menu-open .brand .sub { color: var(--amber); }
+  .site-header.over-hero.menu-open .menu-toggle, .site-header.over-hero.menu-open .lang,
+  .site-header.over-hero.menu-open .nav-aux { color: var(--muted); }
+  .site-header.over-hero.menu-open .navlinks a { color: #6E6151; }
+  .site-header.over-hero.menu-open .btn-outline { border-color: var(--ink); color: var(--ink); }
+  /* tap targets */
+  .link { display: inline-block; padding: 8px 0 2px; }
+}
+
+/* mobile trust line — replaces the hidden hero-trust rail on phones */
+.trust-mobile { display: none; }
+@media (max-width: 900px) {
+  .trust-mobile { display: block; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text); margin: 0 0 20px; }
+  .trust-mobile b { color: var(--amber); font-weight: 700; }
+}
+</style>
 </head>
 <body>
-<script>document.documentElement.className += ' js';</script>
 
-<!-- ============ HEADER / NAV ============ -->
 <header class="site-header">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
+    <div class="nav-left"><button class="menu-toggle">Menu</button></div>
     <a class="brand" href="index.html">
       <img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()">
-      <div class="word">HORIZON</div>
-      <div class="sub">VILLAS</div>
+      <span class="word">HORIZON VILLAS</span>
+      <div class="sub">TINOS</div>
     </a>
     <div class="nav-right">
       <a class="nav-aux" href="blog.html">Blog</a>
@@ -30,231 +156,237 @@
       <a class="btn btn-outline btn-sm" href="#book">Book now</a>
     </div>
   </div>
-  <nav class="navlinks">
+  <div class="navlinks container">
     <a href="accommodations.html">The houses</a>
     <a href="pool.html">The pool</a>
-    <a href="#tinos">Tinos</a>
+    <a href="horizon-tinos.html">Tinos</a>
     <a href="offers.html">Offers</a>
     <a href="about.html">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  </div>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <!-- swap .photo for a <picture> with art-directed desktop + portrait mobile crops -->
-  <!-- TRUST SIGNALS: replace placeholder scores with live ratings (Booking / Airbnb / Google) -->
+<!-- 1 · HERO -->
+<section class="hero" id="top">
   <div class="hero-trust">
     <div class="trust-badge"><span class="src">Booking.com</span><span class="score">9.4</span></div>
-    <div class="trust-badge"><span class="src">Airbnb</span><span class="score">4.9<span class="star">★</span></span></div>
-    <div class="trust-badge"><span class="src">Google</span><span class="score">4.8<span class="star">★</span></span></div>
+    <div class="trust-badge"><span class="src">Airbnb</span><span class="score">4.9 <span class="star">★</span></span></div>
+    <div class="trust-badge"><span class="src">Google</span><span class="score">4.8 <span class="star">★</span></span></div>
   </div>
   <p class="eyebrow">Agios Ioannis · Tinos</p>
   <h1>Six houses, one pool, above the Aegean</h1>
-  <a class="btn btn-outline" href="#book">Check availability</a>
+  <p class="hero-sub">A small family-run collection on a quiet hillside, five minutes from the beach — the Cyclades at its most unhurried.</p>
+    <p class="trust-mobile">Booking.com <b>9.4</b> · Airbnb <b>4.9★</b> · Google <b>4.8★</b></p>
   <span class="photo-note">[ full-screen cinematic hero — the pool &amp; houses at dusk ]</span>
+  <form class="bookbar dock" id="book" onsubmit="return false">
+    <label class="field"><span class="l">Arrival</span><input type="text" placeholder="Add date"></label>
+    <label class="field"><span class="l">Departure</span><input type="text" placeholder="Add date"></label>
+    <label class="field narrow"><span class="l">Guests</span><select><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
+    <button class="btn btn-primary">Check availability</button>
+  </form>
 </section>
 
-<!-- ============ THE PLACE (intro narrative) ============ -->
-<section class="section center reveal">
-  <div class="container">
-    <p class="eyebrow">The place</p>
-    <h2 style="font-size:clamp(30px,3.2vw,44px); margin-bottom:20px;">The quiet side of the Cyclades</h2>
-    <p class="lead">Horizon is a small collection of six modern houses, gathered by our family around one shared pool on a quiet hillside above Agios Ioannis. Five minutes from the beach, a world away from the crowds — the Cyclades at its most unhurried.</p>
+<!-- 2 · A WORD FROM THE HOST -->
+<section class="section after-dock center">
+  <div class="container hostword reveal">
+    <p class="eyebrow">A word from the host</p>
+    <blockquote>We built six houses around one pool, on the hillside where our family has always come to <em>slow down</em>. Now we keep them for you.</blockquote>
+    <div class="rule"></div>
+    <p class="sign"><b>William</b> — your host, with the family on Tinos</p>
   </div>
 </section>
 
-<!-- ============ THE POOL (its own moment) ============ -->
-<section id="pool" class="split reveal">
-  <div class="photo">[ the shared pool ]</div>
-  <div class="copy band-beige">
-    <p class="eyebrow on-beige">The pool</p>
-    <h2>The heart of it</h2>
-    <p>Where the day slows down — coffee in the morning, the children in the afternoon, a drink as the sun drops behind the hills. The one place all six houses share.</p>
-    <p style="margin-top:18px;"><a class="link amber" href="pool.html">See the pool</a></p>
-  </div>
-</section>
-
-<!-- ============ THE HOUSES (light preview → index) ============ -->
-<section class="section center reveal">
+<!-- 3 · THE HOUSES -->
+<section class="section band-beige" id="houses">
   <div class="container">
-    <p class="eyebrow">The houses</p>
-    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:6px;">Six houses, one design, from €180</h2>
-    <div class="house-carousel">
-      <div class="hc-track">
-        <button class="hc-arrow l" aria-label="Previous house"><i class="ti ti-chevron-left"></i></button>
-        <button class="hc-arrow r" aria-label="Next house"><i class="ti ti-chevron-right"></i></button>
-        <div class="hc-slide active">
-          <div class="hc-photo">[ photo ]</div>
-          <div class="hc-info">
-            <h3>Villa Zoe</h3><p class="hc-facts">Sleeps 4 · Sea · 70 m²</p>
-            <p>The brightest of the six, opening straight onto the shared pool terrace with the sea in the windows.</p>
-            <p class="hc-price">from €180 <span>/ night</span></p>
-            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
-          </div>
-        </div>
-        <div class="hc-slide">
-          <div class="hc-photo" style="background:#DFD0B3;">[ photo ]</div>
-          <div class="hc-info">
-            <h3>Villa Diana</h3><p class="hc-facts">Sleeps 6 · Garden · 95 m²</p>
-            <p>The largest of the collection — a separate living room and room for a whole family, steps from the pool.</p>
-            <p class="hc-price">from €240 <span>/ night</span></p>
-            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
-          </div>
-        </div>
-        <div class="hc-slide">
-          <div class="hc-photo" style="background:#DACAAD;">[ photo ]</div>
-          <div class="hc-info">
-            <h3>Villa Regina</h3><p class="hc-facts">Sleeps 4 · Sea · 72 m²</p>
-            <p>A calm corner house with sea views and a shaded terrace for slow mornings.</p>
-            <p class="hc-price">from €190 <span>/ night</span></p>
-            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
-          </div>
-        </div>
-        <div class="hc-slide">
-          <div class="hc-photo" style="background:#D5C3A2;">[ photo ]</div>
-          <div class="hc-info">
-            <h3>Villa Celine</h3><p class="hc-facts">Sleeps 4 · Garden · 68 m²</p>
-            <p>Tucked into the garden, quiet and green, a few steps from the water.</p>
-            <p class="hc-price">from €185 <span>/ night</span></p>
-            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
-          </div>
-        </div>
-        <div class="hc-slide">
-          <div class="hc-photo" style="background:#E0D0B6;">[ photo ]</div>
-          <div class="hc-info">
-            <h3>Villa Roxana</h3><p class="hc-facts">Sleeps 2 · Sea · 55 m²</p>
-            <p>A snug one-bedroom for two, with the best of the light in the afternoon.</p>
-            <p class="hc-price">from €160 <span>/ night</span></p>
-            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
-          </div>
-        </div>
-        <div class="hc-slide">
-          <div class="hc-photo" style="background:#D2BF9F;">[ photo ]</div>
-          <div class="hc-info">
-            <h3>Villa Astra</h3><p class="hc-facts">Sleeps 6 · Sea · 98 m²</p>
-            <p>Top of the hillside, the widest views of the lot and space for six.</p>
-            <p class="hc-price">from €250 <span>/ night</span></p>
-            <a class="btn btn-primary btn-sm" href="house.html">View house</a>
-          </div>
-        </div>
+    <div class="sec-row reveal">
+      <div>
+        <p class="eyebrow on-beige" style="margin-bottom:10px;">The houses</p>
+        <h2 style="font-size:clamp(30px,3.4vw,46px);">Six houses, one design</h2>
       </div>
-      <div class="hc-dots">
-        <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+      <p class="from">from <b>€160</b> a night, direct</p>
+    </div>
+    <div class="cards six">
+      <article class="card reveal">
+        <div class="photo">[ villa zoe ]</div>
+        <div class="meta"><h3>Villa Zoe</h3><p class="facts">Sleeps 4 · Sea · 70 m²</p><p class="desc">The brightest of the six, opening straight onto the pool terrace with the sea in the windows.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="photo">[ villa diana ]</div>
+        <div class="meta"><h3>Villa Diana</h3><p class="facts">Sleeps 6 · Garden · 95 m²</p><p class="desc">The largest of the collection — a separate living room and room for a whole family.</p><div class="foot"><span class="price">€240 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="photo">[ villa regina ]</div>
+        <div class="meta"><h3>Villa Regina</h3><p class="facts">Sleeps 4 · Sea · 72 m²</p><p class="desc">A calm corner house with sea views and a shaded terrace for slow mornings.</p><div class="foot"><span class="price">€190 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="photo">[ villa celine ]</div>
+        <div class="meta"><h3>Villa Celine</h3><p class="facts">Sleeps 4 · Garden · 68 m²</p><p class="desc">Tucked into the garden, quiet and green, a few steps from the water.</p><div class="foot"><span class="price">€185 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="photo">[ villa roxana ]</div>
+        <div class="meta"><h3>Villa Roxana</h3><p class="facts">Sleeps 2 · Sea · 55 m²</p><p class="desc">A snug one-bedroom for two, with the best of the light in the afternoon.</p><div class="foot"><span class="price">€160 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="photo">[ villa astra ]</div>
+        <div class="meta"><h3>Villa Astra</h3><p class="facts">Sleeps 6 · Sea · 98 m²</p><p class="desc">Top of the hillside, the widest views of the lot and space for six.</p><div class="foot"><span class="price">€250 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+      </article>
+    </div>
+    <div class="center reveal" style="margin-top:44px;"><a class="btn btn-outline" href="#">See all six houses</a></div>
+  </div>
+</section>
+
+<!-- 4 · A DAY HERE -->
+<section class="section" id="day">
+  <div class="container">
+    <div class="center reveal" style="margin-bottom:clamp(20px,2.6vw,36px);">
+      <p class="eyebrow">A day here</p>
+      <h2 style="font-size:clamp(30px,3.4vw,46px);">The hours take care of themselves</h2>
+    </div>
+    <div class="sunpath">
+      <div class="stop reveal">
+        <span class="time">08:30</span>
+        <div class="photo">[ morning terrace ]</div>
+        <h3>Coffee on the terrace</h3>
+        <p>The light comes over the hill first. Bread from the village bakery, the sea already in view.</p>
+      </div>
+      <div class="stop reveal">
+        <span class="time">13:00</span>
+        <div class="photo">[ the pool / the cove ]</div>
+        <h3>The pool, or the cove</h3>
+        <p>The one place all six houses share — or five minutes on foot down to the swimming cove and its taverna.</p>
+      </div>
+      <div class="stop reveal">
+        <span class="time">18:30</span>
+        <div class="photo">[ marble village ]</div>
+        <h3>Villages in the gold hour</h3>
+        <p>Marble lanes, dovecotes, footpaths over the hills. Or nothing at all — that works here too.</p>
+      </div>
+      <div class="stop reveal">
+        <span class="time">21:00</span>
+        <div class="photo">[ taverna at night ]</div>
+        <h3>A table in the village</h3>
+        <p>Family tavernas a short walk away. Ask us — we'll tell you exactly where to sit and what to order.</p>
       </div>
     </div>
-    <p style="margin-top:30px;"><a class="link amber" href="accommodations.html">See all six houses</a></p>
   </div>
 </section>
 
-<!-- ============ TINOS (full establishing section) ============ -->
-<section id="tinos" class="split flip reveal">
-  <div class="photo" style="background:#D2BF9F;">[ a Tinos village ]</div>
-  <div class="copy band-beige">
-    <p class="eyebrow on-beige">The island</p>
-    <h2>The Cyclades, quietly</h2>
-    <p>Marble villages and dovecotes, a serious food scene, footpaths over the hills, and beaches you can still have to yourself. Tinos rewards the traveller who skips Mykonos — never more so than in spring and autumn.</p>
-    <p style="margin-top:18px;"><a class="link amber" href="#">Explore Tinos</a></p>
-  </div>
-</section>
-
-<!-- ============ THE LOCAL AREA (around Agios Ioannis) ============ -->
-<section class="section center reveal">
+<!-- 5 · THE LOCATION -->
+<section class="section" id="location">
   <div class="container">
-    <p class="eyebrow">The local area</p>
-    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:14px;">Five minutes from the good stuff</h2>
-    <p class="lead" style="margin-bottom:6px;">Agios Ioannis keeps everything close — the water, a few good tavernas, and the rest of the island just up the road.</p>
+    <div class="center reveal" style="margin-bottom:clamp(24px,3vw,40px);">
+      <p class="eyebrow">The location</p>
+      <h2 style="font-size:clamp(30px,3.4vw,46px);">Close to everything, quietly</h2>
+    </div>
+    <div class="media photo reveal">[ the Agios Ioannis cape from above — houses, bay and headland in one frame ]</div>
     <div class="local">
-      <div><h4>Agios Ioannis beach</h4><p>A five-minute walk down to a quiet swimming cove and a beach taverna.</p></div>
-      <div><h4>Eat &amp; shop</h4><p>Family tavernas, a bakery and a small market within the village.</p></div>
-      <div><h4>Tinos Town &amp; port</h4><p>The harbour, ferries and the main shops, about fifteen minutes by car.</p></div>
-      <div><h4>Villages &amp; trails</h4><p>Marble villages, dovecotes and footpaths over the hills to explore.</p></div>
+      <div class="reveal">
+        <h4>Town, without the bustle</h4>
+        <p>Tinos Town and the port are fifteen minutes by car — close enough for the market and the evening volta, far enough that the nights stay yours.</p>
+      </div>
+      <div class="reveal">
+        <h4>Three beaches, minutes away</h4>
+        <p>Agios Ioannis below the houses, Agios Sostis next door, Pachia Ammos for wilder sand — a different mood at each.</p>
+      </div>
+      <div class="reveal">
+        <h4>The cape itself</h4>
+        <p>A green headland of tamarisks, dunes and quiet coves — footpaths along the water before the rest of the bay wakes up.</p>
+      </div>
+      <div class="reveal">
+        <h4>Sheltered from the meltemi</h4>
+        <p>When the summer wind blows hard across the island, this south-facing corner stays calm — beach days survive August here.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ INCLUDED (dark band) ============ -->
-<section class="section tight band-dark center reveal">
+<!-- 6 · THE ISLAND, FROM OUR FIELD GUIDE -->
+<section class="section band-beige" id="island">
   <div class="container">
-    <p class="eyebrow" style="color:#D9A969;">Included in every stay</p>
-    <p style="color:var(--beige); font-size:15px; margin:0;">Daily cleaning&nbsp;&nbsp;·&nbsp;&nbsp;Fresh linens&nbsp;&nbsp;·&nbsp;&nbsp;Fast wifi&nbsp;&nbsp;·&nbsp;&nbsp;Free parking&nbsp;&nbsp;·&nbsp;&nbsp;Welcome basket</p>
+    <div class="sec-row reveal">
+      <div>
+        <p class="eyebrow on-beige" style="margin-bottom:10px;">The island</p>
+        <h2 style="font-size:clamp(30px,3.4vw,46px);">Tinos, from our field guide</h2>
+      </div>
+      <a class="btn btn-outline" href="#">Read the field guide</a>
+    </div>
+    <div class="offer-grid">
+      <article class="offer reveal"><div class="body guide"><p class="tag">Beaches</p><h3>The coves we actually swim at</h3><p>Beyond Agios Ioannis — the beaches you can still have to yourself, and when to go to each.</p></div></article>
+      <article class="offer reveal"><div class="body guide"><p class="tag">Eat &amp; drink</p><h3>The tavernas we send everyone to</h3><p>Honest recommendations with caveats included — Tinos has a serious food scene and we keep score.</p></div></article>
+      <article class="offer reveal"><div class="body guide"><p class="tag">Culture</p><h3>Panigiria — the festival nights</h3><p>The village feasts that don't make the brochures. If one falls during your stay, drop everything.</p></div></article>
+    </div>
+    <p class="guide-note reveal">We wrote a full guide to the island for our guests — every village, beach and taverna we'd recommend to a friend. It's yours before you've booked anything.</p>
   </div>
 </section>
 
-<!-- ============ BOOK DIRECT ============ -->
-<section id="offers" class="section tight center reveal">
-  <div class="container">
-    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:18px;">Book direct, book better</h2>
-    <div style="display:flex; justify-content:center; gap:36px; flex-wrap:wrap; font-size:15px; color:var(--text);">
-      <span>Best rate, no commission</span><span>Talk to the family directly</span><span>Flexible dates</span><span>Secure payment</span>
+<!-- 7 · BOOK DIRECT -->
+<section class="section band-dark" id="direct">
+  <div class="container direct-grid">
+    <div class="reveal">
+      <p class="eyebrow">Book direct</p>
+      <h2 style="font-size:clamp(28px,3.2vw,42px);">Talk to the family, not a platform</h2>
+      <div class="promises">
+        <div class="promise"><b>Best rate, always</b><span>No commission — direct is never more expensive than the platforms.</span></div>
+        <div class="promise"><b>A person answers</b><span>WhatsApp us and a member of the family replies, usually in minutes.</span></div>
+        <div class="promise"><b>Flexible dates</b><span>Plans shift. We work with you, not against a policy page.</span></div>
+        <div class="promise"><b>Secure payment</b><span>Card or transfer, properly receipted, no surprises.</span></div>
+      </div>
+      <p class="included">In every stay — daily cleaning · fresh linens · fast wifi · free parking · welcome basket</p>
+      <a class="btn btn-primary" href="#book2">Check availability</a>
     </div>
-    <p style="margin-top:24px;"><a class="link amber" href="offers.html">See all offers</a></p>
-  </div>
-</section>
-
-<!-- ============ REVIEWS ============ -->
-<section class="section tight reveal" style="padding-top:0;">
-  <div class="container cards">
-    <div class="card" style="padding:18px 20px;">
-      <div style="color:var(--amber); font-size:13px; margin-bottom:6px;"><i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i></div>
-      <p style="font-size:14px; line-height:1.6; color:var(--ink); font-style:italic; margin:0;">"Quiet, spotless, and the pool was perfect for the kids." <span style="color:var(--muted); font-style:normal;">[ sample ]</span></p>
-    </div>
-    <div class="card" style="padding:18px 20px;">
-      <div style="color:var(--amber); font-size:13px; margin-bottom:6px;"><i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i> <i class="ti ti-star"></i></div>
-      <p style="font-size:14px; line-height:1.6; color:var(--ink); font-style:italic; margin:0;">"Booking direct was easy and they replied on WhatsApp in minutes." <span style="color:var(--muted); font-style:normal;">[ sample ]</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PLAN YOUR STAY (booking — Lodgify search widget mounts here) ============ -->
-<section id="book" class="section band-beige center reveal">
-  <div class="container">
-    <h2 style="font-size:clamp(28px,3vw,40px); margin-bottom:10px;">Plan your stay</h2>
-    <p style="color:var(--text); margin:0 0 30px;">Check dates and rates across all six houses — book direct for the best price.</p>
-    <!-- Replace .bookbar with the Lodgify SEARCH widget embed -->
-    <div class="bookbar">
-      <span class="field">Arrival</span>
-      <span class="field">Departure</span>
-      <span class="field narrow">Guests</span>
-      <a class="btn btn-primary" href="#">Check availability</a>
+    <div class="reveal">
+      <div class="dq"><p>"Quiet, spotless, and the pool was perfect for the kids."</p><span class="src">Guest review · replace with real quote + source</span></div>
+      <div class="dq"><p>"Booking direct was easy and they replied on WhatsApp in minutes."</p><span class="src">Guest review · replace with real quote + source</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer id="contact" class="footer">
+<!-- 8 · PLAN YOUR STAY -->
+<section class="section center" id="book2">
+  <div class="container reveal">
+    <p class="eyebrow">Plan your stay</p>
+    <h2 style="font-size:clamp(30px,3.4vw,46px);">Choose your dates</h2>
+    <p class="plan-sub">Check rates and availability across all six houses — book direct for the best price.</p>
+    <form class="bookbar" onsubmit="return false">
+      <label class="field"><span class="l">Arrival</span><input type="text" placeholder="Add date"></label>
+      <label class="field"><span class="l">Departure</span><input type="text" placeholder="Add date"></label>
+      <label class="field narrow"><span class="l">Guests</span><select><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
+      <button class="btn btn-primary">Check availability</button>
+    </form>
+    <p class="whats">Not ready for dates? <a class="link amber" href="https://wa.me/306907777971">Message us on WhatsApp</a> — we reply in minutes.</p>
+  </div>
+</section>
+
+<footer class="footer">
   <div class="word">HORIZON VILLAS</div>
-  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971 · info@horizonvillastinos.com</div>
-  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+  <p class="row">Agios Ioannis, Tinos · +30 690 777 7971 · info@horizonvillastinos.com</p>
+  <p class="fine">EN · FR &nbsp;|&nbsp; Privacy · Cookies · © Horizon Villas</p>
 </footer>
 
-<!-- ============ MOBILE STICKY CTA (conversion-first on small screens) ============ -->
 <div class="mobile-cta">
-  <a class="btn btn-primary" href="#book">Check availability</a>
-  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+  <a class="btn btn-primary" href="#book2">Check availability</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp">✆</a>
 </div>
 
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // houses carousel: arrows + dots swap the active house slide
-  const car = document.querySelector('.house-carousel');
-  if (car) {
-    const slides = Array.from(car.querySelectorAll('.hc-slide'));
-    const dots = Array.from(car.querySelectorAll('.hc-dots span'));
-    let i = 0;
-    const show = (n) => {
-      i = (n + slides.length) % slides.length;
-      slides.forEach((s, k) => s.classList.toggle('active', k === i));
-      dots.forEach((d, k) => d.classList.toggle('active', k === i));
-    };
-    car.querySelector('.hc-arrow.l').addEventListener('click', () => show(i - 1));
-    car.querySelector('.hc-arrow.r').addEventListener('click', () => show(i + 1));
-    dots.forEach((d, k) => d.addEventListener('click', () => show(k)));
-  }
+document.body.classList.add('js');
+const hd = document.querySelector('.site-header');
+const overHero = hd.classList.contains('over-hero');
+const mt = hd.querySelector('.menu-toggle');
+const sync = () => hd.classList.toggle('solid', (overHero && window.scrollY > 60) || hd.classList.contains('menu-open'));
+addEventListener('scroll', sync, { passive: true }); sync();
+mt.addEventListener('click', () => {
+  const open = hd.classList.toggle('menu-open');
+  mt.textContent = open ? 'Close' : 'Menu';
+  sync();
+});
+hd.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click', () => {
+  hd.classList.remove('menu-open'); mt.textContent = 'Menu'; sync();
+}));
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>

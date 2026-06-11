@@ -4,89 +4,221 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — Horizon Villas Tinos</title>
-<meta name="description" content="A small collection of six houses around one shared pool above Agios Ioannis on Tinos — premium, not luxury, and honest about the difference.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
-<link rel="icon" href="logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   ABOUT v4 additions — same tokens, same vocabulary.
+   Portable: move this block into styles.css as-is.
+   ============================================================ */
+
+/* hero kicker over the image */
+.house-hero .kicker { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,253,249,.85); }
+
+/* prose blocks — narrow reading measure (Canaves about pattern) */
+.prose { max-width: 780px; margin: 0 auto; }
+.prose h2 { font-size: clamp(24px, 2.6vw, 32px); margin: 0 0 16px; }
+.prose p { margin: 0 0 18px; font-size: 16px; line-height: 1.8; color: var(--text); }
+.prose p:last-child { margin-bottom: 0; }
+.prose + .prose { margin-top: clamp(36px, 4.4vw, 60px); }
+
+/* book direct — centred dark band */
+.band-dark { color: #C9BB9F; }
+.band-dark .eyebrow { color: #D9A969; }
+.band-dark h2 { color: #FFFDF9; }
+.band-dark .lead-dark { max-width: 640px; margin: 16px auto 0; font-size: 16px; line-height: 1.75; color: #C9BB9F; }
+.promises { max-width: 880px; margin: clamp(28px, 3.4vw, 44px) auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 40px; text-align: left; }
+.promise b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 18px; color: #FFFDF9; margin-bottom: 5px; }
+.promise span { font-size: 14px; line-height: 1.65; color: #C9BB9F; }
+
+/* bookbar fields (same as landing additions) */
+.bookbar .field input, .bookbar .field select {
+  border: 0; background: transparent; width: 100%; outline: none;
+  font-family: var(--font-body); font-size: 14px; letter-spacing: .5px; color: var(--ink);
+}
+.bookbar .field .l { display: block; font-size: 10px; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
+.bookbar .field { flex-direction: column; align-items: stretch; justify-content: center; }
+.plan-sub { max-width: 48ch; margin: 14px auto 34px; color: var(--text); }
+.whats { margin-top: 24px; font-size: 14px; color: var(--text); }
+
+@media (max-width: 640px) {
+  .nav { padding: 14px 16px; gap: 8px; }
+  .nav-aux, .lang { display: none; }
+  .brand .word { font-size: 20px; letter-spacing: 3px; }
+  .promises { grid-template-columns: 1fr; }
+}
+
+/* ---- mobile pass (audit fixes) ---- */
+.bookbar .field input, .bookbar .field select { font-size: 16px; }   /* prevents iOS focus zoom */
+.site-header .btn { white-space: nowrap; }
+.menu-toggle { padding: 14px 10px; margin: -14px -10px; }
+@media (max-width: 900px) {
+  /* working mobile menu — toggled by the Menu button */
+  .site-header.menu-open .navlinks {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; margin-top: 6px; padding: 6px 0 16px;
+  }
+  .site-header.menu-open .navlinks a { padding: 11px 16px; font-size: 13px; }
+  .site-header.menu-open { background: rgba(247,240,230,.97); backdrop-filter: blur(6px); border-bottom: 0.5px solid var(--line); }
+  .site-header.over-hero.menu-open .brand .word, .site-header.over-hero.menu-open .brand .sub { color: var(--amber); }
+  .site-header.over-hero.menu-open .menu-toggle, .site-header.over-hero.menu-open .lang,
+  .site-header.over-hero.menu-open .nav-aux { color: var(--muted); }
+  .site-header.over-hero.menu-open .navlinks a { color: #6E6151; }
+  .site-header.over-hero.menu-open .btn-outline { border-color: var(--ink); color: var(--ink); }
+  /* tap targets */
+  .link { display: inline-block; padding: 8px 0 2px; }
+}
+</style>
 </head>
 <body>
-<script>document.documentElement.className += ' js';</script>
 
-<header class="site-header">
+<header class="site-header over-hero" id="hd">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle"><i class="ti ti-menu-2"></i> Menu</button></div>
-    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
-    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="index.html#book">Book now</a></div>
+    <div class="nav-left"><button class="menu-toggle">Menu</button></div>
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()">
+      <span class="word">HORIZON VILLAS</span>
+      <div class="sub">TINOS</div>
+    </a>
+    <div class="nav-right">
+      <a class="nav-aux" href="blog.html">Blog</a>
+      <span class="lang">EN · FR</span>
+      <a class="btn btn-outline btn-sm" href="#book">Book now</a>
+    </div>
   </div>
-  <nav class="navlinks">
-    <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="index.html#tinos">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a><a href="index.html#contact">Contact</a>
-  </nav>
+  <div class="navlinks container">
+    <a href="accommodations.html">The houses</a>
+    <a href="pool.html">The pool</a>
+    <a href="horizon-tinos.html">Tinos</a>
+    <a href="offers.html">Offers</a>
+    <a href="about.html">About</a>
+  </div>
 </header>
 
-<!-- ============ HEADER ============ -->
-<section class="section tight center">
-  <div class="container">
-    <p class="eyebrow">About</p>
-    <h1 style="font-size:clamp(30px,3.4vw,44px); margin-bottom:16px;">A hillside, a pool, six houses</h1>
-    <p class="lead">Horizon is a small collection of six modern houses, gathered around one shared pool above Agios Ioannis — the quiet side of the Cyclades.</p>
+<!-- 1 · HERO -->
+<section class="house-hero">
+  <div class="hero-caption reveal">
+    <span class="kicker">About</span>
+    <h1>About Horizon Villas</h1>
+    <p class="sub">Six holiday houses around one shared pool, above Agios Ioannis on Tinos.</p>
   </div>
 </section>
 
-<!-- ============ OUR STORY ============ -->
-<section class="section" style="padding-top:8px;">
+<!-- 2 · WELCOME -->
+<section class="section">
   <div class="container">
-    <div class="article-body">
-      <p class="standfirst">Horizon began the way these things often do on a Greek island — slowly, one house at a time.</p>
-      <p>It sits on a quiet hillside above Agios Ioannis. Over the years six houses were built and gathered around a single pool — the same honest design throughout, framed by the same view of the Aegean. They're named Zoe, Diana, Regina, Celine, Roxana and Astra.</p>
-      <figure>
-        <div class="photo" style="background:#D2BF9F;">[ the houses on the hillside ]</div>
-        <figcaption>The six houses, gathered around one pool above Agios Ioannis.</figcaption>
-      </figure>
-      <h2>Premium, not luxury</h2>
-      <p>We're not a resort, and we don't pretend to be. There's no spa, no restaurant, no private pools — just six comfortable houses, one shared pool, and five minutes between you and the beach.</p>
-      <figure>
-        <div class="photo">[ the shared pool at dusk ]</div>
-        <figcaption>One pool, shared by all six houses — the heart of the place.</figcaption>
-      </figure>
-      <p>Premium, the way we see it, is getting the basics right and being honest about the rest: daily cleaning, fresh linens, a welcome basket on arrival, and a quick reply on WhatsApp when you need one.</p>
-      <blockquote>We'd rather promise a little less and surprise you, than the other way around.</blockquote>
+    <div class="prose reveal">
+      <p>Welcome to Horizon Villas, a small collection of six holiday houses set around a shared pool on the hillside above Agios Ioannis, on the island of Tinos. Known for its peaceful setting, its views over the Aegean and its family-run hospitality, Horizon combines simple, modern Cycladic design with the comfort of a fully equipped private house — an ideal base for couples and families exploring the quiet side of the Cyclades.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ HOW WE DO THINGS ============ -->
-<section class="section tight reveal">
+<!-- 3 · PHOTO -->
+<section class="section tight">
   <div class="container">
-    <div class="usp">
-      <p class="eyebrow">How we do things</p>
-      <h2 style="font-size:clamp(26px,2.8vw,34px); margin-bottom:4px;">What we believe</h2>
-      <div class="usp-list">
-        <div><h3>Premium, not luxury</h3><p>We're honest about what we are, and what we aren't. No spa, no restaurant, no private pools — just six comfortable houses done well, where the promise matches the place.</p></div>
-        <div><h3>Hands-on, on site</h3><p>There's no front desk and no call centre. Someone is nearby when you need them, and a message on WhatsApp gets a real answer, usually within minutes.</p></div>
-        <div><h3>One estate, six houses</h3><p>Horizon is one place, not a marketplace of listings. The six houses share a single design and a single pool; each is a variation on the same quiet idea.</p></div>
-        <div><h3>Book direct</h3><p>Booking with us directly is always the best rate — no commission, no middleman — and it means a real conversation about your stay rather than a form to fill in.</p></div>
-        <div><h3>Quiet by design</h3><p>This is the anti-Mykonos: a hillside above a small village, never busier than it should be, and at its best in the soft light of spring and autumn.</p></div>
-        <div><h3>The essentials, done well</h3><p>Daily cleaning, fresh linens, fast wifi, free parking and a welcome basket on arrival — included in every house, every stay, without the fuss.</p></div>
+    <div class="media photo reveal">[ the houses and pool on the hillside ]</div>
+  </div>
+</section>
+
+<!-- 4 · THE HOUSES & THE LOCATION -->
+<section class="section">
+  <div class="container">
+    <div class="prose reveal">
+      <h2>Six houses with sea views in Tinos</h2>
+      <p>Each of the six houses — Zoe, Diana, Regina, Celine, Roxana and Astra — follows the same clean, contemporary design, in sizes for two to six guests. All come with a full kitchen, air-conditioning, fast wifi and outdoor dining space, and every stay includes daily cleaning, fresh linens, free parking and a welcome basket on arrival.</p>
+      <p>At the centre of the property, the shared pool and its sun terraces are the natural meeting point of the day, just a few steps from every door.</p>
+    </div>
+    <div class="prose reveal">
+      <h2>A quiet location above Agios Ioannis beach</h2>
+      <p>Horizon Villas sits on a quiet hillside above Agios Ioannis, around five minutes on foot from the beach and its taverna. Tinos Town, with its port, restaurants and shops, is about fifteen minutes away by car, while the island's well-known villages — Pyrgos, Kardiani, Volax — make easy day trips.</p>
+      <p>The location combines easy access to everything the island has to offer with the privacy and calm of a small village setting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · WHY GUESTS CHOOSE HORIZON -->
+<section class="section band-beige">
+  <div class="container usp">
+    <div class="center reveal" style="margin-bottom:6px;">
+      <p class="eyebrow on-beige">In brief</p>
+      <h2 style="font-size:clamp(28px,3.2vw,42px);">Why guests choose Horizon Villas</h2>
+    </div>
+    <div class="usp-list">
+      <div class="reveal">
+        <h3>A shared pool at the heart of the property</h3>
+        <p>One generous pool with sun loungers, parasols and a shaded terrace, shared by the six houses and just steps from every door.</p>
+      </div>
+      <div class="reveal">
+        <h3>Five minutes from the beach</h3>
+        <p>A quiet, sandy swimming cove with shallow water and a beach taverna, an easy walk below the property.</p>
+      </div>
+      <div class="reveal">
+        <h3>Fully equipped, fully serviced houses</h3>
+        <p>Full kitchens, air-conditioning and fast wifi in every house, with daily cleaning, fresh linens and a welcome basket included in every stay.</p>
+      </div>
+      <div class="reveal">
+        <h3>Room for couples and families alike</h3>
+        <p>Six houses from 55 to 98 m², sleeping two to six guests — all in the same design, with sea or garden views.</p>
+      </div>
+      <div class="reveal">
+        <h3>Family-run, with personal service</h3>
+        <p>A small, family-run property where a message on WhatsApp is answered by a real person, usually within minutes.</p>
+      </div>
+      <div class="reveal">
+        <h3>Close to Tinos Town and the port</h3>
+        <p>Around fifteen minutes by car from the port, restaurants and shops — convenient for ferry arrivals and evenings out.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section tight band-beige reveal">
+<!-- 6 · CLOSING -->
+<section class="section">
   <div class="container">
-    <p class="eyebrow on-beige center">Good to know</p>
-    <div class="faq">
-      <details class="faq-item" open>
+    <div class="prose reveal">
+      <h2>Experience Tinos from Horizon Villas</h2>
+      <p>From its hillside above Agios Ioannis, Horizon Villas offers a comfortable and convenient base for discovering Tinos — its beaches, its marble villages and its renowned food scene. Whether you are planning a family holiday or a quiet escape for two, we will be glad to help you choose the right house and plan your stay.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · WHY BOOK DIRECT -->
+<section class="section band-dark center" id="direct">
+  <div class="container">
+    <div class="reveal">
+      <p class="eyebrow">Book direct</p>
+      <h2 style="font-size:clamp(28px,3.2vw,42px);">The best rate, directly from us</h2>
+      <p class="lead-dark">Booking directly with Horizon Villas is always the best available price, and the simplest way to arrange your stay.</p>
+    </div>
+    <div class="promises reveal">
+      <div class="promise"><b>Best rate guaranteed</b><span>Our direct rates are always equal to or better than any booking platform — with no commission added.</span></div>
+      <div class="promise"><b>Direct communication</b><span>Arrange the details of your stay directly with the property, by email or WhatsApp.</span></div>
+      <div class="promise"><b>Flexible arrangements</b><span>We do our best to accommodate changes to dates, arrival times and special requests.</span></div>
+      <div class="promise"><b>Personal recommendations</b><span>Advice on houses, beaches and restaurants from the people who know the island best.</span></div>
+    </div>
+    <div class="reveal" style="margin-top:36px;">
+      <a class="btn btn-primary" href="#book">Check availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · MORE INFORMATION (FAQ) -->
+<section class="section">
+  <div class="container">
+    <div class="center reveal" style="margin-bottom:clamp(22px,2.6vw,36px);">
+      <p class="eyebrow">More information</p>
+      <h2 style="font-size:clamp(28px,3.2vw,42px);">Frequently asked questions</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item">
         <summary>How many houses are there?</summary>
         <p>Six — Zoe, Diana, Regina, Celine, Roxana and Astra — all on one hillside around a single shared pool.</p>
       </details>
       <details class="faq-item">
         <summary>Do all the houses share the pool?</summary>
-        <p>Yes. There's one pool, shared by all six houses, a few steps from each door. It's the heart of the place.</p>
+        <p>Yes. There's one pool, shared by all six houses, a few steps from each door.</p>
       </details>
       <details class="faq-item">
         <summary>What's included in a stay?</summary>
@@ -120,31 +252,51 @@
   </div>
 </section>
 
-<!-- ============ CLOSE ============ -->
-<section class="section tight band-dark center reveal">
-  <div class="container">
-    <h2 style="font-size:clamp(22px,2.4vw,28px); color:#D9A969; margin-bottom:18px;">Come and see for yourself</h2>
-    <a class="btn btn-primary" href="index.html#book" style="margin-right:10px;">Check availability</a>
-    <a class="btn btn-outline-light" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
+<!-- 9 · CTA -->
+<section class="section band-beige center" id="book">
+  <div class="container reveal">
+    <h2 style="font-size:clamp(30px,3.4vw,46px);">Plan your stay</h2>
+    <p class="plan-sub">Check rates and availability across all six houses — book direct for the best price.</p>
+    <form class="bookbar" onsubmit="return false">
+      <label class="field"><span class="l">Arrival</span><input type="text" placeholder="Add date"></label>
+      <label class="field"><span class="l">Departure</span><input type="text" placeholder="Add date"></label>
+      <label class="field narrow"><span class="l">Guests</span><select><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
+      <button class="btn btn-primary">Check availability</button>
+    </form>
+    <p class="whats">Or <a class="link amber" href="https://wa.me/306907777971">message us on WhatsApp</a> — we reply in minutes.</p>
   </div>
 </section>
 
-<footer id="contact" class="footer">
+<footer class="footer">
   <div class="word">HORIZON VILLAS</div>
-  <div class="row">Agios Ioannis, Tinos · +30 690 777 7971</div>
-  <div class="fine">EN · FR · DE · EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy · Cookies · © Horizon Villas</div>
+  <p class="row">Agios Ioannis, Tinos · +30 690 777 7971 · info@horizonvillastinos.com</p>
+  <p class="fine">EN · FR &nbsp;|&nbsp; Privacy · Cookies · © Horizon Villas</p>
 </footer>
 
 <div class="mobile-cta">
-  <a class="btn btn-primary" href="index.html#book">Check availability</a>
-  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+  <a class="btn btn-primary" href="#book">Check availability</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp">✆</a>
 </div>
 
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.body.classList.add('js');
+const hd = document.querySelector('.site-header');
+const overHero = hd.classList.contains('over-hero');
+const mt = hd.querySelector('.menu-toggle');
+const sync = () => hd.classList.toggle('solid', (overHero && window.scrollY > 60) || hd.classList.contains('menu-open'));
+addEventListener('scroll', sync, { passive: true }); sync();
+mt.addEventListener('click', () => {
+  const open = hd.classList.toggle('menu-open');
+  mt.textContent = open ? 'Close' : 'Menu';
+  sync();
+});
+hd.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click', () => {
+  hd.classList.remove('menu-open'); mt.textContent = 'Menu'; sync();
+}));
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
