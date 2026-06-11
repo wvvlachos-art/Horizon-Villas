@@ -4,4 +4,5 @@
 # build step; Netlify just publishes the root directory.
 # The Astro port in horizon-astro/ is kept in the repo but is no longer deployed.
 [build]
+  command = "echo 'Static site — no build step.'"
   publish = "."
