@@ -27,3 +27,6 @@ Thumbs.db
 
 # ---- Local Claude Code settings (personal, not shared) ----
 .claude/
+
+# Local Netlify folder
+.netlify

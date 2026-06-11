@@ -111,32 +111,87 @@
   .brand .word { font-size: 20px; letter-spacing: 3px; }
 }
 
-/* ---- mobile pass (audit fixes) ---- */
+/* ---- mobile pass v2: hamburger + overlay menu, tidy booking card ---- */
 .bookbar .field input, .bookbar .field select { font-size: 16px; }   /* prevents iOS focus zoom */
 .site-header .btn { white-space: nowrap; }
-.menu-toggle { padding: 14px 10px; margin: -14px -10px; }
+
+/* hamburger icon (morphs to X) */
+.menu-toggle { width: 44px; height: 44px; position: relative; padding: 0; margin: -8px 0; }
+.hbar, .hbar::before, .hbar::after {
+  content: ""; position: absolute; left: 11px; right: 11px; height: 1.5px;
+  background: currentColor; border-radius: 1px;
+  transition: transform .35s var(--ease), top .35s var(--ease), background .25s var(--ease);
+}
+.hbar { top: 21px; }
+.hbar::before { top: -7px; left: 0; right: 0; }
+.hbar::after  { top: 7px;  left: 0; right: 0; }
+body.menu-open .hbar { background: transparent; }
+body.menu-open .hbar::before { top: 0; transform: rotate(45deg); }
+body.menu-open .hbar::after  { top: 0; transform: rotate(-45deg); }
+
+/* full-screen menu overlay */
+.menu-overlay {
+  position: fixed; inset: 0; z-index: 49;
+  background: rgba(247,240,230,.97); backdrop-filter: blur(10px);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .4s var(--ease), visibility 0s linear .4s;
+}
+body.menu-open { overflow: hidden; }
+body.menu-open .menu-overlay { opacity: 1; visibility: visible; transition: opacity .4s var(--ease); }
+.menu-links { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.menu-links a {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(26px, 6.5vw, 34px); color: var(--ink); padding: 9px 18px;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .5s var(--ease), transform .5s var(--ease), color .2s var(--ease);
+}
+.menu-links a:hover { color: var(--amber); }
+body.menu-open .menu-links a { opacity: 1; transform: none; }
+body.menu-open .menu-links a:nth-child(1) { transition-delay: .06s; }
+body.menu-open .menu-links a:nth-child(2) { transition-delay: .11s; }
+body.menu-open .menu-links a:nth-child(3) { transition-delay: .16s; }
+body.menu-open .menu-links a:nth-child(4) { transition-delay: .21s; }
+body.menu-open .menu-links a:nth-child(5) { transition-delay: .26s; }
+body.menu-open .menu-links a:nth-child(6) { transition-delay: .31s; }
+.menu-foot {
+  margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 18px;
+  opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease) .4s, transform .5s var(--ease) .4s;
+}
+body.menu-open .menu-foot { opacity: 1; transform: none; }
+body.menu-open .mobile-cta { opacity: 0; pointer-events: none; }
+.mobile-cta { transition: opacity .3s var(--ease); }
+/* keep header legible over the cream overlay on photo-hero pages */
+body.menu-open .site-header.over-hero .brand .word, body.menu-open .site-header.over-hero .brand .sub { color: var(--amber); }
+body.menu-open .site-header.over-hero .menu-toggle, body.menu-open .site-header.over-hero .lang,
+body.menu-open .site-header.over-hero .nav-aux { color: var(--muted); }
+body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); color: var(--ink); }
+
 @media (max-width: 900px) {
-  /* working mobile menu — toggled by the Menu button */
-  .site-header.menu-open .navlinks {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 2px; margin-top: 6px; padding: 6px 0 16px;
-  }
-  .site-header.menu-open .navlinks a { padding: 11px 16px; font-size: 13px; }
-  .site-header.menu-open { background: rgba(247,240,230,.97); backdrop-filter: blur(6px); border-bottom: 0.5px solid var(--line); }
-  .site-header.over-hero.menu-open .brand .word, .site-header.over-hero.menu-open .brand .sub { color: var(--amber); }
-  .site-header.over-hero.menu-open .menu-toggle, .site-header.over-hero.menu-open .lang,
-  .site-header.over-hero.menu-open .nav-aux { color: var(--muted); }
-  .site-header.over-hero.menu-open .navlinks a { color: #6E6151; }
-  .site-header.over-hero.menu-open .btn-outline { border-color: var(--ink); color: var(--ink); }
-  /* tap targets */
-  .link { display: inline-block; padding: 8px 0 2px; }
+  .link { display: inline-block; padding: 8px 0 2px; }   /* tap targets */
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-overlay, .menu-links a, .menu-foot, .hbar, .hbar::before, .hbar::after { transition: none !important; }
 }
 
-/* mobile trust line — replaces the hidden hero-trust rail on phones */
+/* ---- mobile booking card: clean rows instead of ragged wrap ---- */
+@media (max-width: 720px) {
+  .bookbar { padding: 10px; gap: 8px; }
+  .bookbar .field, .bookbar .field.narrow { flex: 1 1 calc(50% - 8px); min-width: 0; padding: 12px 14px; }
+  .bookbar .field.narrow { flex: 1 1 100%; }
+  .bookbar .btn { flex: 1 1 100%; justify-content: center; padding: 16px; }
+}
+
+/* landing hero, mobile: trust line + hide the placeholder caption */
 .trust-mobile { display: none; }
 @media (max-width: 900px) {
   .trust-mobile { display: block; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text); margin: 0 0 20px; }
   .trust-mobile b { color: var(--amber); font-weight: 700; }
+  .trust-mobile span { white-space: nowrap; }
+  .hero .photo-note { display: none; }
+}
+@media (max-width: 720px) {
+  .hero .bookbar.dock { width: calc(100% - 28px); transform: translate(-50%, 42%); }
 }
 </style>
 </head>
@@ -144,7 +199,7 @@
 
 <header class="site-header">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle">Menu</button></div>
+    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html">
       <img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()">
       <span class="word">HORIZON VILLAS</span>
@@ -165,6 +220,20 @@
   </div>
 </header>
 
+<div class="menu-overlay" aria-hidden="true">
+  <nav class="menu-links">
+    <a href="accommodations.html">The houses</a>
+    <a href="pool.html">The pool</a>
+    <a href="horizon-tinos.html">Tinos</a>
+    <a href="offers.html">Offers</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn btn-primary" href="#book">Check availability</a>
+    <span class="lang">EN · FR</span>
+  </div>
+</div>
+
 <!-- 1 · HERO -->
 <section class="hero" id="top">
   <div class="hero-trust">
@@ -175,7 +244,7 @@
   <p class="eyebrow">Agios Ioannis · Tinos</p>
   <h1>Six houses, one pool, above the Aegean</h1>
   <p class="hero-sub">A small family-run collection on a quiet hillside, five minutes from the beach — the Cyclades at its most unhurried.</p>
-    <p class="trust-mobile">Booking.com <b>9.4</b> · Airbnb <b>4.9★</b> · Google <b>4.8★</b></p>
+    <p class="trust-mobile"><span>Booking.com <b>9.4</b></span> · <span>Airbnb <b>4.9★</b></span> · <span>Google <b>4.8★</b></span></p>
   <span class="photo-note">[ full-screen cinematic hero — the pool &amp; houses at dusk ]</span>
   <form class="bookbar dock" id="book" onsubmit="return false">
     <label class="field"><span class="l">Arrival</span><input type="text" placeholder="Add date"></label>
@@ -208,30 +277,30 @@
     <div class="cards six">
       <article class="card reveal">
         <div class="photo">[ villa zoe ]</div>
-        <div class="meta"><h3>Villa Zoe</h3><p class="facts">Sleeps 4 · Sea · 70 m²</p><p class="desc">The brightest of the six, opening straight onto the pool terrace with the sea in the windows.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+        <div class="meta"><h3>Villa Zoe</h3><p class="facts">Sleeps 4 · Sea · 70 m²</p><p class="desc">The brightest of the six, opening straight onto the pool terrace with the sea in the windows.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo">[ villa diana ]</div>
-        <div class="meta"><h3>Villa Diana</h3><p class="facts">Sleeps 6 · Garden · 95 m²</p><p class="desc">The largest of the collection — a separate living room and room for a whole family.</p><div class="foot"><span class="price">€240 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+        <div class="meta"><h3>Villa Diana</h3><p class="facts">Sleeps 6 · Garden · 95 m²</p><p class="desc">The largest of the collection — a separate living room and room for a whole family.</p><div class="foot"><span class="price">€240 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo">[ villa regina ]</div>
-        <div class="meta"><h3>Villa Regina</h3><p class="facts">Sleeps 4 · Sea · 72 m²</p><p class="desc">A calm corner house with sea views and a shaded terrace for slow mornings.</p><div class="foot"><span class="price">€190 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+        <div class="meta"><h3>Villa Regina</h3><p class="facts">Sleeps 4 · Sea · 72 m²</p><p class="desc">A calm corner house with sea views and a shaded terrace for slow mornings.</p><div class="foot"><span class="price">€190 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo">[ villa celine ]</div>
-        <div class="meta"><h3>Villa Celine</h3><p class="facts">Sleeps 4 · Garden · 68 m²</p><p class="desc">Tucked into the garden, quiet and green, a few steps from the water.</p><div class="foot"><span class="price">€185 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+        <div class="meta"><h3>Villa Celine</h3><p class="facts">Sleeps 4 · Garden · 68 m²</p><p class="desc">Tucked into the garden, quiet and green, a few steps from the water.</p><div class="foot"><span class="price">€185 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo">[ villa roxana ]</div>
-        <div class="meta"><h3>Villa Roxana</h3><p class="facts">Sleeps 2 · Sea · 55 m²</p><p class="desc">A snug one-bedroom for two, with the best of the light in the afternoon.</p><div class="foot"><span class="price">€160 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+        <div class="meta"><h3>Villa Roxana</h3><p class="facts">Sleeps 2 · Sea · 55 m²</p><p class="desc">A snug one-bedroom for two, with the best of the light in the afternoon.</p><div class="foot"><span class="price">€160 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo">[ villa astra ]</div>
-        <div class="meta"><h3>Villa Astra</h3><p class="facts">Sleeps 6 · Sea · 98 m²</p><p class="desc">Top of the hillside, the widest views of the lot and space for six.</p><div class="foot"><span class="price">€250 <span>/ night</span></span><a class="link" href="#">View house</a></div></div>
+        <div class="meta"><h3>Villa Astra</h3><p class="facts">Sleeps 6 · Sea · 98 m²</p><p class="desc">Top of the hillside, the widest views of the lot and space for six.</p><div class="foot"><span class="price">€250 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
     </div>
-    <div class="center reveal" style="margin-top:44px;"><a class="btn btn-outline" href="#">See all six houses</a></div>
+    <div class="center reveal" style="margin-top:44px;"><a class="btn btn-outline" href="accommodations.html">See all six houses</a></div>
   </div>
 </section>
 
@@ -308,7 +377,7 @@
         <p class="eyebrow on-beige" style="margin-bottom:10px;">The island</p>
         <h2 style="font-size:clamp(30px,3.4vw,46px);">Tinos, from our field guide</h2>
       </div>
-      <a class="btn btn-outline" href="#">Read the field guide</a>
+      <a class="btn btn-outline" href="blog.html">Read the field guide</a>
     </div>
     <div class="offer-grid">
       <article class="offer reveal"><div class="body guide"><p class="tag">Beaches</p><h3>The coves we actually swim at</h3><p>Beyond Agios Ioannis — the beaches you can still have to yourself, and when to go to each.</p></div></article>
@@ -373,16 +442,18 @@ document.body.classList.add('js');
 const hd = document.querySelector('.site-header');
 const overHero = hd.classList.contains('over-hero');
 const mt = hd.querySelector('.menu-toggle');
-const sync = () => hd.classList.toggle('solid', (overHero && window.scrollY > 60) || hd.classList.contains('menu-open'));
+const sync = () => hd.classList.toggle('solid', (overHero && window.scrollY > 60) || document.body.classList.contains('menu-open'));
 addEventListener('scroll', sync, { passive: true }); sync();
-mt.addEventListener('click', () => {
-  const open = hd.classList.toggle('menu-open');
-  mt.textContent = open ? 'Close' : 'Menu';
+const setMenu = open => {
+  document.body.classList.toggle('menu-open', open);
+  mt.setAttribute('aria-expanded', open);
+  mt.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  document.querySelector('.menu-overlay').setAttribute('aria-hidden', !open);
   sync();
-});
-hd.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click', () => {
-  hd.classList.remove('menu-open'); mt.textContent = 'Menu'; sync();
-}));
+};
+mt.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+document.querySelectorAll('.menu-overlay a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), { threshold: .12 });
