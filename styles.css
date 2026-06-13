@@ -141,6 +141,18 @@ h1, h2, h3, h4 {
 .site-header.over-hero.solid .navlinks a { color: #6E6151; }
 .site-header.over-hero.solid .btn-outline { border-color: var(--ink); color: var(--ink); }
 
+/* ---- Desktop header: logo on the left (in place of the menu), wordmark centred ---- */
+@media (min-width: 901px) {
+  .nav { position: relative; }
+  /* the hamburger/menu button gives way to the logo on desktop */
+  .site-header .menu-toggle { display: none; }
+  /* logo pulled to the far left and made a touch larger */
+  .brand-logo { position: absolute; left: 44px; top: 50%; transform: translateY(-50%); height: 72px; margin: 0; }
+  /* keep the "Horizon Villas" wordmark in the centre even once the logo has loaded */
+  .brand:has(.brand-logo.loaded) .word { display: block; }
+  .brand:has(.brand-logo.loaded) .sub  { display: block; }
+}
+
 /* ---- Sections: generous, fluid vertical rhythm ---- */
 .section { padding: clamp(64px, 8vw, 108px) 0; }
 .section.tight { padding: clamp(44px, 5vw, 68px) 0; }

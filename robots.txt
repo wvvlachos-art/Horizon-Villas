@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /horizon-astro/
+
+Sitemap: https://horizonvillastinos.com/sitemap.xml
