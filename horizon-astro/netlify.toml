@@ -1,9 +1,0 @@
-# Netlify build config — static Astro site.
-# Auto-deploys from the Git repo (CLAUDE_NOTES §2). No adapter needed for a
-# fully static build; Netlify just serves the built dist/ folder.
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "20"
