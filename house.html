@@ -53,8 +53,10 @@
 </div>
 
 <!-- ============ FULL-SCREEN HERO GALLERY ============ -->
-<!-- swap background for the house gallery slider; arrows cycle photos -->
-<section class="house-hero" id="heroCarousel" style="background-image: linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%), url('images/zoe-bedroom.jpg'); background-size: cover; background-position: center;">
+<!-- hero photo carousel: two crossfading background layers (filled by JS) -->
+<section class="house-hero" id="heroCarousel">
+  <div class="hero-bg" id="bgA" style="background-image: linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%), url('images/zoe-bedroom.jpg'); opacity:1; z-index:1;"></div>
+  <div class="hero-bg" id="bgB" style="z-index:0;"></div>
   <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
   <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
   <div class="hero-tools">
@@ -126,12 +128,21 @@
   </div>
 </section>
 
-<!-- ============ A NOTE ============ -->
-<section class="section tight reveal">
+<!-- ============ PHOTO GALLERY ============ -->
+<section class="section tight reveal" id="gallery">
   <div class="container">
-    <div class="note-block">
-      <p class="eyebrow">A note</p>
-      <p>The six houses share one design and one pool, so the feel carries across all of them. Photos are representative of Villa Zoe and small details may vary. For anything specific — a travel cot, an earlier check-in, help with the ferry — message us on WhatsApp and we'll arrange it before you arrive.</p>
+    <p class="eyebrow">A closer look</p>
+    <h2 class="gallery-title">Inside Villa Zoe</h2>
+    <p class="gallery-lead">Every room and corner of the house — tap any photo to view it full-screen.</p>
+    <div class="gallery" id="zoeGallery">
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-living-room.jpg" alt="Villa Zoe — open-plan living room"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-bedroom-sea-view.jpg" alt="Villa Zoe — bedroom with sea view"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-bedroom-bathtub.jpg" alt="Villa Zoe — soaking tub beside the bed"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-kitchen.jpg" alt="Villa Zoe — full kitchen"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-bathroom.jpg" alt="Villa Zoe — bathroom"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-dining-sea-view.jpg" alt="Villa Zoe — dining corner over the bay"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-balcony-sea-view.jpg" alt="Villa Zoe — balcony above the bay"></button>
+      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/zoe-terrace-cape-view.jpg" alt="Villa Zoe — terrace looking over the cape"></button>
     </div>
   </div>
 </section>
@@ -191,60 +202,80 @@
 
   (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
 
-  // ---- hero photo carousel (auto-advance + arrows) and full-screen lightbox ----
+  // ---- hero crossfade carousel (4 photos, 2.5s) + gallery lightbox ----
   (function(){
     const hero = document.getElementById('heroCarousel');
     const lb = document.getElementById('lightbox');
     if (!hero || !lb) return;
     const GRAD = "linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%)";
-    const imgs = [
-      { src: 'images/zoe-bedroom.jpg',         alt: 'Villa Zoe — bedroom with the soaking tub in the room' },
-      { src: 'images/zoe-living-room.jpg',     alt: 'Villa Zoe — open-plan living room' },
-      { src: 'images/zoe-bedroom-bathtub.jpg', alt: 'Villa Zoe — sculptural soaking tub beside the bed' },
-      { src: 'images/zoe-terrace-cape-view.jpg', alt: 'Villa Zoe — terrace looking over the cape' },
-      { src: 'images/zoe-balcony-sea-view.jpg', alt: 'Villa Zoe — balcony above the bay' },
-      { src: 'images/zoe-kitchen.jpg',         alt: 'Villa Zoe — full kitchen' }
+
+    // hero: 4 signature photos, crossfaded
+    const heroImgs = [
+      'images/zoe-bedroom.jpg',
+      'images/zoe-living-room.jpg',
+      'images/zoe-bedroom-bathtub.jpg',
+      'images/zoe-terrace-cape-view.jpg'
     ];
-    imgs.forEach(o => { const i = new Image(); i.src = o.src; });   // preload for smooth swaps
+    // gallery + lightbox: the fuller, in-depth set (matches #zoeGallery order)
+    const gallery = [
+      { src: 'images/zoe-living-room.jpg',      alt: 'Villa Zoe — open-plan living room' },
+      { src: 'images/zoe-bedroom-sea-view.jpg', alt: 'Villa Zoe — bedroom with sea view' },
+      { src: 'images/zoe-bedroom-bathtub.jpg',  alt: 'Villa Zoe — soaking tub beside the bed' },
+      { src: 'images/zoe-kitchen.jpg',          alt: 'Villa Zoe — full kitchen' },
+      { src: 'images/zoe-bathroom.jpg',         alt: 'Villa Zoe — bathroom' },
+      { src: 'images/zoe-dining-sea-view.jpg',  alt: 'Villa Zoe — dining corner over the bay' },
+      { src: 'images/zoe-balcony-sea-view.jpg', alt: 'Villa Zoe — balcony above the bay' },
+      { src: 'images/zoe-terrace-cape-view.jpg', alt: 'Villa Zoe — terrace looking over the cape' }
+    ];
+    [...heroImgs, ...gallery.map(g => g.src)].forEach(s => { const i = new Image(); i.src = s; });
 
+    // --- hero crossfade ---
+    const layers = [document.getElementById('bgA'), document.getElementById('bgB')];
     const countEl = hero.querySelector('.count');
-    const lbImg = lb.querySelector('.lb-img');
-    const lbCount = lb.querySelector('.lb-count');
-    let idx = 0, timer = null, lbOpen = false;
-
-    function render(){
-      hero.style.backgroundImage = GRAD + ", url('" + imgs[idx].src + "')";
-      if (countEl) countEl.textContent = (idx + 1) + ' / ' + imgs.length;
-      if (lbOpen) { lbImg.src = imgs[idx].src; lbImg.alt = imgs[idx].alt; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
+    let hi = 0, topL = 0, timer = null, lbOpen = false;
+    function heroShow(i){
+      hi = (i + heroImgs.length) % heroImgs.length;
+      const inc = layers[1 - topL], out = layers[topL];
+      inc.style.backgroundImage = GRAD + ", url('" + heroImgs[hi] + "')";
+      inc.style.zIndex = '1'; out.style.zIndex = '0';
+      inc.style.opacity = '0'; void inc.offsetWidth; inc.style.opacity = '1';   // restart fade
+      topL = 1 - topL;
+      if (countEl) countEl.textContent = (hi + 1) + ' / ' + heroImgs.length;
     }
-    function go(i){ idx = (i + imgs.length) % imgs.length; render(); }
-    const next = () => go(idx + 1), prev = () => go(idx - 1);
-    function startAuto(){ stopAuto(); timer = setInterval(next, 2500); }
+    const hNext = () => heroShow(hi + 1), hPrev = () => heroShow(hi - 1);
+    function startAuto(){ stopAuto(); timer = setInterval(hNext, 2500); }
     function stopAuto(){ if (timer) { clearInterval(timer); timer = null; } }
     function nudge(fn){ return function(e){ if (e) e.preventDefault(); fn(); startAuto(); }; }
-
     const rArrow = hero.querySelector('.arrow.r'), lArrow = hero.querySelector('.arrow.l');
-    rArrow.addEventListener('click', nudge(next));
-    lArrow.addEventListener('click', nudge(prev));
-    [rArrow, lArrow].forEach(a => a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') nudge(a === rArrow ? next : prev)(e); }));
+    rArrow.addEventListener('click', nudge(hNext));
+    lArrow.addEventListener('click', nudge(hPrev));
+    [rArrow, lArrow].forEach(a => a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') nudge(a === rArrow ? hNext : hPrev)(e); }));
     hero.addEventListener('mouseenter', stopAuto);
     hero.addEventListener('mouseleave', () => { if (!lbOpen) startAuto(); });
+    if (countEl) countEl.textContent = '1 / ' + heroImgs.length;
 
-    function openLb(){ lbOpen = true; stopAuto(); render(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('lb-lock'); }
+    // --- lightbox over the gallery set (opened by the hero button or any thumb) ---
+    const lbImg = lb.querySelector('.lb-img'), lbCount = lb.querySelector('.lb-count');
+    let li = 0;
+    function lbRender(){ lbImg.src = gallery[li].src; lbImg.alt = gallery[li].alt; lbCount.textContent = (li + 1) + ' / ' + gallery.length; }
+    function lbGo(i){ li = (i + gallery.length) % gallery.length; lbRender(); }
+    const lbNext = () => lbGo(li + 1), lbPrev = () => lbGo(li - 1);
+    function openLb(i){ li = i || 0; lbOpen = true; stopAuto(); lbRender(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('lb-lock'); }
     function closeLb(){ lbOpen = false; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lb-lock'); startAuto(); }
-    hero.querySelector('.hero-zoom').addEventListener('click', openLb);
+    hero.querySelector('.hero-zoom').addEventListener('click', () => openLb(0));
+    document.querySelectorAll('#zoeGallery .photo').forEach((b, i) => b.addEventListener('click', () => openLb(i)));
     lb.querySelector('.lb-close').addEventListener('click', closeLb);
-    lb.querySelector('.lb-arrow.r').addEventListener('click', next);
-    lb.querySelector('.lb-arrow.l').addEventListener('click', prev);
+    lb.querySelector('.lb-arrow.r').addEventListener('click', lbNext);
+    lb.querySelector('.lb-arrow.l').addEventListener('click', lbPrev);
     lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
     document.addEventListener('keydown', e => {
       if (!lbOpen) return;
       if (e.key === 'Escape') closeLb();
-      else if (e.key === 'ArrowRight') next();
-      else if (e.key === 'ArrowLeft') prev();
+      else if (e.key === 'ArrowRight') lbNext();
+      else if (e.key === 'ArrowLeft') lbPrev();
     });
 
-    go(0); startAuto();
+    startAuto();
   })();
 </script>
 </body>

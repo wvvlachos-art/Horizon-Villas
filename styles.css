@@ -612,6 +612,12 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
 /* ============================================================
    HOUSE HERO — carousel tools + full-screen lightbox gallery
    ============================================================ */
+/* two stacked layers that crossfade between photos (smooth auto-advance) */
+.house-hero .hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity .9s ease;
+}
 .house-hero .arrow { cursor: pointer; transition: background .2s var(--ease); }
 .house-hero .hero-tools {
   position: absolute; top: 80px; right: 20px; z-index: 4;
@@ -665,6 +671,19 @@ body.lb-lock { overflow: hidden; }
   .lightbox .lb-arrow.r { right: 8px; }
   .lightbox .lb-close { top: 14px; right: 14px; }
 }
+/* ---- Photo gallery presentation (house detail) ---- */
+.gallery-title { font-size: clamp(28px, 3vw, 40px); margin: 0 0 8px; }
+.gallery-lead { color: var(--text); font-size: 15px; line-height: 1.6; margin: 0 0 26px; max-width: 60ch; }
+.gallery button.photo {
+  border: 0; padding: 0; margin: 0; cursor: pointer; font: inherit;
+  background: linear-gradient(135deg, var(--beige-deep) 0%, #DCC9A8 100%);
+}
+.gallery button.photo img { transition: transform .5s var(--ease), opacity .3s var(--ease); }
+.gallery button.photo:hover img { transform: scale(1.05); opacity: .92; }
+.gallery button.photo:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+
 @media (prefers-reduced-motion: reduce) {
-  .house-hero .hero-zoom, .lightbox .lb-close, .lightbox .lb-arrow { transition: none; }
+  .house-hero .hero-bg { transition: none; }
+  .house-hero .hero-zoom, .lightbox .lb-close, .lightbox .lb-arrow,
+  .gallery button.photo img { transition: none; }
 }
