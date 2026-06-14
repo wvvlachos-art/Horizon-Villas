@@ -30,3 +30,6 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+# Local preview helper — not part of the deployed site
+dev-server.js

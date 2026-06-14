@@ -1,8 +1,32 @@
 # Netlify deploy config.
-# The live site is the static HTML at the repo root (index.html, about.html,
-# horizon-tinos.html, etc.) — these are the current source of truth. There's no
-# build step; Netlify just publishes the root directory.
-# The Astro port in horizon-astro/ is kept in the repo but is no longer deployed.
+# The live site is the static HTML at the repo root. No build step — Netlify
+# publishes the root directory as-is.
 [build]
   command = "echo 'Static site — no build step.'"
   publish = "."
+
+# Long-cache fingerprint-free assets. Photos are safe to cache hard because new
+# images are added under new filenames rather than overwritten.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/logo.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Baseline security headers on every response.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"

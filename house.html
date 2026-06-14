@@ -19,6 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
 <link rel="icon" href="logo.png" type="image/png">
+<link rel="preload" as="image" href="images/zoe-bedroom.jpg">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,14 +28,28 @@
 <!-- ============ HEADER (transparent over hero, solidifies on scroll) ============ -->
 <header class="site-header over-hero" id="siteHeader">
   <div class="nav">
-    <div class="nav-left"><a class="menu-toggle" href="accommodations.html"><i class="ti ti-chevron-left"></i> All houses</a></div>
-    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><div class="word">HORIZON</div><div class="sub">VILLAS</div></a>
+    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
     <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
-  <nav class="navlinks">
+  <div class="navlinks container">
     <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="horizon-tinos.html">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a>
-  </nav>
+  </div>
 </header>
+
+<div class="menu-overlay" aria-hidden="true">
+  <nav class="menu-links">
+    <a href="accommodations.html">The houses</a>
+    <a href="pool.html">The pool</a>
+    <a href="horizon-tinos.html">Tinos</a>
+    <a href="offers.html">Offers</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn btn-primary" href="#book">Check availability</a>
+    <span class="lang">EN · FR</span>
+  </div>
+</div>
 
 <!-- ============ FULL-SCREEN HERO GALLERY ============ -->
 <!-- swap background for the house gallery slider; arrows cycle photos -->
@@ -140,8 +155,8 @@
 
 <footer class="footer">
   <div class="word">HORIZON VILLAS</div>
-  <div class="row">Agios Ioannis, Tinos &middot; +30 690 777 7971</div>
-  <div class="fine">EN &middot; FR &middot; DE &middot; EL&nbsp;&nbsp;|&nbsp;&nbsp;Privacy &middot; Cookies &middot; &copy; Horizon Villas</div>
+  <div class="row">Agios Ioannis, Tinos &middot; +30 690 777 7971 &middot; info@horizonvillastinos.com</div>
+  <div class="fine">EN &middot; FR&nbsp;&nbsp;|&nbsp;&nbsp;Privacy &middot; Cookies &middot; &copy; Horizon Villas</div>
 </footer>
 
 <div class="mobile-cta">
@@ -160,6 +175,8 @@
   const hdr = document.getElementById('siteHeader');
   const onScroll = () => { hdr.classList.toggle('solid', window.scrollY > window.innerHeight * 0.7); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
 </script>
 </body>
 </html>
