@@ -51,7 +51,7 @@
 .hostword .sign b { color: var(--ink); font-weight: 600; }
 
 /* houses grid: facts line + foot row inside the existing .card */
-.cards.six { grid-template-columns: repeat(3, 1fr); }
+.cards.six { grid-template-columns: repeat(2, 1fr); max-width: 920px; margin-inline: auto; }
 @media (max-width: 1000px) { .cards.six { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px)  { .cards.six { grid-template-columns: 1fr; } }
 .card .meta .facts { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
@@ -156,7 +156,6 @@
   <div class="nav">
     <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html">
-      <img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()">
       <span class="word">HORIZON VILLAS</span>
       <div class="sub">TINOS</div>
     </a>
@@ -185,6 +184,7 @@
   </nav>
   <div class="menu-foot">
     <a class="btn btn-primary" href="#book">Check availability</a>
+    <a class="nav-aux" href="blog.html">Blog</a>
     <span class="lang">EN · FR</span>
   </div>
 </div>
@@ -236,22 +236,6 @@
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/diana-living-room.jpg" alt="Villa Diana living room"></div>
         <div class="meta"><h3>Villa Diana</h3><p class="facts">Sleeps 4 · Sea · 75 m²</p><p class="desc">A two-level house in deep blue — two bedrooms upstairs, open-plan living below, the bay through the pergola.</p><div class="foot"><span class="price">€190 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
-      </article>
-      <article class="card reveal">
-        <div class="photo"><img loading="lazy" decoding="async" src="images/regina-balcony-cape-view.jpg" alt="Villa Regina sea-view terrace"></div>
-        <div class="meta"><h3>Villa Regina</h3><p class="facts">Sleeps 6 · Sea · 125 m²</p><p class="desc">The largest house on the hill — three bedrooms and wraparound terraces above the cape.</p><div class="foot"><span class="price">€300 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
-      </article>
-      <article class="card reveal">
-        <div class="photo"><img loading="lazy" decoding="async" src="images/celine-living-room.jpg" alt="Villa Celine living room"></div>
-        <div class="meta"><h3>Villa Celine</h3><p class="facts">Sleeps 4 · Sea · 70 m²</p><p class="desc">Bright and open-plan, a sunny mustard sofa and a balcony for long lunches over the bay.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
-      </article>
-      <article class="card reveal">
-        <div class="photo"><img loading="lazy" decoding="async" src="images/roxana-living-room.jpg" alt="Villa Roxana living room"></div>
-        <div class="meta"><h3>Villa Roxana</h3><p class="facts">Sleeps 4 · Sea · 70 m²</p><p class="desc">A two-level maisonette in teal and white, wrapped around a sheltered stone courtyard.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
-      </article>
-      <article class="card reveal">
-        <div class="photo"><img loading="lazy" decoding="async" src="images/astra-terrace-view.jpg" alt="Villa Astra terrace with sea view"></div>
-        <div class="meta"><h3>Villa Astra</h3><p class="facts">Sleeps 6 · Sea · 105 m²</p><p class="desc">Top of the hillside — the widest views of all, three bedrooms and two bathrooms.</p><div class="foot"><span class="price">€260 <span>/ night</span></span><a class="link" href="house.html">View house</a></div></div>
       </article>
     </div>
     <div class="center reveal" style="margin-top:44px;"><a class="btn btn-outline" href="accommodations.html">See all six houses</a></div>

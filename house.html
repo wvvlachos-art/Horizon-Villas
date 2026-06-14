@@ -29,7 +29,7 @@
 <header class="site-header over-hero" id="siteHeader">
   <div class="nav">
     <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
-    <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Horizon Villas" onload="this.classList.add('loaded')" onerror="this.remove()"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
+    <a class="brand" href="index.html"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
     <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
   <div class="navlinks container">
@@ -47,6 +47,7 @@
   </nav>
   <div class="menu-foot">
     <a class="btn btn-primary" href="#book">Check availability</a>
+    <a class="nav-aux" href="blog.html">Blog</a>
     <span class="lang">EN · FR</span>
   </div>
 </div>
@@ -173,7 +174,7 @@
 
   // transparent hero nav -> solid on scroll
   const hdr = document.getElementById('siteHeader');
-  const onScroll = () => { hdr.classList.toggle('solid', window.scrollY > window.innerHeight * 0.7); };
+  const onScroll = () => { hdr.classList.toggle('solid', window.scrollY > 120); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
