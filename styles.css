@@ -608,3 +608,63 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
   .brand .sub { display: none; }
   .brand .word { font-size: 18px; letter-spacing: 2px; white-space: nowrap; }
 }
+
+/* ============================================================
+   HOUSE HERO — carousel tools + full-screen lightbox gallery
+   ============================================================ */
+.house-hero .arrow { cursor: pointer; transition: background .2s var(--ease); }
+.house-hero .hero-tools {
+  position: absolute; top: 80px; right: 20px; z-index: 4;
+  display: flex; align-items: center; gap: 14px;
+}
+.house-hero .hero-tools .count { position: static; top: auto; right: auto; }
+.house-hero .hero-zoom {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #FFFDF9;
+  background: rgba(58,48,34,.42); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  border: 0.5px solid rgba(255,253,249,.55); border-radius: 40px; padding: 10px 16px;
+  transition: background .2s var(--ease), transform .2s var(--ease);
+}
+.house-hero .hero-zoom:hover { background: rgba(58,48,34,.72); }
+.house-hero .hero-zoom:active { transform: scale(.97); }
+.house-hero .hero-zoom i { font-size: 15px; }
+/* desktop header carries a second nav row (~150px) — drop the tools below it
+   so the fixed header doesn't sit over (and swallow clicks on) the button */
+@media (min-width: 901px) { .house-hero .hero-tools { top: 164px; } }
+
+/* Lightbox: image shown in full (object-fit contain), arrows + close + counter */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(26,21,14,.93); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+.lightbox.open { display: flex; }
+.lightbox .lb-img {
+  max-width: 92vw; max-height: 86vh; width: auto; height: auto;
+  object-fit: contain; border-radius: 4px; box-shadow: 0 24px 70px rgba(0,0,0,.55);
+}
+.lightbox .lb-close, .lightbox .lb-arrow {
+  position: absolute; border: 0; cursor: pointer; color: #FFFDF9;
+  background: rgba(255,253,249,.12); display: flex; align-items: center; justify-content: center;
+  transition: background .2s var(--ease);
+}
+.lightbox .lb-close:hover, .lightbox .lb-arrow:hover { background: rgba(255,253,249,.26); }
+.lightbox .lb-close { top: 20px; right: 24px; width: 44px; height: 44px; border-radius: 50%; font-size: 20px; }
+.lightbox .lb-arrow { top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; font-size: 24px; }
+.lightbox .lb-arrow.l { left: 20px; }
+.lightbox .lb-arrow.r { right: 20px; }
+.lightbox .lb-count { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); color: rgba(255,253,249,.85); font-size: 12px; letter-spacing: 2px; }
+body.lb-lock { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .house-hero .hero-tools { top: 70px; right: 12px; gap: 10px; }
+  .lightbox .lb-img { max-width: 96vw; max-height: 82vh; }
+  .lightbox .lb-arrow { width: 42px; height: 42px; font-size: 20px; }
+  .lightbox .lb-arrow.l { left: 8px; }
+  .lightbox .lb-arrow.r { right: 8px; }
+  .lightbox .lb-close { top: 14px; right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .house-hero .hero-zoom, .lightbox .lb-close, .lightbox .lb-arrow { transition: none; }
+}

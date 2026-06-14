@@ -54,10 +54,13 @@
 
 <!-- ============ FULL-SCREEN HERO GALLERY ============ -->
 <!-- swap background for the house gallery slider; arrows cycle photos -->
-<section class="house-hero" style="background-image: linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%), url('images/zoe-bedroom.jpg'); background-size: cover; background-position: center;">
-  <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-  <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-  <span class="count"></span>
+<section class="house-hero" id="heroCarousel" style="background-image: linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%), url('images/zoe-bedroom.jpg'); background-size: cover; background-position: center;">
+  <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+  <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+  <div class="hero-tools">
+    <span class="count"></span>
+    <button class="hero-zoom" type="button" aria-label="Open photo gallery"><i class="ti ti-arrows-maximize"></i><span>View photos</span></button>
+  </div>
   <div class="hero-caption">
     <p class="eyebrow" style="color:#EBCFA6;">Horizon · House</p>
     <h1>Villa Zoe</h1>
@@ -165,6 +168,15 @@
   <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
 </div>
 
+<!-- ============ HERO GALLERY LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Villa Zoe photos">
+  <button class="lb-close" type="button" aria-label="Close gallery"><i class="ti ti-x"></i></button>
+  <button class="lb-arrow l" type="button" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></button>
+  <img class="lb-img" alt="">
+  <button class="lb-arrow r" type="button" aria-label="Next photo"><i class="ti ti-chevron-right"></i></button>
+  <span class="lb-count"></span>
+</div>
+
 <script>
   // scroll reveal
   const io = new IntersectionObserver((entries) => {
@@ -178,6 +190,62 @@
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
+
+  // ---- hero photo carousel (auto-advance + arrows) and full-screen lightbox ----
+  (function(){
+    const hero = document.getElementById('heroCarousel');
+    const lb = document.getElementById('lightbox');
+    if (!hero || !lb) return;
+    const GRAD = "linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%)";
+    const imgs = [
+      { src: 'images/zoe-bedroom.jpg',         alt: 'Villa Zoe — bedroom with the soaking tub in the room' },
+      { src: 'images/zoe-living-room.jpg',     alt: 'Villa Zoe — open-plan living room' },
+      { src: 'images/zoe-bedroom-bathtub.jpg', alt: 'Villa Zoe — sculptural soaking tub beside the bed' },
+      { src: 'images/zoe-terrace-cape-view.jpg', alt: 'Villa Zoe — terrace looking over the cape' },
+      { src: 'images/zoe-balcony-sea-view.jpg', alt: 'Villa Zoe — balcony above the bay' },
+      { src: 'images/zoe-kitchen.jpg',         alt: 'Villa Zoe — full kitchen' }
+    ];
+    imgs.forEach(o => { const i = new Image(); i.src = o.src; });   // preload for smooth swaps
+
+    const countEl = hero.querySelector('.count');
+    const lbImg = lb.querySelector('.lb-img');
+    const lbCount = lb.querySelector('.lb-count');
+    let idx = 0, timer = null, lbOpen = false;
+
+    function render(){
+      hero.style.backgroundImage = GRAD + ", url('" + imgs[idx].src + "')";
+      if (countEl) countEl.textContent = (idx + 1) + ' / ' + imgs.length;
+      if (lbOpen) { lbImg.src = imgs[idx].src; lbImg.alt = imgs[idx].alt; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
+    }
+    function go(i){ idx = (i + imgs.length) % imgs.length; render(); }
+    const next = () => go(idx + 1), prev = () => go(idx - 1);
+    function startAuto(){ stopAuto(); timer = setInterval(next, 2500); }
+    function stopAuto(){ if (timer) { clearInterval(timer); timer = null; } }
+    function nudge(fn){ return function(e){ if (e) e.preventDefault(); fn(); startAuto(); }; }
+
+    const rArrow = hero.querySelector('.arrow.r'), lArrow = hero.querySelector('.arrow.l');
+    rArrow.addEventListener('click', nudge(next));
+    lArrow.addEventListener('click', nudge(prev));
+    [rArrow, lArrow].forEach(a => a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') nudge(a === rArrow ? next : prev)(e); }));
+    hero.addEventListener('mouseenter', stopAuto);
+    hero.addEventListener('mouseleave', () => { if (!lbOpen) startAuto(); });
+
+    function openLb(){ lbOpen = true; stopAuto(); render(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('lb-lock'); }
+    function closeLb(){ lbOpen = false; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lb-lock'); startAuto(); }
+    hero.querySelector('.hero-zoom').addEventListener('click', openLb);
+    lb.querySelector('.lb-close').addEventListener('click', closeLb);
+    lb.querySelector('.lb-arrow.r').addEventListener('click', next);
+    lb.querySelector('.lb-arrow.l').addEventListener('click', prev);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lbOpen) return;
+      if (e.key === 'Escape') closeLb();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+
+    go(0); startAuto();
+  })();
 </script>
 </body>
 </html>
