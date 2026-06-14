@@ -36,12 +36,6 @@
   font-size: clamp(15px, 1.7vw, 19px); color: var(--text);
   max-width: 54ch; margin: 0 auto 8px;
 }
-.bookbar .field input, .bookbar .field select {
-  border: 0; background: transparent; width: 100%; outline: none;
-  font-family: var(--font-body); font-size: 14px; letter-spacing: .5px; color: var(--ink);
-}
-.bookbar .field .l { display: block; font-size: 10px; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
-.bookbar .field { flex-direction: column; align-items: stretch; justify-content: center; }
 .section.after-dock { padding-top: clamp(110px, 12vw, 160px); }
 
 /* a word from the host */
@@ -89,9 +83,6 @@
 .guide-note { max-width: 64ch; margin: 30px auto 0; font-size: 14.5px; line-height: 1.7; color: var(--text); text-align: center; }
 
 /* book direct — dark band */
-.band-dark { color: #C9BB9F; }
-.band-dark .eyebrow { color: #D9A969; }
-.band-dark h2 { color: #FFFDF9; }
 .direct-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(36px, 5vw, 80px); align-items: start; }
 .promises { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
 .promise b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 18px; color: #FFFDF9; margin-bottom: 4px; }
@@ -103,8 +94,6 @@
 .dq .src { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #9A8B72; }
 
 /* plan your stay */
-.plan-sub { max-width: 48ch; margin: 14px auto 34px; color: var(--text); }
-.whats { margin-top: 24px; font-size: 14px; color: var(--text); }
 
 @media (max-width: 900px) {
   .sunpath { grid-template-columns: 1fr; gap: 46px; padding-top: 4px; padding-left: 32px; }
@@ -117,82 +106,7 @@
   .section.after-dock { padding-top: 150px; }
 }
 @media (max-width: 560px) { .promises { grid-template-columns: 1fr; } }
-@media (max-width: 640px) {
-  .nav { padding: 14px 16px; gap: 8px; }
-  .nav-aux, .lang { display: none; }
-  .brand .word { font-size: 20px; letter-spacing: 3px; }
-}
 
-/* ---- mobile pass v2: hamburger + overlay menu, tidy booking card ---- */
-.bookbar .field input, .bookbar .field select { font-size: 16px; }   /* prevents iOS focus zoom */
-.site-header .btn { white-space: nowrap; }
-
-/* hamburger icon (morphs to X) */
-.menu-toggle { width: 44px; height: 44px; position: relative; padding: 0; margin: -8px 0; }
-.hbar, .hbar::before, .hbar::after {
-  content: ""; position: absolute; left: 11px; right: 11px; height: 1.5px;
-  background: currentColor; border-radius: 1px;
-  transition: transform .35s var(--ease), top .35s var(--ease), background .25s var(--ease);
-}
-.hbar { top: 21px; }
-.hbar::before { top: -7px; left: 0; right: 0; }
-.hbar::after  { top: 7px;  left: 0; right: 0; }
-body.menu-open .hbar { background: transparent; }
-body.menu-open .hbar::before { top: 0; transform: rotate(45deg); }
-body.menu-open .hbar::after  { top: 0; transform: rotate(-45deg); }
-
-/* full-screen menu overlay */
-.menu-overlay {
-  position: fixed; inset: 0; z-index: 49;
-  background: rgba(247,240,230,.97); backdrop-filter: blur(10px);
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  opacity: 0; visibility: hidden;
-  transition: opacity .4s var(--ease), visibility 0s linear .4s;
-}
-body.menu-open { overflow: hidden; }
-body.menu-open .menu-overlay { opacity: 1; visibility: visible; transition: opacity .4s var(--ease); }
-.menu-links { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.menu-links a {
-  font-family: var(--font-display); font-weight: 500;
-  font-size: clamp(26px, 6.5vw, 34px); color: var(--ink); padding: 9px 18px;
-  opacity: 0; transform: translateY(16px);
-  transition: opacity .5s var(--ease), transform .5s var(--ease), color .2s var(--ease);
-}
-.menu-links a:hover { color: var(--amber); }
-body.menu-open .menu-links a { opacity: 1; transform: none; }
-body.menu-open .menu-links a:nth-child(1) { transition-delay: .06s; }
-body.menu-open .menu-links a:nth-child(2) { transition-delay: .11s; }
-body.menu-open .menu-links a:nth-child(3) { transition-delay: .16s; }
-body.menu-open .menu-links a:nth-child(4) { transition-delay: .21s; }
-body.menu-open .menu-links a:nth-child(5) { transition-delay: .26s; }
-body.menu-open .menu-links a:nth-child(6) { transition-delay: .31s; }
-.menu-foot {
-  margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 18px;
-  opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease) .4s, transform .5s var(--ease) .4s;
-}
-body.menu-open .menu-foot { opacity: 1; transform: none; }
-body.menu-open .mobile-cta { opacity: 0; pointer-events: none; }
-.mobile-cta { transition: opacity .3s var(--ease); }
-/* keep header legible over the cream overlay on photo-hero pages */
-body.menu-open .site-header.over-hero .brand .word, body.menu-open .site-header.over-hero .brand .sub { color: var(--amber); }
-body.menu-open .site-header.over-hero .menu-toggle, body.menu-open .site-header.over-hero .lang,
-body.menu-open .site-header.over-hero .nav-aux { color: var(--muted); }
-body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); color: var(--ink); }
-
-@media (max-width: 900px) {
-  .link { display: inline-block; padding: 8px 0 2px; }   /* tap targets */
-}
-@media (prefers-reduced-motion: reduce) {
-  .menu-overlay, .menu-links a, .menu-foot, .hbar, .hbar::before, .hbar::after { transition: none !important; }
-}
-
-/* ---- mobile booking card: clean rows instead of ragged wrap ---- */
-@media (max-width: 720px) {
-  .bookbar { padding: 10px; gap: 8px; }
-  .bookbar .field, .bookbar .field.narrow { flex: 1 1 calc(50% - 8px); min-width: 0; padding: 12px 14px; }
-  .bookbar .field.narrow { flex: 1 1 100%; }
-  .bookbar .btn { flex: 1 1 100%; justify-content: center; padding: 16px; }
-}
 
 /* landing hero, mobile: trust line + hide the placeholder caption */
 .trust-mobile { display: none; }

@@ -558,3 +558,47 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
   .js .reveal { opacity: 1; transform: none; }
   .card:hover { transform: none; }
 }
+
+/* ============================================================
+   SHARED PAGE COMPONENTS
+   Consolidated from per-page inline <style> blocks so each rule
+   lives once: booking-bar internals, photo-hero kicker, prose
+   column, dark-band text, plan helpers, and small-screen tweaks.
+   ============================================================ */
+.house-hero .kicker { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,253,249,.85); }
+
+.bookbar .field input, .bookbar .field select {
+  border: 0; background: transparent; width: 100%; outline: none;
+  font-family: var(--font-body); font-size: 16px; letter-spacing: .5px; color: var(--ink);
+}
+.bookbar .field .l { display: block; font-size: 10px; letter-spacing: 1px; color: var(--muted); margin-bottom: 2px; }
+.bookbar .field { flex-direction: column; align-items: stretch; justify-content: center; }
+
+.prose { max-width: 780px; margin: 0 auto; }
+.prose h2 { font-size: clamp(24px, 2.6vw, 32px); margin: 0 0 16px; }
+.prose p { margin: 0 0 18px; font-size: 16px; line-height: 1.8; color: var(--text); }
+.prose p:last-child { margin-bottom: 0; }
+.prose + .prose { margin-top: clamp(36px, 4.4vw, 60px); }
+
+.band-dark { color: #C9BB9F; }
+.band-dark .eyebrow { color: #D9A969; }
+.band-dark h2 { color: #FFFDF9; }
+.band-dark .lead-dark { max-width: 640px; margin: 16px auto 0; font-size: 16px; line-height: 1.75; color: #C9BB9F; }
+
+.plan-sub { max-width: 48ch; margin: 14px auto 34px; color: var(--text); }
+.whats { margin-top: 24px; font-size: 14px; color: var(--text); }
+
+@media (max-width: 900px) {
+  .link { display: inline-block; padding: 8px 0 2px; }   /* tap targets */
+}
+@media (max-width: 720px) {
+  .bookbar { padding: 10px; gap: 8px; }
+  .bookbar .field, .bookbar .field.narrow { flex: 1 1 calc(50% - 8px); min-width: 0; padding: 12px 14px; }
+  .bookbar .field.narrow { flex: 1 1 100%; }
+  .bookbar .btn { flex: 1 1 100%; justify-content: center; padding: 16px; }
+}
+@media (max-width: 640px) {
+  .nav { padding: 14px 16px; gap: 8px; }
+  .nav-aux, .lang { display: none; }
+  .brand .word { font-size: 20px; letter-spacing: 3px; }
+}
