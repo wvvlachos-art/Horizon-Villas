@@ -602,5 +602,9 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
 @media (max-width: 640px) {
   .nav { padding: 14px 16px; gap: 8px; }
   .nav .nav-aux, .nav .lang { display: none; }
+  /* drop the "Book now" button and the TINOS sub on phones: keeps the bar
+     compact and lets the wordmark sit truly centred between equal columns */
+  .nav-right .btn { display: none; }
+  .brand .sub { display: none; }
   .brand .word { font-size: 18px; letter-spacing: 2px; white-space: nowrap; }
 }
