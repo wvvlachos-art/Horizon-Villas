@@ -250,6 +250,7 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
 .trust-badge .src { display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
 .trust-badge .score { display: block; font-family: var(--font-display); font-weight: 500; font-size: 21px; line-height: 1.1; color: var(--ink); }
 .trust-badge .score .star { color: var(--amber); }
+.trust-badge .score .count { font-size: 12px; font-weight: 600; letter-spacing: 0; color: var(--muted); vertical-align: middle; }
 
 /* ---- Split: IMAGE-DOMINANT, controlled height, contained copy ---- */
 .split {

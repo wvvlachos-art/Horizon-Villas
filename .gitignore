@@ -33,3 +33,9 @@ Thumbs.db
 
 # Local preview helper — not part of the deployed site
 dev-server.js
+
+# Browser-test artifacts (Playwright MCP)
+.playwright-mcp/
+
+# Working notes — not for the deployed site (Netlify publishes the repo root)
+TESTIMONIALS.md

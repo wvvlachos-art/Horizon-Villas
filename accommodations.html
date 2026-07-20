@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Horizon Villas Tinos">
 <meta property="og:title" content="The six houses — Horizon Villas Tinos">
-<meta property="og:description" content="Six houses for couples and families, all with sea views, sharing one infinity pool above Agios Ioannis on Tinos.">
+<meta property="og:description" content="Six houses for couples and families, all with sea views, sharing one pool above Agios Ioannis on Tinos.">
 <meta property="og:url" content="https://horizonvillastinos.com/accommodations.html">
 <meta property="og:image" content="https://horizonvillastinos.com/images/regina-balcony-cape-view.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,6 +20,20 @@
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="stylesheet" href="styles.css?v=2">
+<style>
+/* ---- Listing carousel: stacked crossfade images, clickable + swipeable ---- */
+.house-row .photo.carousel { cursor: pointer; touch-action: pan-y; }
+.house-row .photo img { position: absolute; inset: 0; opacity: 0; transition: opacity .45s var(--ease); }
+.house-row .photo img.active { opacity: 1; }
+.house-row .photo .arrow, .house-row .photo .count { z-index: 2; }
+/* touch devices have no hover, so keep the arrows visible */
+@media (hover: none) {
+  .house-row .photo .arrow { opacity: 1; background: rgba(255,253,249,.82); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .house-row .photo img { transition: none; }
+}
+</style>
 </head>
 <body>
 <script>document.documentElement.className += ' js';</script>
@@ -28,7 +42,7 @@
   <div class="nav">
     <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
-    <div class="nav-right"><a class="nav-aux" href="blog.html">Blog</a><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
+    <div class="nav-right"><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
   <div class="navlinks container">
     <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="horizon-tinos.html">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a>
@@ -45,7 +59,7 @@
   </nav>
   <div class="menu-foot">
     <a class="btn btn-primary" href="#book">Check availability</a>
-    <a class="nav-aux" href="blog.html">Blog</a>
+    
     <span class="lang">EN · FR</span>
   </div>
 </div>
@@ -56,7 +70,7 @@
     <h1 style="font-size:clamp(30px,3.6vw,44px); margin-bottom:16px;">The six houses</h1>
     <p class="lead" style="font-size:clamp(18px,1.9vw,21px);">Six modern houses sharing one pool and one hillside above Agios Ioannis — the same design language throughout, in sizes for couples and families alike.</p>
     <div class="filter">
-      <span class="active">All</span><span>For couples</span><span>For families</span>
+      <span class="active" data-fit="all">All</span><span data-fit="couples">For couples</span><span data-fit="families">For families</span>
     </div>
   </div>
 </section>
@@ -64,12 +78,15 @@
 <section class="section" style="padding-top:8px;">
   <div class="container listing">
 
-    <article class="house-row reveal">
-      <div class="photo">
-        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-        <span class="count">1 / 5</span>
-        <img loading="lazy" decoding="async" src="images/zoe-bedroom.jpg" alt="Villa Zoe — open-plan loft with a soaking tub">
+    <article class="house-row reveal" data-fit="couples">
+      <div class="photo carousel">
+        <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 4</span>
+        <img class="active" loading="lazy" decoding="async" src="images/zoe-bedroom.jpg" alt="Villa Zoe — open-plan loft with a soaking tub">
+        <img loading="lazy" decoding="async" src="images/zoe-living-room.jpg" alt="Villa Zoe — bright open-plan living room">
+        <img loading="lazy" decoding="async" src="images/zoe-bedroom-bathtub.jpg" alt="Villa Zoe — soaking tub beside the bed">
+        <img loading="lazy" decoding="async" src="images/zoe-terrace-cape-view.jpg" alt="Villa Zoe — terrace looking over the cape">
       </div>
       <div class="body">
         <h3>Villa Zoe</h3>
@@ -78,28 +95,31 @@
           <button>Highlights</button>
           <button>Amenities</button>
         </div>
-        <div class="r-panel active"><p>The romantic one — a bright, open-plan loft for two where a sculptural soaking tub sits right in the room, beside a sea-view doorway. Whitewashed walls, a timber-beamed ceiling and woven pendant lights; a grey-linen sofa, a full kitchen, and a pergola-shaded table with daybeds on the terrace.</p></div>
-        <div class="r-panel"><ul><li>Open-plan suite for two</li><li>Freestanding soaking tub in the room</li><li>Sea views from bed, bath and terrace</li><li>Pergola-shaded dining & daybeds</li><li>Full kitchen</li><li>Steps from the shared pool</li></ul></div>
-        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Soaking tub</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Welcome basket on arrival</li><li>Hairdryer</li><li>Outdoor daybeds &amp; dining table</li></ul></div>
+        <div class="r-panel active"><p>The romantic one — a bright, open-plan loft for two where a soaking tub sits right in the room, beside a sea-view doorway. Whitewashed walls, a timber-beamed ceiling and woven pendant lights; a grey-linen sofa, a full kitchen, and a pergola-shaded table with daybeds on the terrace.</p></div>
+        <div class="r-panel"><ul><li>Open-plan suite for two</li><li>Freestanding soaking tub in the room</li><li>Sea views from bed, bath and terrace</li><li>Pergola-shaded dining & daybeds</li><li>Full kitchen</li><li>Moments from the shared pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Soaking tub</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Outdoor daybeds</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
-          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
-          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+          <a class="btn btn-outline btn-sm" href="zoe.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="zoe.html#book">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
         <div>Sleeps<b>2</b></div>
         <div>View<b>Sea</b></div>
-        <div>Size<b>65 m²</b></div>
+        <div>Size<b>70 m²</b></div>
         <div>From<b class="price">€170</b></div>
       </div>
     </article>
 
-    <article class="house-row reveal">
-      <div class="photo">
-        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-        <span class="count">1 / 5</span>
-        <img loading="lazy" decoding="async" src="images/diana-living-room.jpg" alt="Villa Diana living room with navy sofa and sea view">
+    <article class="house-row reveal" data-fit="families">
+      <div class="photo carousel">
+        <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 4</span>
+        <img class="active" loading="lazy" decoding="async" src="images/diana-living-room.jpg" alt="Villa Diana living room with navy sofa and sea view">
+        <img loading="lazy" decoding="async" src="images/diana-bedroom-1.jpg" alt="Villa Diana — double bedroom">
+        <img loading="lazy" decoding="async" src="images/diana-terrace.jpg" alt="Villa Diana — pergola-shaded terrace over the bay">
+        <img loading="lazy" decoding="async" src="images/diana-bathroom.jpg" alt="Villa Diana — bathroom">
       </div>
       <div class="body">
         <h3>Villa Diana</h3>
@@ -109,11 +129,11 @@
           <button>Amenities</button>
         </div>
         <div class="r-panel active"><p>A two-level house with a deep-blue thread running through it — a navy sofa in the open-plan living room, two double bedrooms (one with a sun-yellow headboard) up its own staircase, and a polished-concrete bathroom. The pergola-shaded terrace looks clear across the bay.</p></div>
-        <div class="r-panel"><ul><li>Two double bedrooms over two levels</li><li>Open-plan living & full kitchen</li><li>Sea-view pergola terrace</li><li>Polished-concrete bathroom</li><li>Private upstairs bedrooms</li><li>Steps from the pool</li></ul></div>
-        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Welcome basket on arrival</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-panel"><ul><li>Two double bedrooms over two levels</li><li>Open-plan living & full kitchen</li><li>Sea-view pergola terrace</li><li>Polished-concrete bathroom</li><li>Private upstairs bedrooms</li><li>Moments from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Washing machine</li><li>Hairdryer</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
-          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
-          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+          <a class="btn btn-outline btn-sm" href="diana.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="diana.html#book">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -124,12 +144,15 @@
       </div>
     </article>
 
-    <article class="house-row reveal">
-      <div class="photo">
-        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-        <span class="count">1 / 5</span>
-        <img loading="lazy" decoding="async" src="images/regina-balcony-cape-view.jpg" alt="Villa Regina sea-view terrace over the cape">
+    <article class="house-row reveal" data-fit="couples families">
+      <div class="photo carousel">
+        <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 4</span>
+        <img class="active" loading="lazy" decoding="async" src="images/regina-balcony-cape-view.jpg" alt="Villa Regina sea-view terrace over the cape">
+        <img loading="lazy" decoding="async" src="images/regina-living-room.jpg" alt="Villa Regina — living room with linen sectional">
+        <img loading="lazy" decoding="async" src="images/regina-bedroom-1.jpg" alt="Villa Regina — double bedroom">
+        <img loading="lazy" decoding="async" src="images/regina-sunbeds-sea-view.jpg" alt="Villa Regina — sun beds with a sea view">
       </div>
       <div class="body">
         <h3>Villa Regina</h3>
@@ -139,27 +162,30 @@
           <button>Amenities</button>
         </div>
         <div class="r-panel active"><p>The largest house on the hill — three double bedrooms, a generous living room with a linen sectional, and both indoor and outdoor dining. Wraparound stone terraces give you a sunbed in the sun, a daybed in the shade and a pergola table for dinner, all looking out over the cape.</p></div>
-        <div class="r-panel"><ul><li>Three double bedrooms</li><li>Sleeps up to six</li><li>Wraparound sea-view terraces</li><li>Sunbeds & shaded daybeds</li><li>Indoor & outdoor dining</li><li>Steps from the pool</li></ul></div>
-        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Welcome basket on arrival</li><li>Hairdryer</li><li>Sunbeds &amp; daybeds</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-panel"><ul><li>Three double bedrooms</li><li>Sleeps up to six</li><li>Wraparound sea-view terraces</li><li>Sunbeds & shaded daybeds</li><li>Indoor & outdoor dining</li><li>Moments from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Sunbeds &amp; daybeds</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
-          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
-          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+          <a class="btn btn-outline btn-sm" href="regina.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="regina.html#book">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
         <div>Sleeps<b>6</b></div>
         <div>View<b>Sea</b></div>
-        <div>Size<b>125 m²</b></div>
+        <div>Size<b>123 m²</b></div>
         <div>From<b class="price">€300</b></div>
       </div>
     </article>
 
-    <article class="house-row reveal">
-      <div class="photo">
-        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-        <span class="count">1 / 5</span>
-        <img loading="lazy" decoding="async" src="images/celine-living-room.jpg" alt="Villa Celine open-plan living room with mustard sofa">
+    <article class="house-row reveal" data-fit="families">
+      <div class="photo carousel">
+        <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 4</span>
+        <img class="active" loading="lazy" decoding="async" src="images/celine-living-room.jpg" alt="Villa Celine open-plan living room with mustard sofa">
+        <img loading="lazy" decoding="async" src="images/celine-bedroom-1.jpg" alt="Villa Celine — double bedroom">
+        <img loading="lazy" decoding="async" src="images/celine-balcony.jpg" alt="Villa Celine — balcony over the bay">
+        <img loading="lazy" decoding="async" src="images/celine-bathroom.jpg" alt="Villa Celine — bathroom with walk-in shower">
       </div>
       <div class="body">
         <h3>Villa Celine</h3>
@@ -169,11 +195,11 @@
           <button>Amenities</button>
         </div>
         <div class="r-panel active"><p>Bright and easy, with a sunny mustard sofa anchoring an open-plan living, kitchen and dining room beneath a timber-beamed ceiling. Two double bedrooms, a walk-in rain shower, and a balcony set up for long lunches above the bay.</p></div>
-        <div class="r-panel"><ul><li>Two double bedrooms</li><li>Open-plan living & full kitchen</li><li>Sea-view balcony dining</li><li>Walk-in rain shower</li><li>Bright, contemporary Cycladic design</li><li>Steps from the pool</li></ul></div>
-        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Welcome basket on arrival</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-panel"><ul><li>Two double bedrooms</li><li>Open-plan living & full kitchen</li><li>Sea-view balcony dining</li><li>Walk-in rain shower</li><li>Bright, contemporary Cycladic design</li><li>Moments from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
-          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
-          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+          <a class="btn btn-outline btn-sm" href="celine.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="celine.html#book">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -184,12 +210,15 @@
       </div>
     </article>
 
-    <article class="house-row reveal">
-      <div class="photo">
-        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-        <span class="count">1 / 5</span>
-        <img loading="lazy" decoding="async" src="images/roxana-living-room.jpg" alt="Villa Roxana living room with teal sofa">
+    <article class="house-row reveal" data-fit="couples">
+      <div class="photo carousel">
+        <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 4</span>
+        <img class="active" loading="lazy" decoding="async" src="images/roxana-living-room.jpg" alt="Villa Roxana living room with teal sofa">
+        <img loading="lazy" decoding="async" src="images/roxana-bedroom-1.jpg" alt="Villa Roxana — double bedroom">
+        <img loading="lazy" decoding="async" src="images/roxana-courtyard.jpg" alt="Villa Roxana — sheltered stone courtyard">
+        <img loading="lazy" decoding="async" src="images/roxana-balcony-view.jpg" alt="Villa Roxana — sea-view balcony">
       </div>
       <div class="body">
         <h3>Villa Roxana</h3>
@@ -199,27 +228,30 @@
           <button>Amenities</button>
         </div>
         <div class="r-panel active"><p>A two-level maisonette with a teal thread through it — a teal sofa in the living room, teal headboards in both bedrooms — wrapped around a sheltered stone courtyard. Upstairs and down, with a walk-in shower, a full kitchen and a pergola-shaded balcony out to sea.</p></div>
-        <div class="r-panel"><ul><li>Two double bedrooms over two levels</li><li>Sheltered stone courtyard</li><li>Sea-view balcony</li><li>Walk-in shower & full kitchen</li><li>Calm teal-and-white palette</li><li>Steps from the pool</li></ul></div>
-        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Welcome basket on arrival</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-panel"><ul><li>Two double bedrooms over two levels</li><li>Sheltered stone courtyard</li><li>Sea-view balcony</li><li>Walk-in shower & full kitchen</li><li>Calm teal-and-white palette</li><li>Moments from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
-          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
-          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+          <a class="btn btn-outline btn-sm" href="roxana.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="roxana.html#book">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
         <div>Sleeps<b>4</b></div>
         <div>View<b>Sea</b></div>
-        <div>Size<b>70 m²</b></div>
+        <div>Size<b>75 m²</b></div>
         <div>From<b class="price">€180</b></div>
       </div>
     </article>
 
-    <article class="house-row reveal">
-      <div class="photo">
-        <span class="arrow l"><i class="ti ti-chevron-left"></i></span>
-        <span class="arrow r"><i class="ti ti-chevron-right"></i></span>
-        <span class="count">1 / 5</span>
-        <img loading="lazy" decoding="async" src="images/astra-terrace-view.jpg" alt="Villa Astra terrace with panoramic sea view">
+    <article class="house-row reveal" data-fit="families">
+      <div class="photo carousel">
+        <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
+        <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+        <span class="count">1 / 4</span>
+        <img class="active" loading="lazy" decoding="async" src="images/astra-terrace-view.jpg" alt="Villa Astra terrace with panoramic sea view">
+        <img loading="lazy" decoding="async" src="images/astra-living-room.jpg" alt="Villa Astra — separate living room">
+        <img loading="lazy" decoding="async" src="images/astra-master-bedroom.jpg" alt="Villa Astra — master bedroom">
+        <img loading="lazy" decoding="async" src="images/astra-balcony-view.jpg" alt="Villa Astra — balcony over the bay">
       </div>
       <div class="body">
         <h3>Villa Astra</h3>
@@ -228,18 +260,18 @@
           <button>Highlights</button>
           <button>Amenities</button>
         </div>
-        <div class="r-panel active"><p>At the very top of the hillside, Astra takes in the widest views of all — the whole bay and the open Aegean beyond. Two floors, three double bedrooms and two bathrooms (one with a soaking tub), a separate living room and a full kitchen, and a run of terraces built for sunset.</p></div>
-        <div class="r-panel"><ul><li>Highest position, widest sea views</li><li>Three double bedrooms, sleeps six</li><li>Two bathrooms (one with a tub)</li><li>Separate living room & full kitchen</li><li>Generous sunset terraces</li><li>Steps from the pool</li></ul></div>
-        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Soaking tub</li><li>Two bathrooms</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Welcome basket on arrival</li><li>Hairdryer</li><li>Outdoor dining table</li></ul></div>
+        <div class="r-panel active"><p>At the very top of the hillside, Astra takes in the widest views of the lot — the whole bay and the open Aegean beyond. Two floors, three double bedrooms and two bathrooms (one with a soaking tub), a separate living room and a full kitchen, and a run of terraces built for sunset.</p></div>
+        <div class="r-panel"><ul><li>Highest position, widest sea views</li><li>Three double bedrooms, sleeps six</li><li>Two bathrooms (one with a tub)</li><li>Separate living room & full kitchen</li><li>Generous sunset terraces</li><li>Moments from the pool</li></ul></div>
+        <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Soaking tub</li><li>Two bathrooms</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Washing machine</li><li>Hairdryer</li><li>Outdoor daybeds</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
-          <a class="btn btn-outline btn-sm" href="house.html">View house</a>
-          <a class="btn btn-primary btn-sm" href="house.html#book">Check dates</a>
+          <a class="btn btn-outline btn-sm" href="astra.html">View house</a>
+          <a class="btn btn-primary btn-sm" href="astra.html#book">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
         <div>Sleeps<b>6</b></div>
         <div>View<b>Sea</b></div>
-        <div>Size<b>105 m²</b></div>
+        <div>Size<b>120 m²</b></div>
         <div>From<b class="price">€260</b></div>
       </div>
     </article>
@@ -251,7 +283,7 @@
   <div class="container">
     <h2 style="font-size:clamp(22px,2.4vw,28px); margin-bottom:14px;">Not sure which house?</h2>
     <p style="margin:0 0 24px; color:var(--text);">Tell us your dates and group — we'll point you to the right one.</p>
-    <a class="btn btn-primary" href="#" style="margin-right:10px;">Check availability</a>
+    <a class="btn btn-primary" href="https://wa.me/306907777971?text=Hi!%20I%27d%20like%20to%20check%20availability%20at%20Horizon%20Villas." style="margin-right:10px;">Check availability</a>
     <a class="btn btn-outline" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
   </div>
 </section>
@@ -286,6 +318,54 @@
       t.classList.add('active');
       panels[i].classList.add('active');
     }));
+  });
+
+  // All / For couples / For families filter
+  (function(){
+    const chips = document.querySelectorAll('.filter span');
+    const rows = document.querySelectorAll('.house-row');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const want = chip.dataset.fit;
+      rows.forEach(row => {
+        row.style.display = (want === 'all' || (row.dataset.fit || '').split(' ').includes(want)) ? '' : 'none';
+      });
+    }));
+  })();
+
+  // per-row photo carousel: arrows, tap-to-advance, swipe, keyboard
+  document.querySelectorAll('.house-row .photo.carousel').forEach(photo => {
+    const imgs = Array.from(photo.querySelectorAll('img'));
+    if (imgs.length < 2) return;
+    const countEl = photo.querySelector('.count');
+    const lArr = photo.querySelector('.arrow.l');
+    const rArr = photo.querySelector('.arrow.r');
+    let i = Math.max(0, imgs.findIndex(im => im.classList.contains('active')));
+    const show = n => {
+      i = (n + imgs.length) % imgs.length;
+      imgs.forEach((im, k) => im.classList.toggle('active', k === i));
+      if (countEl) countEl.textContent = (i + 1) + ' / ' + imgs.length;
+    };
+    show(i);
+    const next = e => { if (e) e.stopPropagation(); show(i + 1); };
+    const prev = e => { if (e) e.stopPropagation(); show(i - 1); };
+    if (rArr) { rArr.addEventListener('click', next); rArr.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(e); } }); }
+    if (lArr) { lArr.addEventListener('click', prev); lArr.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); prev(e); } }); }
+
+    // tap/click the photo (but not an arrow) advances; suppressed right after a swipe
+    let swiped = false;
+    photo.addEventListener('click', e => { if (!e.target.closest('.arrow') && !swiped) next(); });
+
+    // touch swipe
+    let x0 = null, y0 = null;
+    photo.addEventListener('touchstart', e => { const t = e.changedTouches[0]; x0 = t.clientX; y0 = t.clientY; swiped = false; }, { passive: true });
+    photo.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { swiped = true; (dx < 0 ? next : prev)(); }
+      x0 = y0 = null;
+    }, { passive: true });
   });
 </script>
 </body>
