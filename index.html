@@ -108,6 +108,20 @@
 @media (max-width: 560px) { .promises { grid-template-columns: 1fr; } }
 
 
+/* hero: Google Maps pin, lower left */
+.hero-map {
+  position: absolute; left: clamp(16px, 3vw, 40px); bottom: 30px; z-index: 4;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,253,249,.92); color: var(--brown);
+  font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 11px 18px; border-radius: 999px;
+  box-shadow: 0 2px 14px rgba(58,48,34,.18);
+  transition: background .2s var(--ease), transform .2s var(--ease);
+}
+.hero-map:hover { background: #FFFDF9; transform: translateY(-1px); }
+.hero-map svg { width: 15px; height: 15px; color: var(--amber); }
+@media (max-width: 720px) { .hero-map { display: none; } }
+
 /* landing hero, mobile: trust line + hide the placeholder caption */
 .trust-mobile { display: none; }
 @media (max-width: 900px) {
@@ -196,6 +210,10 @@
     <div class="trust-badge"><span class="src">Airbnb</span><span class="score">4.97 <span class="star">★</span> <span class="count">(111)</span></span></div>
     <div class="trust-badge"><span class="src">Google</span><span class="score">5.0 <span class="star">★</span> <span class="count">(84)</span></span></div>
   </div>
+  <a class="hero-map" href="https://maps.app.goo.gl/3DKw2jq8BBZ3Tkdd7" target="_blank" rel="noopener" aria-label="Open our exact location in Google Maps">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>Find us on the map</span>
+  </a>
   <p class="eyebrow" style="color:#3A3022;">Agios Ioannis · Tinos</p>
   <h1>Six houses, one pool, above the Aegean</h1>
   <p class="hero-sub" style="color:#3A3022;">A small, independent collection on a quiet hillside, five minutes from the beach — the quiet side of the Cyclades.</p>
