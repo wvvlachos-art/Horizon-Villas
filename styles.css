@@ -691,3 +691,14 @@ body.lb-lock { overflow: hidden; }
   .house-hero .hero-zoom, .lightbox .lb-close, .lightbox .lb-arrow,
   .gallery button.photo img { transition: none; }
 }
+
+/* ---- Guest quotes on house pages ---- */
+.gq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; max-width: 980px; margin: 26px auto 0; }
+@media (max-width: 800px) { .gq-row { grid-template-columns: 1fr; } }
+.gq { margin: 0; background: var(--paper); border: 0.5px solid var(--line); border-radius: var(--radius-lg); padding: 26px 28px 22px; }
+.gq blockquote { margin: 0 0 14px; font-family: var(--font-display); font-style: italic; font-size: clamp(17px, 1.8vw, 20px); line-height: 1.55; color: var(--ink); }
+.gq figcaption { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+
+/* trust badges that link out */
+a.trust-badge { display: block; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+a.trust-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(58,48,34,.18); }
