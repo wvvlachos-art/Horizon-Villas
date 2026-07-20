@@ -59,8 +59,13 @@
       'padding:12px 0;border-top:0.5px solid rgba(74,63,48,.14);}' +
       '.hv-consent .opt b{display:block;font-size:13px;}' +
       '.hv-consent .opt span{display:block;font-size:12.5px;color:#756A54;}' +
-      '.hv-consent .opt .always{flex:none;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#756A54;}' +
-      '.hv-consent .opt input{flex:none;width:18px;height:18px;accent-color:#C8843C;cursor:pointer;}' +
+      '.hv-switch{flex:none;position:relative;display:inline-block;width:44px;height:24px;cursor:pointer;}' +
+      '.hv-switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;}' +
+      '.hv-switch span{position:absolute;inset:0;border-radius:999px;background:rgba(74,63,48,.28);transition:background .2s;}' +
+      '.hv-switch span::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;' +
+      'background:#FFFDF9;box-shadow:0 1px 4px rgba(58,48,34,.3);transition:transform .2s;}' +
+      '.hv-switch input:checked+span{background:#C8843C;}' +
+      '.hv-switch input:checked+span::after{transform:translateX(20px);}' +
       '.hv-consent .hv-custom{margin-top:2px;}' +
       '.hv-consent .hv-custom .row{margin-top:14px;}' +
       '.hv-consent [hidden]{display:none!important;}';
@@ -79,11 +84,9 @@
       '<button type="button" class="customize">Customize</button>' +
       '</div>' +
       '<div class="hv-custom" hidden>' +
-      '<div class="opt"><div><b>Strictly necessary</b><span>Remembers your cookie choice. Always active.</span></div>' +
-      '<span class="always">Always on</span></div>' +
       '<div class="opt"><label for="hv-ana" style="cursor:pointer;"><b>Analytics</b>' +
       '<span>Google Analytics — anonymous statistics about visits and pages.</span></label>' +
-      '<input type="checkbox" id="hv-ana" checked aria-label="Allow analytics cookies"></div>' +
+      '<label class="hv-switch"><input type="checkbox" id="hv-ana" checked aria-label="Allow analytics cookies"><span></span></label></div>' +
       '<div class="row">' +
       '<button type="button" class="allow-all">Allow all</button>' +
       '<button type="button" class="save">Save choices</button>' +
@@ -117,8 +120,9 @@
   var choice = readChoice();
   if (choice === 'granted') { grant(); }
   else if (choice !== 'denied') {
+    var later = function () { setTimeout(showBanner, 2000); };
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showBanner);
-    } else { showBanner(); }
+      document.addEventListener('DOMContentLoaded', later);
+    } else { later(); }
   }
 })();
