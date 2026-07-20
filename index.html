@@ -108,6 +108,10 @@
 @media (max-width: 560px) { .promises { grid-template-columns: 1fr; } }
 
 
+/* lighter hero overlay: text carries its own contrast instead */
+.hero h1 { text-shadow: 0 2px 22px rgba(30,22,10,.5), 0 1px 3px rgba(30,22,10,.35); }
+.hero .eyebrow, .hero .hero-sub, .hero .trust-mobile { text-shadow: 0 1px 12px rgba(30,22,10,.55); }
+
 /* landing hero, mobile: trust line + hide the placeholder caption */
 .trust-mobile { display: none; }
 @media (max-width: 900px) {
@@ -190,7 +194,7 @@
 </div>
 
 <!-- 1 · HERO -->
-<section class="hero" id="top" style="background-image: linear-gradient(180deg, rgba(40,32,20,.5), rgba(40,32,20,.42)), url('images/astra-terrace-view.jpg'); background-size: cover; background-position: center;">
+<section class="hero" id="top" style="background-image: linear-gradient(180deg, rgba(40,32,20,.30), rgba(40,32,20,.12) 50%, rgba(40,32,20,.24)), url('images/astra-terrace-view.jpg'); background-size: cover; background-position: center;">
   <div class="hero-trust">
     <div class="trust-badge"><span class="src">Booking.com</span><span class="score">9.4 <span class="count">(119)</span></span></div>
     <div class="trust-badge"><span class="src">Airbnb</span><span class="score">4.97 <span class="star">★</span> <span class="count">(111)</span></span></div>
