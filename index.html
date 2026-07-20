@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/astra-terrace-view.jpg">
+<script defer src="consent.js?v=1"></script>
 <link rel="stylesheet" href="styles.css?v=2">
 <style>
 /* ============================================================
@@ -403,7 +404,7 @@
 <footer class="footer">
   <div class="word">HORIZON VILLAS</div>
   <p class="row">Agios Ioannis, Tinos · +30 690 777 7971 · info@horizonvillastinos.com</p>
-  <p class="fine">EN · FR &nbsp;|&nbsp; Privacy · Cookies · © Horizon Villas</p>
+  <p class="fine">EN · FR &nbsp;|&nbsp; <a href="privacy.html" style="color:inherit; text-decoration:underline;">Privacy &amp; Cookies</a> · © Horizon Villas</p>
 </footer>
 
 <div class="mobile-cta">
@@ -438,6 +439,7 @@ document.querySelectorAll('form.bookbar').forEach(f => f.addEventListener('submi
   let msg = "Hi! I'd like to check availability";
   if (arr.value.trim() && dep.value.trim()) msg += " from " + arr.value.trim() + " to " + dep.value.trim();
   msg += " for " + f.querySelector('select').value + ".";
+  if (window.gtag) gtag('event', 'availability_search', { guests: f.querySelector('select').value });
   window.open("https://wa.me/306907777971?text=" + encodeURIComponent(msg), "_blank", "noopener");
 }));
 </script>
