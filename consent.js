@@ -2,7 +2,7 @@
    Advanced consent mode: gtag loads with consent denied by default and sends
    cookieless pings only; real analytics cookies are set after "Accept". */
 (function () {
-  var GA_ID = 'G-XXXXXXXXXX'; /* TODO: replace with the real GA4 Measurement ID */
+  var GA_ID = 'G-TT4PX2XDVN'; /* same GA4 property as the previous site — data continuity */
   var KEY = 'hv-consent';
 
   window.dataLayer = window.dataLayer || [];
