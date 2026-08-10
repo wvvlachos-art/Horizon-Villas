@@ -5,6 +5,135 @@
   command = "echo 'Static site — no build step.'"
   publish = "."
 
+# 301s from the pre-2026 site's URL structure (hotelwize-hosted), so pages
+# Google indexed under the old paths keep their link equity. Source list is the
+# old site's sitemap.xml, captured 2026-08-10. Greek (/el/) pages map to the
+# same English targets — the redesign has no Greek version.
+[[redirects]]
+  from = "/villa-astra/"
+  to = "/astra.html"
+  status = 301
+[[redirects]]
+  from = "/villa-celine/"
+  to = "/celine.html"
+  status = 301
+[[redirects]]
+  from = "/villa-diana/"
+  to = "/diana.html"
+  status = 301
+[[redirects]]
+  from = "/villa-regina/"
+  to = "/regina.html"
+  status = 301
+[[redirects]]
+  from = "/villa-roxana/"
+  to = "/roxana.html"
+  status = 301
+[[redirects]]
+  from = "/villa-zoe/"
+  to = "/zoe.html"
+  status = 301
+[[redirects]]
+  from = "/our-villas/"
+  to = "/accommodations.html"
+  status = 301
+[[redirects]]
+  from = "/pool-area/"
+  to = "/pool.html"
+  status = 301
+[[redirects]]
+  from = "/location/"
+  to = "/horizon-tinos.html"
+  status = 301
+[[redirects]]
+  from = "/gallery/"
+  to = "/accommodations.html"
+  status = 301
+[[redirects]]
+  from = "/special-offers/"
+  to = "/offers.html"
+  status = 301
+[[redirects]]
+  from = "/fall-pre-planned-holiday/"
+  to = "/offers.html"
+  status = 301
+[[redirects]]
+  from = "/contact/"
+  to = "/about.html"
+  status = 301
+[[redirects]]
+  from = "/privacy-policy/"
+  to = "/privacy.html"
+  status = 301
+[[redirects]]
+  from = "/cookie-policy/"
+  to = "/privacy.html"
+  status = 301
+[[redirects]]
+  from = "/el/villa-astra/"
+  to = "/astra.html"
+  status = 301
+[[redirects]]
+  from = "/el/villa-celine/"
+  to = "/celine.html"
+  status = 301
+[[redirects]]
+  from = "/el/villa-diana/"
+  to = "/diana.html"
+  status = 301
+[[redirects]]
+  from = "/el/villa-regina/"
+  to = "/regina.html"
+  status = 301
+[[redirects]]
+  from = "/el/villa-roxana/"
+  to = "/roxana.html"
+  status = 301
+[[redirects]]
+  from = "/el/villa-zoe/"
+  to = "/zoe.html"
+  status = 301
+[[redirects]]
+  from = "/el/our-villas/"
+  to = "/accommodations.html"
+  status = 301
+[[redirects]]
+  from = "/el/pool-area/"
+  to = "/pool.html"
+  status = 301
+[[redirects]]
+  from = "/el/location/"
+  to = "/horizon-tinos.html"
+  status = 301
+[[redirects]]
+  from = "/el/gallery/"
+  to = "/accommodations.html"
+  status = 301
+[[redirects]]
+  from = "/el/special-offers/"
+  to = "/offers.html"
+  status = 301
+[[redirects]]
+  from = "/el/fall-pre-planned-holiday/"
+  to = "/offers.html"
+  status = 301
+[[redirects]]
+  from = "/el/contact/"
+  to = "/about.html"
+  status = 301
+[[redirects]]
+  from = "/el/privacy-policy/"
+  to = "/privacy.html"
+  status = 301
+[[redirects]]
+  from = "/el/cookie-policy/"
+  to = "/privacy.html"
+  status = 301
+[[redirects]]
+  from = "/el/*"
+  to = "/"
+  status = 301
+
 # Long-cache fingerprint-free assets. Photos are safe to cache hard because new
 # images are added under new filenames rather than overwritten.
 [[headers]]
