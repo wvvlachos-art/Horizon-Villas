@@ -21,25 +21,26 @@
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preload" as="image" href="images/roxana-living-room.jpg">
 <script defer src="consent.js?v=1"></script>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <script>document.documentElement.className += ' js';</script>
 
 <!-- ============ HEADER (transparent over hero, solidifies on scroll) ============ -->
 <header class="site-header over-hero" id="siteHeader">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
+    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
     <div class="nav-right"><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
-  <div class="navlinks container">
+  <nav class="navlinks container" aria-label="Main">
     <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="horizon-tinos.html">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a>
-  </div>
+  </nav>
 </header>
 
-<div class="menu-overlay" aria-hidden="true">
-  <nav class="menu-links">
+<div class="menu-overlay" id="site-menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menu">
     <a href="accommodations.html">The houses</a>
     <a href="pool.html">The pool</a>
     <a href="horizon-tinos.html">Tinos</a>
@@ -53,16 +54,18 @@
   </div>
 </div>
 
+<main id="main">
+
 <!-- ============ FULL-SCREEN HERO GALLERY ============ -->
 <!-- hero photo carousel: two crossfading background layers (filled by JS) -->
 <section class="house-hero" id="heroCarousel">
-  <div class="hero-bg" id="bgA" style="background-image: linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%), url('images/roxana-living-room.jpg'); opacity:1; z-index:1;"></div>
-  <div class="hero-bg" id="bgB" style="z-index:0;"></div>
-  <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></span>
-  <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i class="ti ti-chevron-right"></i></span>
+  <div class="hero-bg" id="bgA" aria-hidden="true" style="background-image: linear-gradient(to bottom, rgba(58,48,34,0) 40%, rgba(58,48,34,.6) 100%), url('images/roxana-living-room.jpg'); opacity:1; z-index:1;"></div>
+  <div class="hero-bg" id="bgB" aria-hidden="true" style="z-index:0;"></div>
+  <span class="arrow l" role="button" tabindex="0" aria-label="Previous photo"><i aria-hidden="true" class="ti ti-chevron-left"></i></span>
+  <span class="arrow r" role="button" tabindex="0" aria-label="Next photo"><i aria-hidden="true" class="ti ti-chevron-right"></i></span>
   <div class="hero-tools">
-    <span class="count"></span>
-    <button class="hero-zoom" type="button" aria-label="Open photo gallery"><i class="ti ti-arrows-maximize"></i><span>View photos</span></button>
+    <span class="count" aria-hidden="true"></span>
+    <button class="hero-zoom" type="button" aria-label="Open photo gallery"><i aria-hidden="true" class="ti ti-arrows-maximize"></i><span>View photos</span></button>
   </div>
   <div class="hero-caption">
     <p class="eyebrow" style="color:#EBCFA6;">Horizon · House</p>
@@ -108,21 +111,21 @@
     <div class="detail-amen">
       <div>
         <div class="grp">
-          <h4 class="grp-title">In the house</h4>
+          <h2 class="grp-title">In the house</h2>
           <ul><li>Full kitchen — oven, hob &amp; fridge</li><li>Coffee machine &amp; toaster</li><li>Blender</li><li>Air-conditioning</li><li>Flat-screen TV</li><li>Fast, free WiFi</li><li>Iron &amp; board</li><li>Hardwood floors</li></ul>
         </div>
         <div class="grp">
-          <h4 class="grp-title">Bathroom &amp; bedroom</h4>
+          <h2 class="grp-title">Bathroom &amp; bedroom</h2>
           <ul><li>Bathroom with walk-in shower</li><li>Two double bedrooms over two levels</li><li>Hairdryer, towels &amp; slippers</li><li>Fresh linen</li><li>Wardrobes &amp; private entrance</li><li>Bathroom amenities</li></ul>
         </div>
       </div>
       <div>
         <div class="grp">
-          <h4 class="grp-title">Pool &amp; outdoors</h4>
+          <h2 class="grp-title">Pool &amp; outdoors</h2>
           <ul><li>Shared sea-view pool, open all year</li><li>Sun loungers &amp; parasols</li><li>Pool &amp; beach towels</li><li>Sheltered stone courtyard</li><li>Pergola-shaded sea-view balcony</li><li>Dining table on the balcony</li></ul>
         </div>
         <div class="grp">
-          <h4 class="grp-title">Service &amp; good to know</h4>
+          <h2 class="grp-title">Service &amp; good to know</h2>
           <ul><li>Daily housekeeping</li><li>Free private parking</li><li>Laundry &amp; ironing on request</li><li>Fire extinguisher &amp; carbon-monoxide detector</li><li>Non-smoking throughout</li><li>Family-friendly — high chair &amp; baby cot available</li><li>Greek, English &amp; French spoken</li></ul>
         </div>
       </div>
@@ -138,14 +141,14 @@
     <h2 class="gallery-title">Inside Villa Roxana</h2>
     <p class="gallery-lead">Every room and corner of the house — tap any photo to view it full-screen.</p>
     <div class="gallery" id="houseGallery">
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-living-room-wide.jpg" alt="Villa Roxana — living room with teal sofa"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-kitchen.jpg" alt="Villa Roxana — full kitchen"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-bedroom-1.jpg" alt="Villa Roxana — first double bedroom"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-bedroom-2.jpg" alt="Villa Roxana — second double bedroom"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-bedroom-sea-view.jpg" alt="Villa Roxana — bedroom with sea view"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-bathroom.jpg" alt="Villa Roxana — bathroom with walk-in shower"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-courtyard.jpg" alt="Villa Roxana — sheltered stone courtyard"></button>
-      <button class="photo" type="button" aria-label="View photo full-screen"><img loading="lazy" decoding="async" src="images/roxana-balcony-view.jpg" alt="Villa Roxana — sea-view balcony"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-living-room-wide.jpg" alt="Villa Roxana — living room with teal sofa"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-kitchen.jpg" alt="Villa Roxana — full kitchen"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-bedroom-1.jpg" alt="Villa Roxana — first double bedroom"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-bedroom-2.jpg" alt="Villa Roxana — second double bedroom"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-bedroom-sea-view.jpg" alt="Villa Roxana — bedroom with sea view"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-bathroom.jpg" alt="Villa Roxana — bathroom with walk-in shower"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-courtyard.jpg" alt="Villa Roxana — sheltered stone courtyard"></button>
+      <button class="photo" type="button"><img loading="lazy" decoding="async" src="images/roxana-balcony-view.jpg" alt="Villa Roxana — sea-view balcony"></button>
     </div>
   </div>
 </section>
@@ -166,9 +169,9 @@
   <div class="container">
     <p class="eyebrow on-beige center">The other houses</p>
     <div class="cards">
-      <a class="card" href="celine.html"><div class="photo"><img loading="lazy" decoding="async" src="images/celine-living-room.jpg" alt="Villa Celine"></div><div class="meta"><h3>Villa Celine</h3><div class="price">Sleeps 4 &middot; from &euro;180</div></div></a>
-      <a class="card" href="astra.html"><div class="photo"><img loading="lazy" decoding="async" src="images/astra-living-room.jpg" alt="Villa Astra"></div><div class="meta"><h3>Villa Astra</h3><div class="price">Sleeps 6 &middot; from &euro;260</div></div></a>
-      <a class="card" href="regina.html"><div class="photo"><img loading="lazy" decoding="async" src="images/regina-living-room.jpg" alt="Villa Regina"></div><div class="meta"><h3>Villa Regina</h3><div class="price">Sleeps 6 &middot; from &euro;300</div></div></a>
+      <a class="card" href="celine.html"><div class="photo"><img loading="lazy" decoding="async" src="images/celine-living-room.jpg" alt=""></div><div class="meta"><h3>Villa Celine</h3><div class="price">Sleeps 4 &middot; from &euro;180</div></div></a>
+      <a class="card" href="astra.html"><div class="photo"><img loading="lazy" decoding="async" src="images/astra-living-room.jpg" alt=""></div><div class="meta"><h3>Villa Astra</h3><div class="price">Sleeps 6 &middot; from &euro;260</div></div></a>
+      <a class="card" href="regina.html"><div class="photo"><img loading="lazy" decoding="async" src="images/regina-living-room.jpg" alt=""></div><div class="meta"><h3>Villa Regina</h3><div class="price">Sleeps 6 &middot; from &euro;300</div></div></a>
     </div>
   </div>
 </section>
@@ -178,9 +181,11 @@
   <div class="container">
     <h2 style="font-size:clamp(20px,2.2vw,26px); color:#D9A969; margin-bottom:18px;">Stay at Villa Roxana</h2>
     <a class="btn btn-primary" href="#book" style="margin-right:10px;">Check availability</a>
-    <a class="btn btn-outline-light" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
+    <a class="btn btn-outline-light" href="https://wa.me/306907777971"><i aria-hidden="true" class="ti ti-message-circle"></i> WhatsApp</a>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="word">HORIZON VILLAS</div>
@@ -190,16 +195,16 @@
 
 <div class="mobile-cta">
   <a class="btn btn-primary" href="#book">Book now</a>
-  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="Message us on WhatsApp"><i aria-hidden="true" class="ti ti-message-circle"></i></a>
 </div>
 
 <!-- ============ HERO GALLERY LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Villa Roxana photos">
-  <button class="lb-close" type="button" aria-label="Close gallery"><i class="ti ti-x"></i></button>
-  <button class="lb-arrow l" type="button" aria-label="Previous photo"><i class="ti ti-chevron-left"></i></button>
+  <button class="lb-close" type="button" aria-label="Close gallery"><i aria-hidden="true" class="ti ti-x"></i></button>
+  <button class="lb-arrow l" type="button" aria-label="Previous photo"><i aria-hidden="true" class="ti ti-chevron-left"></i></button>
   <img class="lb-img" alt="">
-  <button class="lb-arrow r" type="button" aria-label="Next photo"><i class="ti ti-chevron-right"></i></button>
-  <span class="lb-count"></span>
+  <button class="lb-arrow r" type="button" aria-label="Next photo"><i aria-hidden="true" class="ti ti-chevron-right"></i></button>
+  <span class="lb-count" aria-live="polite"></span>
 </div>
 
 <script>
@@ -214,7 +219,7 @@
   const onScroll = () => { hdr.classList.toggle('solid', window.scrollY > 120); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
+  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){var was=document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);mt.setAttribute('aria-label',o?'Close menu':'Open menu');ov.setAttribute('aria-hidden',!o);if(o&&!was){var f=ov.querySelector('a');if(f)f.focus();}else if(!o&&was){mt.focus();}};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape'){set(false);return;}if(e.key!=='Tab'||!document.body.classList.contains('menu-open'))return;var items=ov.querySelectorAll('a, button'),first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}else if(!ov.contains(document.activeElement)){e.preventDefault();first.focus();}});}})();
 
   // ---- hero crossfade carousel (4 photos, 2.5s) + gallery lightbox ----
   (function(){
@@ -257,7 +262,7 @@
       if (countEl) countEl.textContent = (hi + 1) + ' / ' + heroImgs.length;
     }
     const hNext = () => heroShow(hi + 1), hPrev = () => heroShow(hi - 1);
-    function startAuto(){ stopAuto(); timer = setInterval(hNext, 2500); }
+    function startAuto(){ stopAuto(); if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(hNext, 2500); }
     function stopAuto(){ if (timer) { clearInterval(timer); timer = null; } }
     function nudge(fn){ return function(e){ if (e) e.preventDefault(); fn(); startAuto(); }; }
     const rArrow = hero.querySelector('.arrow.r'), lArrow = hero.querySelector('.arrow.l');
@@ -274,10 +279,11 @@
     function lbRender(){ lbImg.src = gallery[li].src; lbImg.alt = gallery[li].alt; lbCount.textContent = (li + 1) + ' / ' + gallery.length; }
     function lbGo(i){ li = (i + gallery.length) % gallery.length; lbRender(); }
     const lbNext = () => lbGo(li + 1), lbPrev = () => lbGo(li - 1);
-    function openLb(i){ li = i || 0; lbOpen = true; stopAuto(); lbRender(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('lb-lock'); }
-    function closeLb(){ lbOpen = false; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lb-lock'); startAuto(); }
-    hero.querySelector('.hero-zoom').addEventListener('click', () => openLb(0));
-    document.querySelectorAll('#houseGallery .photo').forEach((b, i) => b.addEventListener('click', () => openLb(i)));
+    let lbOpener = null;
+    function openLb(i, opener){ li = i || 0; lbOpener = opener || document.activeElement; lbOpen = true; stopAuto(); lbRender(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('lb-lock'); lb.querySelector('.lb-close').focus(); }
+    function closeLb(){ lbOpen = false; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lb-lock'); if (lbOpener && lbOpener.focus) lbOpener.focus(); lbOpener = null; startAuto(); }
+    hero.querySelector('.hero-zoom').addEventListener('click', e => openLb(0, e.currentTarget));
+    document.querySelectorAll('#houseGallery .photo').forEach((b, i) => b.addEventListener('click', () => openLb(i, b)));
     lb.querySelector('.lb-close').addEventListener('click', closeLb);
     lb.querySelector('.lb-arrow.r').addEventListener('click', lbNext);
     lb.querySelector('.lb-arrow.l').addEventListener('click', lbPrev);
@@ -287,6 +293,13 @@
       if (e.key === 'Escape') closeLb();
       else if (e.key === 'ArrowRight') lbNext();
       else if (e.key === 'ArrowLeft') lbPrev();
+      else if (e.key === 'Tab') {
+        const items = lb.querySelectorAll('button');
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        else if (!lb.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      }
     });
 
     startAuto();

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script defer src="consent.js?v=1"></script>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 <style>
 .legal { max-width: 760px; margin: 0 auto; }
 .legal h2 { font-size: clamp(20px, 2.2vw, 26px); margin: 38px 0 12px; }
@@ -27,21 +27,22 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <script>document.documentElement.className += ' js';</script>
 
 <header class="site-header">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
+    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
     <div class="nav-right"><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="index.html#book">Book now</a></div>
   </div>
-  <div class="navlinks container">
+  <nav class="navlinks container" aria-label="Main">
     <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="horizon-tinos.html">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a>
-  </div>
+  </nav>
 </header>
 
-<div class="menu-overlay" aria-hidden="true">
-  <nav class="menu-links">
+<div class="menu-overlay" id="site-menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menu">
     <a href="accommodations.html">The houses</a>
     <a href="pool.html">The pool</a>
     <a href="horizon-tinos.html">Tinos</a>
@@ -53,6 +54,8 @@
     <span class="lang">EN · FR</span>
   </div>
 </div>
+
+<main id="main">
 
 <section class="section tight center">
   <div class="container">
@@ -102,6 +105,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="footer">
   <div class="word">HORIZON VILLAS</div>
   <div class="row">Agios Ioannis, Tinos · <a href="tel:+306907777971" style="color:inherit;">+30 690 777 7971</a> · <a href="mailto:info@horizonvillastinos.com" style="color:inherit;">info@horizonvillastinos.com</a></div>
@@ -109,7 +114,7 @@
 </footer>
 
 <script>
-  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
+  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){var was=document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);mt.setAttribute('aria-label',o?'Close menu':'Open menu');ov.setAttribute('aria-hidden',!o);if(o&&!was){var f=ov.querySelector('a');if(f)f.focus();}else if(!o&&was){mt.focus();}};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape'){set(false);return;}if(e.key!=='Tab'||!document.body.classList.contains('menu-open'))return;var items=ov.querySelectorAll('a, button'),first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}else if(!ov.contains(document.activeElement)){e.preventDefault();first.focus();}});}})();
 </script>
 </body>
 </html>

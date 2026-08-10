@@ -20,24 +20,25 @@
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" rel="stylesheet">
 <link rel="icon" href="logo.png" type="image/png">
 <script defer src="consent.js?v=1"></script>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <script>document.documentElement.className += ' js';</script>
 
 <header class="site-header">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
+    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html"><span class="word">HORIZON VILLAS</span><div class="sub">TINOS</div></a>
     <div class="nav-right"><span class="lang">EN · FR</span><a class="btn btn-outline btn-sm" href="#book">Book now</a></div>
   </div>
-  <div class="navlinks container">
+  <nav class="navlinks container" aria-label="Main">
     <a href="accommodations.html">The houses</a><a href="pool.html">The pool</a><a href="horizon-tinos.html">Tinos</a><a href="offers.html">Offers</a><a href="about.html">About</a>
-  </div>
+  </nav>
 </header>
 
-<div class="menu-overlay" aria-hidden="true">
-  <nav class="menu-links">
+<div class="menu-overlay" id="site-menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menu">
     <a href="accommodations.html">The houses</a>
     <a href="pool.html">The pool</a>
     <a href="horizon-tinos.html">Tinos</a>
@@ -50,6 +51,8 @@
     <span class="lang">EN · FR</span>
   </div>
 </div>
+
+<main id="main">
 
 <!-- ============ HEADER ============ -->
 <section class="section tight center">
@@ -69,7 +72,7 @@
         <div class="photo"><img loading="lazy" decoding="async" src="images/pool-sunset.jpg" alt="The pool at sunset in the soft autumn light"></div>
         <div class="body">
           <p class="tag">Seasonal</p>
-          <h3>Autumn on Tinos</h3>
+          <h2>Autumn on Tinos</h2>
           <p class="dates">1–20 October 2026</p>
           <p>Thirty per cent off our standard rates for the island's quietest, warmest weeks — soft light, empty beaches and the sea still warm.</p>
           <div class="cta"><a class="btn btn-primary btn-sm" href="index.html#book">Check availability</a></div>
@@ -80,7 +83,7 @@
         <div class="photo" style="background:#DFD0B3;"><img loading="lazy" decoding="async" src="images/regina-outdoor-dining-table.jpg" alt="A shaded terrace table set for a long lunch"></div>
         <div class="body">
           <p class="tag">Long stays</p>
-          <h3>Stay seven, pay six</h3>
+          <h2>Stay seven, pay six</h2>
           <p class="dates">Any week, year-round</p>
           <p>Settle in. Book seven nights in any house and the seventh is on us — the island rewards the unhurried.</p>
           <div class="cta"><a class="btn btn-primary btn-sm" href="index.html#book">Check availability</a></div>
@@ -91,7 +94,7 @@
         <div class="photo" style="background:#DACAAD;"><img loading="lazy" decoding="async" src="images/outdoor-garden.jpg" alt="Garden and footpaths around the houses in spring"></div>
         <div class="body">
           <p class="tag">Seasonal</p>
-          <h3>Early spring rates</h3>
+          <h2>Early spring rates</h2>
           <p class="dates">April – May 2026</p>
           <p>Wildflowers, footpaths and long lunches before the season turns — reduced rates across all six houses.</p>
           <div class="cta"><a class="btn btn-primary btn-sm" href="index.html#book">Check availability</a></div>
@@ -118,9 +121,11 @@
     <h2 style="font-size:clamp(22px,2.4vw,28px); margin-bottom:14px;">Found your dates?</h2>
     <p style="margin:0 0 24px; color:var(--text);">Tell us when you'd like to come and which house — we'll sort the rest.</p>
     <a class="btn btn-primary" href="index.html#book" style="margin-right:10px;">Check availability</a>
-    <a class="btn btn-outline" href="https://wa.me/306907777971"><i class="ti ti-message-circle"></i> WhatsApp</a>
+    <a class="btn btn-outline" href="https://wa.me/306907777971"><i aria-hidden="true" class="ti ti-message-circle"></i> WhatsApp</a>
   </div>
 </section>
+
+</main>
 
 <footer id="contact" class="footer">
   <div class="word">HORIZON VILLAS</div>
@@ -130,7 +135,7 @@
 
 <div class="mobile-cta">
   <a class="btn btn-primary" href="index.html#book">Book now</a>
-  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp"><i class="ti ti-message-circle"></i></a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="Message us on WhatsApp"><i aria-hidden="true" class="ti ti-message-circle"></i></a>
 </div>
 
 <script>
@@ -138,7 +143,7 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});}})();
+  (function(){var mt=document.querySelector('.menu-toggle'),ov=document.querySelector('.menu-overlay');if(mt&&ov){var set=function(o){var was=document.body.classList.contains('menu-open');document.body.classList.toggle('menu-open',o);mt.setAttribute('aria-expanded',o);mt.setAttribute('aria-label',o?'Close menu':'Open menu');ov.setAttribute('aria-hidden',!o);if(o&&!was){var f=ov.querySelector('a');if(f)f.focus();}else if(!o&&was){mt.focus();}};mt.addEventListener('click',function(){set(!document.body.classList.contains('menu-open'));});ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});addEventListener('keydown',function(e){if(e.key==='Escape'){set(false);return;}if(e.key!=='Tab'||!document.body.classList.contains('menu-open'))return;var items=ov.querySelectorAll('a, button'),first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}else if(!ov.contains(document.activeElement)){e.preventDefault();first.focus();}});}})();
 </script>
 </body>
 </html>

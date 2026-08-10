@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/astra-terrace-view.jpg">
 <script defer src="consent.js?v=1"></script>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 <style>
 /* ============================================================
    LANDING v3 additions — same tokens, same vocabulary.
@@ -88,7 +88,7 @@
 .promises { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
 .promise b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 18px; color: #FFFDF9; margin-bottom: 4px; }
 .promise span { font-size: 13.5px; line-height: 1.6; color: #C9BB9F; }
-.included { margin: 34px 0 30px; padding-top: 20px; border-top: 0.5px solid rgba(201,187,159,.25); font-size: 13px; letter-spacing: .5px; color: #9A8B72; }
+.included { margin: 34px 0 30px; padding-top: 20px; border-top: 0.5px solid rgba(201,187,159,.25); font-size: 13px; letter-spacing: .5px; color: #A49780; }
 .dq { background: rgba(255,253,249,.05); border: 0.5px solid rgba(201,187,159,.22); border-radius: var(--radius); padding: 26px 28px 22px; }
 .dq + .dq { margin-top: 18px; }
 .dq p { margin: 0 0 14px; font-family: var(--font-display); font-size: clamp(18px, 1.9vw, 22px); line-height: 1.5; color: #FFFDF9; }
@@ -166,10 +166,11 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="nav">
-    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="hbar"></span></button></div>
+    <div class="nav-left"><button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span class="hbar"></span></button></div>
     <a class="brand" href="index.html">
       <span class="word">HORIZON VILLAS</span>
       <div class="sub">TINOS</div>
@@ -180,17 +181,17 @@
       <a class="btn btn-outline btn-sm" href="#book">Book now</a>
     </div>
   </div>
-  <div class="navlinks container">
+  <nav class="navlinks container" aria-label="Main">
     <a href="accommodations.html">The houses</a>
     <a href="pool.html">The pool</a>
     <a href="horizon-tinos.html">Tinos</a>
     <a href="offers.html">Offers</a>
     <a href="about.html">About</a>
-  </div>
+  </nav>
 </header>
 
-<div class="menu-overlay" aria-hidden="true">
-  <nav class="menu-links">
+<div class="menu-overlay" id="site-menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menu">
     <a href="accommodations.html">The houses</a>
     <a href="pool.html">The pool</a>
     <a href="horizon-tinos.html">Tinos</a>
@@ -203,6 +204,8 @@
     <span class="lang">EN · FR</span>
   </div>
 </div>
+
+<main id="main">
 
 <!-- 1 · HERO -->
 <section class="hero" id="top" style="background-image: url('images/astra-terrace-view.jpg'); background-size: cover; background-position: center;">
@@ -220,9 +223,9 @@
   <p class="hero-sub" style="color:#3A3022;">A small, independent collection on a quiet hillside, five minutes from the beach — the quiet side of the Cyclades.</p>
     <p class="trust-mobile" style="color:#3A3022;"><span>Booking.com <b>9.4</b> (119)</span> · <span>Airbnb <b>4.97★</b> (111)</span> · <span>Google <b>5.0★</b> (84)</span></p>
   <form class="bookbar dock" id="book" onsubmit="return false">
-    <label class="field"><span class="l">Arrival</span><input type="text" placeholder="Add date"></label>
-    <label class="field"><span class="l">Departure</span><input type="text" placeholder="Add date"></label>
-    <label class="field narrow"><span class="l">Guests</span><select><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
+    <label class="field" for="book-arrival"><span class="l">Arrival</span><input id="book-arrival" type="text" placeholder="Add date"></label>
+    <label class="field" for="book-departure"><span class="l">Departure</span><input id="book-departure" type="text" placeholder="Add date"></label>
+    <label class="field narrow" for="book-guests"><span class="l">Guests</span><select id="book-guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
     <button class="btn btn-primary">Check availability</button>
   </form>
 </section>
@@ -250,27 +253,27 @@
     <div class="cards six">
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/zoe-bedroom.jpg" alt="Villa Zoe — loft with soaking tub"></div>
-        <div class="meta"><h3>Villa Zoe</h3><p class="facts">Sleeps 2 · Sea view · 70 m²</p><p class="desc">A loft for two, with a soaking tub set in the room and the sea in the doorway.</p><div class="foot"><span class="price">€170 <span>/ night</span></span><a class="link" href="zoe.html">View house</a></div></div>
+        <div class="meta"><h3>Villa Zoe</h3><p class="facts">Sleeps 2 · Sea view · 70 m²</p><p class="desc">A loft for two, with a soaking tub set in the room and the sea in the doorway.</p><div class="foot"><span class="price">€170 <span>/ night</span></span><a class="link" href="zoe.html" aria-label="View Villa Zoe">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/diana-living-room.jpg" alt="Villa Diana living room"></div>
-        <div class="meta"><h3>Villa Diana</h3><p class="facts">Sleeps 4 · Sea view · 75 m²</p><p class="desc">A two-level house in deep blue — two bedrooms above, open-plan living below, the bay framed by the pergola.</p><div class="foot"><span class="price">€190 <span>/ night</span></span><a class="link" href="diana.html">View house</a></div></div>
+        <div class="meta"><h3>Villa Diana</h3><p class="facts">Sleeps 4 · Sea view · 75 m²</p><p class="desc">A two-level house in deep blue — two bedrooms above, open-plan living below, the bay framed by the pergola.</p><div class="foot"><span class="price">€190 <span>/ night</span></span><a class="link" href="diana.html" aria-label="View Villa Diana">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/regina-balcony-cape-view.jpg" alt="Villa Regina sea-view terrace"></div>
-        <div class="meta"><h3>Villa Regina</h3><p class="facts">Sleeps 6 · Sea view · 123 m²</p><p class="desc">The largest of the six — three bedrooms and wraparound terraces above the cape.</p><div class="foot"><span class="price">€300 <span>/ night</span></span><a class="link" href="regina.html">View house</a></div></div>
+        <div class="meta"><h3>Villa Regina</h3><p class="facts">Sleeps 6 · Sea view · 123 m²</p><p class="desc">The largest of the six — three bedrooms and wraparound terraces above the cape.</p><div class="foot"><span class="price">€300 <span>/ night</span></span><a class="link" href="regina.html" aria-label="View Villa Regina">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/celine-living-room.jpg" alt="Villa Celine living room"></div>
-        <div class="meta"><h3>Villa Celine</h3><p class="facts">Sleeps 4 · Sea view · 70 m²</p><p class="desc">Bright and open-plan, a mustard sofa and a balcony for long lunches over the bay.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="celine.html">View house</a></div></div>
+        <div class="meta"><h3>Villa Celine</h3><p class="facts">Sleeps 4 · Sea view · 70 m²</p><p class="desc">Bright and open-plan, a mustard sofa and a balcony for long lunches over the bay.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="celine.html" aria-label="View Villa Celine">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/roxana-living-room.jpg" alt="Villa Roxana living room"></div>
-        <div class="meta"><h3>Villa Roxana</h3><p class="facts">Sleeps 4 · Sea view · 75 m²</p><p class="desc">A two-level maisonette in teal and white, wrapped around a sheltered stone courtyard.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="roxana.html">View house</a></div></div>
+        <div class="meta"><h3>Villa Roxana</h3><p class="facts">Sleeps 4 · Sea view · 75 m²</p><p class="desc">A two-level maisonette in teal and white, wrapped around a sheltered stone courtyard.</p><div class="foot"><span class="price">€180 <span>/ night</span></span><a class="link" href="roxana.html" aria-label="View Villa Roxana">View house</a></div></div>
       </article>
       <article class="card reveal">
         <div class="photo"><img loading="lazy" decoding="async" src="images/astra-terrace-view.jpg" alt="Villa Astra terrace with sea view"></div>
-        <div class="meta"><h3>Villa Astra</h3><p class="facts">Sleeps 6 · Sea view · 120 m²</p><p class="desc">Top of the hillside — the widest views, three bedrooms and two bathrooms.</p><div class="foot"><span class="price">€260 <span>/ night</span></span><a class="link" href="astra.html">View house</a></div></div>
+        <div class="meta"><h3>Villa Astra</h3><p class="facts">Sleeps 6 · Sea view · 120 m²</p><p class="desc">Top of the hillside — the widest views, three bedrooms and two bathrooms.</p><div class="foot"><span class="price">€260 <span>/ night</span></span><a class="link" href="astra.html" aria-label="View Villa Astra">View house</a></div></div>
       </article>
     </div>
     <div class="center reveal" style="margin-top:44px;"><a class="btn btn-outline" href="accommodations.html">See all six houses</a></div>
@@ -323,19 +326,19 @@
     <div class="media photo reveal"><img loading="lazy" decoding="async" src="images/agios-ioannis-bay.jpg" alt="Agios Ioannis bay, beach and headland"></div>
     <div class="local">
       <div class="reveal">
-        <h4>Town, without the bustle</h4>
+        <h3>Town, without the bustle</h3>
         <p>Tinos Town and the port are fifteen minutes by car — close enough for the market and the evening volta, far enough that the nights stay yours.</p>
       </div>
       <div class="reveal">
-        <h4>Three beaches, minutes away</h4>
+        <h3>Three beaches, minutes away</h3>
         <p>Agios Ioannis below the houses, Agios Sostis next door, Pachia Ammos for wilder sand — a different mood at each.</p>
       </div>
       <div class="reveal">
-        <h4>The cape itself</h4>
+        <h3>The cape itself</h3>
         <p>A green headland of tamarisks, dunes and quiet coves — footpaths along the water before the rest of the bay is awake.</p>
       </div>
       <div class="reveal">
-        <h4>Sheltered from the meltemi</h4>
+        <h3>Sheltered from the meltemi</h3>
         <p>When the summer wind blows hard across the island, this south-facing corner stays calm — beach days hold up even in August.</p>
       </div>
     </div>
@@ -391,15 +394,17 @@
     <h2 style="font-size:clamp(30px,3.4vw,46px);">Choose your dates</h2>
     <p class="plan-sub">Check rates and availability across all six houses — book direct for the best price.</p>
     <form class="bookbar" onsubmit="return false">
-      <label class="field"><span class="l">Arrival</span><input type="text" placeholder="Add date"></label>
-      <label class="field"><span class="l">Departure</span><input type="text" placeholder="Add date"></label>
-      <label class="field narrow"><span class="l">Guests</span><select><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
+      <label class="field" for="book2-arrival"><span class="l">Arrival</span><input id="book2-arrival" type="text" placeholder="Add date"></label>
+      <label class="field" for="book2-departure"><span class="l">Departure</span><input id="book2-departure" type="text" placeholder="Add date"></label>
+      <label class="field narrow" for="book2-guests"><span class="l">Guests</span><select id="book2-guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
       <button class="btn btn-primary">Check availability</button>
     </form>
     <p class="whats">Not ready for dates? <a class="link amber" href="https://wa.me/306907777971">Message us on WhatsApp</a> — we reply in minutes.</p>
     <p class="whats">Still planning? <a class="link amber" href="https://horizonvillastinosguide.com/" target="_blank" rel="noopener">Our field guide</a> maps out the beaches, villages and tavernas worth your time.</p>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="word">HORIZON VILLAS</div>
@@ -409,7 +414,7 @@
 
 <div class="mobile-cta">
   <a class="btn btn-primary" href="#book2">Book now</a>
-  <a class="wa" href="https://wa.me/306907777971" aria-label="WhatsApp">✆</a>
+  <a class="wa" href="https://wa.me/306907777971" aria-label="Message us on WhatsApp">✆</a>
 </div>
 
 <script>
@@ -419,16 +424,28 @@ const overHero = hd.classList.contains('over-hero');
 const mt = hd.querySelector('.menu-toggle');
 const sync = () => hd.classList.toggle('solid', (overHero && window.scrollY > 60) || document.body.classList.contains('menu-open'));
 addEventListener('scroll', sync, { passive: true }); sync();
+const ov = document.querySelector('.menu-overlay');
 const setMenu = open => {
+  const was = document.body.classList.contains('menu-open');
   document.body.classList.toggle('menu-open', open);
   mt.setAttribute('aria-expanded', open);
   mt.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  document.querySelector('.menu-overlay').setAttribute('aria-hidden', !open);
+  ov.setAttribute('aria-hidden', !open);
+  if (open && !was) { const first = ov.querySelector('a'); if (first) first.focus(); }
+  else if (!open && was) mt.focus();
   sync();
 };
 mt.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
 document.querySelectorAll('.menu-overlay a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+addEventListener('keydown', e => {
+  if (e.key === 'Escape') { setMenu(false); return; }
+  if (e.key !== 'Tab' || !document.body.classList.contains('menu-open')) return;
+  const items = ov.querySelectorAll('a, button');
+  const first = items[0], last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  else if (!ov.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+});
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), { threshold: .12 });
