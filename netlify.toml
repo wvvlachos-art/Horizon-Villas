@@ -51,11 +51,11 @@
   status = 301
 [[redirects]]
   from = "/special-offers/"
-  to = "/offers.html"
+  to = "/"
   status = 301
 [[redirects]]
   from = "/fall-pre-planned-holiday/"
-  to = "/offers.html"
+  to = "/"
   status = 301
 [[redirects]]
   from = "/contact/"
@@ -68,6 +68,10 @@
 [[redirects]]
   from = "/cookie-policy/"
   to = "/privacy.html"
+  status = 301
+[[redirects]]
+  from = "/offers.html"
+  to = "/"
   status = 301
 [[redirects]]
   from = "/el/villa-astra/"
@@ -111,11 +115,11 @@
   status = 301
 [[redirects]]
   from = "/el/special-offers/"
-  to = "/offers.html"
+  to = "/"
   status = 301
 [[redirects]]
   from = "/el/fall-pre-planned-holiday/"
-  to = "/offers.html"
+  to = "/"
   status = 301
 [[redirects]]
   from = "/el/contact/"
