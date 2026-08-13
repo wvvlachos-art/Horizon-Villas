@@ -74,16 +74,16 @@
   </div>
 </section>
 
-<!-- ============ FLOATING BOOKING BAR (Lodgify booking box mounts here) ============ -->
+<!-- ============ FLOATING BOOKING BAR (books through the Lodgify reservation engine) ============ -->
 <div id="book" class="book-float">
   <div class="bf"><span class="l">House</span><span class="v">Villa Astra</span></div>
   <div class="sep"></div>
-  <div class="bf bf-date"><span class="l">Arrival</span><span class="v muted">Add date</span></div>
+  <label class="bf bf-date" for="bf-arrival"><span class="l">Arrival</span><input type="date" id="bf-arrival"></label>
   <div class="sep"></div>
-  <div class="bf bf-date"><span class="l">Departure</span><span class="v muted">Add date</span></div>
+  <label class="bf bf-date" for="bf-departure"><span class="l">Departure</span><input type="date" id="bf-departure"></label>
   <div class="sep"></div>
-  <div class="bf"><span class="l">Guests</span><span class="v muted">6</span></div>
-  <a class="btn btn-primary" href="https://wa.me/306907777971?text=Hi!%20I%27d%20like%20to%20check%20availability%20for%20Villa%20Astra.">Check availability</a>
+  <label class="bf" for="bf-guests"><span class="l">Guests</span><select id="bf-guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option selected>6</option></select></label>
+  <a class="btn btn-primary" id="bf-book" href="https://checkout.lodgify.com/en/horizonvillas/425633/reservation?currency=EUR">Check availability</a>
 </div>
 
 <!-- ============ DESCRIPTION + FACTS ============ -->
@@ -303,6 +303,26 @@
     });
 
     startAuto();
+  })();
+
+  // booking bar -> Lodgify checkout (the reservation engine); dates & guests prefilled,
+  // the live availability calendar is the checkout's first step
+  (function () {
+    const arr = document.getElementById('bf-arrival'), dep = document.getElementById('bf-departure');
+    const guests = document.getElementById('bf-guests'), cta = document.getElementById('bf-book');
+    const today = new Date().toISOString().slice(0, 10);
+    arr.min = today; dep.min = today;
+    arr.addEventListener('change', () => {
+      if (!arr.value) return;
+      dep.min = arr.value;
+      if (dep.value && dep.value <= arr.value) dep.value = '';
+    });
+    cta.addEventListener('click', () => {
+      let q = 'currency=EUR&adults=' + guests.value;
+      if (arr.value && dep.value) q += '&arrival=' + arr.value + '&departure=' + dep.value;
+      cta.href = 'https://checkout.lodgify.com/en/horizonvillas/425633/reservation?' + q;
+      if (window.gtag) gtag('event', 'begin_checkout', { house: 'Villa Astra' });
+    });
   })();
 </script>
 </body>

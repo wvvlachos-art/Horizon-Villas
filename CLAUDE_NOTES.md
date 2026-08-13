@@ -16,11 +16,15 @@ A rebuild of the Horizon Villas marketing site (`horizonvillastinos.com`), curre
 - **Domain/DNS:** Porkbun (planned) — *CONFIRM where the domain is actually registered first; may be elsewhere/Hotelwize.*
 - **Framework:** Astro (static-first). Deploy: **Netlify** (William already has an account; add as a new site). Auto-deploy from the Git repo.
 - **CMS:** **Sanity** (hosted Studio, login, field-level i18n, free tier). Content edits → webhook → Netlify rebuild (~1–2 min, not instant; site is static). Scope: small updates only (offer, displayed copy/prices, reviews, seasonal posts). Structural/design changes go through Claude Code.
-- **Booking:** **Lodgify** (existing account — `checkout.lodgify.com/horizonvillas`). Two embeds:
-  - **Search box** widget → landing `#book` ("Plan your stay") and mobile sticky CTA. Picks dates across all six.
-  - **Booking box** widget → each house detail `#book` (sticky bar).
-  - Checkout is Lodgify-hosted. *TODO: confirm plan allows white-label to `book.horizonvillastinos.com`.*
-  - Channel manager keeps Airbnb/Vrbo/Booking.com in sync.
+- **Booking:** **Lodgify** (existing account, slug `horizonvillas`) — **WIRED 2026-08-13**, link-based (no dashboard embeds needed):
+  - Checkout URL pattern: `https://checkout.lodgify.com/en/horizonvillas/{propertyId}/reservation?currency=EUR` + optional `&arrival=YYYY-MM-DD&departure=YYYY-MM-DD&adults=N`. Without dates it opens on the live availability-calendar step; with valid dates it jumps straight to contact details. Verified end-to-end in a real browser.
+  - **Property IDs:** Regina `425631` · Celine `425632` · Astra `425633` · Zoe `425634` · Roxana `425635` · Diana `425636`. (The Lodgify account also holds a 7th listing, "Blue Paradise – Agios Sostis".)
+  - **House pages:** `.book-float` now has real `type=date` arrival/departure inputs + guests select (capped at each house's sleeps); CTA builds the prefilled checkout URL, fires GA4 `begin_checkout`.
+  - **Accommodations:** each row's "Check dates" → that villa's checkout; an inline script forwards `?arrival&departure&guests` from the URL into every checkout link (guests capped per villa via `data-max-guests`).
+  - **Landing:** both `.bookbar` forms navigate to `accommodations.html?arrival=…&departure=…&guests=…` (GA4 `availability_search` kept). Inputs switched text→date.
+  - The engine itself is Lodgify SaaS (availability, pricing, payments, channel manager syncing Airbnb/Vrbo/Booking.com) — it **cannot be hosted on Netlify**; only links/widgets can. Dashboard-generated widget embeds (in-page calendar) remain a later upgrade — needs William's Lodgify login.
+  - *TODO: confirm plan allows white-label to `book.horizonvillastinos.com` (or `.net`); the checkout's "back to site" link currently points to `horizonvillastinos.net` (set inside Lodgify).*
+- **Domain state (found 2026-08-13):** `horizonvillastinos.com` = the live redesign on Netlify. `horizonvillastinos.net` = the OLD **Lodgify-generated** website, still live on Lodgify's servers (this is the "old site with the reservation engine" — HotelWize only hosted the pre-Lodgify `.com` site, now gone). Open decision: make `.net` redirect to `.com` (or vice-versa) so the old site stops competing in search.
 - **Contact:** WhatsApp click-to-chat → `https://wa.me/306907777971` (floating/sticky + inline). Repo placeholders use this number.
 - **Analytics:** Umami Cloud (primary, cookieless, no consent banner; custom events for *check-availability* + *whatsapp* clicks; country/source for the A/B audience split) · Google Search Console (SEO; verify via Porkbun DNS) · Microsoft Clarity (heatmaps). All snippet-based — no SQL/DB.
 

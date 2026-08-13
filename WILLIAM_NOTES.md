@@ -15,7 +15,9 @@ Pulled straight from your logo: a warm **cream** background and a single **amber
 - Still to come: a proper **Tinos** page (linking your guest guide), an **Offers** page, and **Contact**.
 
 ## How booking works
-Your existing **Lodgify** powers it. Guests pick dates right on your site (no jumping to a strange site until the final secure payment step), and it keeps your Airbnb/Booking.com calendars in sync. **WhatsApp** is one tap away everywhere for quick questions.
+Your existing **Lodgify** reservation engine powers it — and as of 13 Aug 2026 it's **connected for real**. Guests pick dates and guests on your site; the "Check availability" buttons then open your own Lodgify checkout (the same one your old site used) with everything pre-filled — live calendar, price, secure payment. Lodgify keeps your Airbnb/Booking.com calendars in sync, as before. **WhatsApp** stays one tap away everywhere for quick questions.
+
+One thing to know: the engine runs on Lodgify's servers (that's where the calendar, prices and card payments live), so it can't literally move to Netlify — no booking system can run on a static host. What guests see, though, is your site start to finish, with Lodgify only handling the checkout step.
 
 ## Languages
 We launch in **English + French**. **German** comes next (it covers the big German-speaking Swiss share plus Germany). Greek stays for the summer/peak crowd but isn't the off-season focus — off-season is about Western European visitors (your reliable Swiss, French and UK guests).
@@ -23,8 +25,9 @@ We launch in **English + French**. **German** comes next (it covers the big Germ
 ## What I still need from you
 1. **A few real villa photos** — the hero pool shot, a house exterior, an interior, the view. They replace every "[ photo ]" placeholder and let me confirm the colours against your real light.
 2. **Where the domain is registered** (so we know whether to move it to Porkbun or just point it).
-3. **Your Lodgify plan** — whether it lets us brand the checkout page (`book.horizonvillastinos.com`).
-4. A later **yes/no on German**, once we can see the off-season traffic.
+3. **Your Lodgify plan** — whether it lets us brand the checkout page (`book.horizonvillastinos.com`), and a quick check that the subscription is active so payments go through.
+4. **A decision on horizonvillastinos.net** — your old Lodgify-built site is still live there. Best move is usually to redirect it to the new site so Google doesn't see two competing websites; say the word and it gets set up.
+5. A later **yes/no on German**, once we can see the off-season traffic.
 
 ## How we work from here
 You're on the Mac when we build — **Claude Code** does the typing and puts it live on Netlify; I plan, design, and write. **These files are the exact starting point**: the build begins from them, not from scratch. Nothing's instant on a live edit (the site rebuilds in a minute or two), but small text/offer/photo changes you'll be able to do yourself through Sanity once it's set up.

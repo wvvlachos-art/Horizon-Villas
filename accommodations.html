@@ -104,7 +104,7 @@
         <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Soaking tub</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Outdoor daybeds</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
           <a class="btn btn-outline btn-sm" href="zoe.html" aria-label="View Villa Zoe">View house</a>
-          <a class="btn btn-primary btn-sm" href="zoe.html#book" aria-label="Check dates for Villa Zoe">Check dates</a>
+          <a class="btn btn-primary btn-sm" href="https://checkout.lodgify.com/en/horizonvillas/425634/reservation?currency=EUR" data-max-guests="2" aria-label="Check dates for Villa Zoe">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -137,7 +137,7 @@
         <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Washing machine</li><li>Hairdryer</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
           <a class="btn btn-outline btn-sm" href="diana.html" aria-label="View Villa Diana">View house</a>
-          <a class="btn btn-primary btn-sm" href="diana.html#book" aria-label="Check dates for Villa Diana">Check dates</a>
+          <a class="btn btn-primary btn-sm" href="https://checkout.lodgify.com/en/horizonvillas/425636/reservation?currency=EUR" data-max-guests="4" aria-label="Check dates for Villa Diana">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -170,7 +170,7 @@
         <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Sunbeds &amp; daybeds</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
           <a class="btn btn-outline btn-sm" href="regina.html" aria-label="View Villa Regina">View house</a>
-          <a class="btn btn-primary btn-sm" href="regina.html#book" aria-label="Check dates for Villa Regina">Check dates</a>
+          <a class="btn btn-primary btn-sm" href="https://checkout.lodgify.com/en/horizonvillas/425631/reservation?currency=EUR" data-max-guests="6" aria-label="Check dates for Villa Regina">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -203,7 +203,7 @@
         <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
           <a class="btn btn-outline btn-sm" href="celine.html" aria-label="View Villa Celine">View house</a>
-          <a class="btn btn-primary btn-sm" href="celine.html#book" aria-label="Check dates for Villa Celine">Check dates</a>
+          <a class="btn btn-primary btn-sm" href="https://checkout.lodgify.com/en/horizonvillas/425632/reservation?currency=EUR" data-max-guests="4" aria-label="Check dates for Villa Celine">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -236,7 +236,7 @@
         <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Hairdryer</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
           <a class="btn btn-outline btn-sm" href="roxana.html" aria-label="View Villa Roxana">View house</a>
-          <a class="btn btn-primary btn-sm" href="roxana.html#book" aria-label="Check dates for Villa Roxana">Check dates</a>
+          <a class="btn btn-primary btn-sm" href="https://checkout.lodgify.com/en/horizonvillas/425635/reservation?currency=EUR" data-max-guests="4" aria-label="Check dates for Villa Roxana">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -269,7 +269,7 @@
         <div class="r-panel"><ul><li>Fast, free WiFi</li><li>Air-conditioning</li><li>Full kitchen</li><li>Coffee machine</li><li>Flat-screen TV</li><li>Soaking tub</li><li>Two bathrooms</li><li>Free parking</li><li>Daily housekeeping</li><li>Fresh linen &amp; towels</li><li>Washing machine</li><li>Hairdryer</li><li>Outdoor daybeds</li><li>Balcony dining table</li></ul></div>
         <div class="r-cta">
           <a class="btn btn-outline btn-sm" href="astra.html" aria-label="View Villa Astra">View house</a>
-          <a class="btn btn-primary btn-sm" href="astra.html#book" aria-label="Check dates for Villa Astra">Check dates</a>
+          <a class="btn btn-primary btn-sm" href="https://checkout.lodgify.com/en/horizonvillas/425633/reservation?currency=EUR" data-max-guests="6" aria-label="Check dates for Villa Astra">Check dates</a>
         </div>
       </div>
       <div class="r-facts">
@@ -377,6 +377,20 @@
   });
   // keyboard support for the filter chips (role="button" spans)
   document.querySelectorAll('.filter [role="button"]').forEach(ch => ch.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ch.click(); } }));
+
+// carry dates/guests chosen on the landing booking bar into each Lodgify checkout link
+(function () {
+  const p = new URLSearchParams(location.search);
+  const a = p.get('arrival'), d = p.get('departure'), g = parseInt(p.get('guests'), 10);
+  if (!a && !d && !g) return;
+  document.querySelectorAll('a[href*="checkout.lodgify.com"]').forEach(link => {
+    const u = new URL(link.href);
+    if (a) u.searchParams.set('arrival', a);
+    if (d) u.searchParams.set('departure', d);
+    if (g) u.searchParams.set('adults', Math.min(g, parseInt(link.dataset.maxGuests, 10) || g));
+    link.href = u.toString();
+  });
+})();
 </script>
 </body>
 </html>

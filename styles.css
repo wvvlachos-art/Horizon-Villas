@@ -429,6 +429,11 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
 .book-float .bf .v.muted { color: var(--muted); }
 .book-float .sep { width: 0.5px; background: var(--line); margin: 12px 0; }
 .book-float .btn { align-self: center; margin: 6px 8px 6px auto; }
+.book-float label.bf { cursor: pointer; }
+.book-float .bf input, .book-float .bf select {
+  border: 0; background: transparent; padding: 0; width: 100%; cursor: pointer;
+  font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--ink);
+}
 
 /* ---- Detail: description + facts row ---- */
 .detail-intro { display: flex; flex-wrap: wrap; gap: 32px 52px; align-items: start; }
