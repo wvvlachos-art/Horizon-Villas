@@ -174,8 +174,8 @@
     <h2 style="font-size:clamp(30px,3.4vw,46px);">Your spot by the water is waiting</h2>
     <p class="plan-sub">Check rates and availability across all six houses — book direct for the best price.</p>
     <form class="bookbar" onsubmit="return false">
-      <label class="field" for="book-arrival"><span class="l">Arrival</span><input id="book-arrival" type="text" placeholder="Add date"></label>
-      <label class="field" for="book-departure"><span class="l">Departure</span><input id="book-departure" type="text" placeholder="Add date"></label>
+      <label class="field" for="book-arrival"><span class="l">Arrival</span><input id="book-arrival" type="date"></label>
+      <label class="field" for="book-departure"><span class="l">Departure</span><input id="book-departure" type="date"></label>
       <label class="field narrow" for="book-guests"><span class="l">Guests</span><select id="book-guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
       <button class="btn btn-primary">Check availability</button>
     </form>
@@ -229,6 +229,29 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+<script>
+// booking bar: hand the chosen dates & guests to the houses page, which carries
+// them into each villa's Lodgify checkout link (the reservation engine)
+document.querySelectorAll('form.bookbar').forEach(f => {
+  const [arr, dep] = f.querySelectorAll('input');
+  const today = new Date().toISOString().slice(0, 10);
+  arr.min = today; dep.min = today;
+  arr.addEventListener('change', () => {
+    if (!arr.value) return;
+    dep.min = arr.value;
+    if (dep.value && dep.value <= arr.value) dep.value = '';
+  });
+  f.addEventListener('submit', () => {
+    const guests = f.querySelector('select').value.replace(/\D+/g, '');
+    const p = new URLSearchParams();
+    if (arr.value) p.set('arrival', arr.value);
+    if (dep.value) p.set('departure', dep.value);
+    if (guests) p.set('guests', guests);
+    if (window.gtag) gtag('event', 'availability_search', { guests });
+    location.href = 'accommodations.html' + (p.toString() ? '?' + p.toString() : '');
+  });
+});
 </script>
 </body>
 </html>
