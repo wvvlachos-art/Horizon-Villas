@@ -409,7 +409,7 @@ body.menu-open .site-header.over-hero .btn-outline { border-color: var(--ink); c
     linear-gradient(135deg, #B9A07B 0%, #8A7253 100%);
 }
 .house-hero .hero-caption { max-width: var(--maxw); width: 100%; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
-.house-hero h1 { font-size: clamp(38px, 6vw, 76px); color: #FFFDF9; margin: 6px 0 0; }
+.house-hero h1 { font-size: clamp(38px, 6vw, 76px); color: var(--amber); margin: 6px 0 0; }
 .house-hero .sub { color: rgba(255,253,249,.86); font-size: clamp(15px, 1.7vw, 20px); margin: 10px 0 0; }
 .house-hero .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,253,249,.88); display: flex; align-items: center; justify-content: center; color: var(--ink); cursor: pointer; z-index: 2; }
 .house-hero .arrow.l { left: 20px; } .house-hero .arrow.r { right: 20px; }
