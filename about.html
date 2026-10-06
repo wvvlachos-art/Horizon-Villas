@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/agios-ioannis-bay-sunset.jpg">
 <script defer src="consent.js?v=1"></script>
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 <style>
 /* book-direct promises grid (About) */
 .promises { max-width: 880px; margin: clamp(28px, 3.4vw, 44px) auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 40px; text-align: left; }
@@ -233,12 +233,63 @@
   <div class="container reveal">
     <h2 style="font-size:clamp(30px,3.4vw,46px);">Plan your stay</h2>
     <p class="plan-sub">Check rates and availability across all six houses — book direct for the best price.</p>
-    <form class="bookbar" onsubmit="return false">
-      <label class="field" for="book-arrival"><span class="l">Arrival</span><input id="book-arrival" type="date"></label>
-      <label class="field" for="book-departure"><span class="l">Departure</span><input id="book-departure" type="date"></label>
-      <label class="field narrow" for="book-guests"><span class="l">Guests</span><select id="book-guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></label>
-      <button class="btn btn-primary">Check availability</button>
-    </form>
+    <!-- Lodgify search widget (books through the Lodgify reservation engine; results open on horizonvillastinos.net) -->
+<div class="bookbar ldg-host">
+<style>
+  :root {
+    --ldg-psb-background: #ffffff;
+    --ldg-psb-border-radius: 0.42em;
+    --ldg-psb-box-shadow: 0px 24px 54px 0px rgba(0, 0, 0, 0.1);
+    --ldg-psb-padding: 14px;
+    --ldg-psb-input-background: #ffffff;
+    --ldg-psb-button-border-radius: 3.58em;
+    --ldg-psb-color-primary: #f4a825;
+    --ldg-psb-color-primary-lighter:#fad492;
+    --ldg-psb-color-primary-darker: #7a5413;
+    --ldg-psb-color-primary-contrast: #333333;
+    --ldg-semantic-color-primary:  #f4a825;
+    --ldg-semantic-color-primary-lighter: #fad492;
+    --ldg-semantic-color-primary-darker: #7a5413;
+    --ldg-semantic-color-primary-contrast: #333333;
+    --ldg-component-modal-z-index: 999;
+  }
+  #lodgify-search-bar {
+    width:100%;
+  }
+</style>
+<div
+  id="lodgify-search-bar"
+  data-website-id="399597"
+  data-language-code="en"
+  data-search-page-url='https://horizonvillastinos.net/en/all-properties'
+
+  data-dates-check-in-label='Check-in'
+  data-dates-check-out-label='Check-out'
+  data-guests-counter-label='Guests'
+  data-guests-input-singular-label='{{NumberOfGuests}} guest'
+  data-guests-input-plural-label='{{NumberOfGuests}} guests'
+  data-location-input-label='Location'
+  data-search-button-label='Search'
+  data-dates-input-min-stay-tooltip-text='{"one":"Minimum {minStay} night","other":"Minimum {minStay} nights"}'
+  data-guests-breakdown-label='Guests'
+  data-adults-label='{"one":"adult","other":"adults"}'
+  data-adults-description='Ages {minAge} or above'
+  data-children-label='{"one":"child","other":"children"}'
+  data-children-description='Ages {minAge}-{maxAge}'
+  data-children-not-allowed-label='Not suitable for children'
+  data-infants-label='{"one":"infant","other":"infants"}'
+  data-infants-description='Under {maxAge}'
+  data-infants-not-allowed-label='Not suitable for infants'
+  data-pets-label='{"one":"pet","other":"pets"}'
+  data-pets-not-allowed-label='Not allowed'
+  data-done-label='Done'
+
+  data-new-tab="true"
+  data-version="stable"
+  data-has-guests-breakdown
+  data-hide-location
+></div>
+</div>
     <p class="whats">Or <a class="link amber" href="https://wa.me/306907777971">message us on WhatsApp</a> — we reply in minutes.</p>
   </div>
 </section>
@@ -290,26 +341,7 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
-<script>
-// booking bar: hand the chosen dates & guests to the houses page, which carries
-// them into each villa's Lodgify checkout link (the reservation engine)
-document.querySelectorAll('form.bookbar').forEach(f => {
-  const [arr, dep] = f.querySelectorAll('input');
-  const today = new Date().toISOString().slice(0, 10);
-  arr.min = today; dep.min = today;
-  arr.addEventListener('change', () => {
-    if (!arr.value) return;
-    dep.min = arr.value;
-    if (dep.value && dep.value <= arr.value) dep.value = '';
-  });
-  f.addEventListener('submit', () => {
-    const guests = f.querySelector('select').value.replace(/\D+/g, '') || '1';
-    let q = 'selectedlocationid=0,88,0,1720&city=Ormos%20Agiou%20Ioanni&adults=' + guests + '&children=0&infants=0&pets=0';
-    if (arr.value && dep.value) q += '&arrival=' + arr.value.replace(/-/g, '') + '&departure=' + dep.value.replace(/-/g, '');
-    if (window.gtag) gtag('event', 'availability_search', { guests });
-    location.href = 'https://horizonvillastinos.net/en/all-properties/?' + q;
-  });
-});
-</script>
+<!-- Lodgify search widget loader (second code of the snippet; once per page) -->
+<script src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js" defer></script>
 </body>
 </html>

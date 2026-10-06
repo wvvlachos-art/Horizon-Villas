@@ -21,7 +21,9 @@
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preload" as="image" href="images/celine-living-room.jpg">
 <script defer src="consent.js?v=1"></script>
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -73,16 +75,18 @@
   </div>
 </section>
 
-<!-- ============ FLOATING BOOKING BAR (opens the Lodgify-hosted booking site, horizonvillastinos.net) ============ -->
-<div id="book" class="book-float">
-  <div class="bf"><span class="l">House</span><span class="v">Villa Celine</span></div>
-  <div class="sep"></div>
-  <label class="bf bf-date" for="bf-arrival"><span class="l">Arrival</span><input type="date" id="bf-arrival"></label>
-  <div class="sep"></div>
-  <label class="bf bf-date" for="bf-departure"><span class="l">Departure</span><input type="date" id="bf-departure"></label>
-  <div class="sep"></div>
-  <label class="bf" for="bf-guests"><span class="l">Guests</span><select id="bf-guests"><option>1</option><option>2</option><option>3</option><option selected>4</option></select></label>
-  <a class="btn btn-primary" id="bf-book" href="https://horizonvillastinos.net/en/all-properties/?selectedlocationid=0,88,0,1720&city=Ormos%20Agiou%20Ioanni&adults=1&children=0&infants=0&pets=0">Check availability</a>
+<!-- ============ FLOATING BOOKING BAR — our own bar, styled like the Lodgify search widget, but it goes straight to THIS villa's Lodgify checkout with the dates & guests ============ -->
+<div id="book" class="book-float ldg-host">
+  <div class="ldg-bar" role="group" aria-label="Check availability for Villa Celine">
+    <div class="ldg-house"><span class="ldg-l">House</span><span class="ldg-v">Villa Celine</span></div>
+    <div class="ldg-dates" id="bf-dates" role="button" tabindex="0" aria-label="Choose check-in and check-out dates">
+      <span class="ldg-half"><span class="ldg-l">Check-in</span><span class="ldg-v" id="bf-in"></span></span>
+      <span class="ldg-half"><span class="ldg-l">Check-out</span><span class="ldg-v" id="bf-out"></span></span>
+      <input type="text" id="bf-range" class="ldg-range" tabindex="-1" aria-hidden="true" readonly>
+    </div>
+    <label class="ldg-guests" for="bf-guests"><span class="ldg-l">Guests</span><select id="bf-guests"><option value="1">1 adult</option><option value="2" selected>2 adults</option><option value="3">3 adults</option><option value="4">4 adults</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.0002 9.16994C16.8128 8.98369 16.5594 8.87915 16.2952 8.87915C16.031 8.87915 15.7776 8.98369 15.5902 9.16994L12.0002 12.7099L8.46019 9.16994C8.27283 8.98369 8.01938 8.87915 7.75519 8.87915C7.49101 8.87915 7.23756 8.98369 7.05019 9.16994C6.95646 9.26291 6.88207 9.37351 6.8313 9.49537C6.78053 9.61723 6.75439 9.74793 6.75439 9.87994C6.75439 10.012 6.78053 10.1427 6.8313 10.2645C6.88207 10.3864 6.95646 10.497 7.05019 10.5899L11.2902 14.8299C11.3832 14.9237 11.4938 14.9981 11.6156 15.0488C11.7375 15.0996 11.8682 15.1257 12.0002 15.1257C12.1322 15.1257 12.2629 15.0996 12.3848 15.0488C12.5066 14.9981 12.6172 14.9237 12.7102 14.8299L17.0002 10.5899C17.0939 10.497 17.1683 10.3864 17.2191 10.2645C17.2699 10.1427 17.296 10.012 17.296 9.87994C17.296 9.74793 17.2699 9.61723 17.2191 9.49537C17.1683 9.37351 17.0939 9.26291 17.0002 9.16994Z" fill="currentColor"/></svg></label>
+    <a class="ldg-go" id="bf-book" href="https://checkout.lodgify.com/en/horizonvillas/425632/reservation?currency=EUR&adults=2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.2527 17.6465L18.3533 14.7471C18.3511 14.7449 18.3489 14.7427 18.3467 14.7405C17.4715 13.8683 16.1218 13.7645 15.1324 14.4256L14.2856 13.5789C15.3838 12.312 16 10.6917 16.001 9.00409C16.0032 5.13971 12.8723 2.00519 9.00794 2.00293C5.14356 2.00067 2.0091 5.13153 2.00684 8.99591C2.00458 12.8603 5.13544 15.9948 8.99982 15.9971C10.6887 16.0001 12.3112 15.385 13.5787 14.286L14.426 15.1332C13.7629 16.1257 13.8694 17.4792 14.7469 18.3535L17.6463 21.2529C18.1244 21.7316 18.7735 22.0001 19.45 21.999C20.1266 21.9992 20.7756 21.7303 21.2539 21.2518C22.2491 20.2559 22.2487 18.6417 21.2527 17.6465ZM9.00824 14.9971C5.69617 14.9994 3.00928 12.3163 3.00696 9.00421C3.00464 5.69214 5.68775 3.00525 8.99982 3.00293C10.5908 3.00025 12.1174 3.63141 13.242 4.75684C14.3672 5.88068 15 7.40546 15.0011 8.99579C15.0034 12.3079 12.3203 14.9948 9.00824 14.9971ZM20.5457 20.5414C19.9416 21.148 18.96 21.1501 18.3533 20.5459L15.4539 17.6465C15.1625 17.3555 14.999 16.9603 14.9995 16.5485C15.0005 15.6928 15.6949 15 16.5506 15.001C16.9615 15.0004 17.3558 15.1635 17.6463 15.4541L20.5457 18.3535C21.1481 18.9584 21.1481 19.9365 20.5457 20.5414Z" fill="currentColor"/></svg><span>Check availability</span></a>
+  </div>
 </div>
 
 <!-- ============ DESCRIPTION + FACTS ============ -->
@@ -304,28 +308,44 @@
     startAuto();
   })();
 
-  // booking bar -> the Lodgify-hosted booking site (horizonvillastinos.net): lands on the
-  // all-properties results with location, guests and (if chosen) dates prefilled
+  // booking bar -> THIS villa's Lodgify checkout (the reservation engine), dates & guests prefilled.
+  // Flow: "Check availability" fades in a two-month range calendar (flatpickr, themed like the
+  // Lodgify widget's). Picking both dates sends the guest straight to the checkout with them
+  // filled; "Continue without dates" (or no flatpickr) goes to the checkout's own live calendar.
   (function () {
-    const arr = document.getElementById('bf-arrival'), dep = document.getElementById('bf-departure');
+    const box = document.getElementById('bf-dates'), inEl = document.getElementById('bf-in'), outEl = document.getElementById('bf-out');
     const guests = document.getElementById('bf-guests'), cta = document.getElementById('bf-book');
-    const today = new Date().toISOString().slice(0, 10);
-    arr.min = today; dep.min = today;
-    arr.addEventListener('change', () => {
-      if (!arr.value) return;
-      dep.min = arr.value;
-      if (dep.value && dep.value <= arr.value) dep.value = '';
-    });
+    const base = 'https://checkout.lodgify.com/en/horizonvillas/425632/reservation?currency=EUR&adults=';
+    let arrival = '', departure = '';
+    const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    const pretty = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     const build = () => {
-      let q = 'selectedlocationid=0,88,0,1720&city=Ormos%20Agiou%20Ioanni&adults=' + guests.value + '&children=0&infants=0&pets=0';
-      if (arr.value && dep.value) q += '&arrival=' + arr.value.replace(/-/g, '') + '&departure=' + dep.value.replace(/-/g, '');
-      cta.href = 'https://horizonvillastinos.net/en/all-properties/?' + q;
+      cta.href = base + guests.value + (arrival && departure ? '&arrival=' + arrival + '&departure=' + departure : '');
     };
+    const go = () => { build(); if (window.gtag) gtag('event', 'begin_checkout', { house: 'Villa Celine', guests: guests.value, dates: !!(arrival && departure) }); location.href = cta.href; };
+    const fp = window.flatpickr ? flatpickr(document.getElementById('bf-range'), {
+      mode: 'range', minDate: 'today', showMonths: window.innerWidth < 720 ? 1 : 2, disableMobile: true,
+      positionElement: box, monthSelectorType: 'static',
+      onReady: (sel, str, inst) => {
+        const foot = document.createElement('div'); foot.className = 'ldg-fp-foot';
+        foot.innerHTML = '<span>Pick your check-in and check-out</span><a href="#">Continue without dates &rarr;</a>';
+        foot.querySelector('a').addEventListener('click', e => { e.preventDefault(); inst.close(); arrival = departure = ''; go(); });
+        inst.calendarContainer.appendChild(foot);
+      },
+      onChange: (dates, str, inst) => {
+        arrival = dates[0] ? iso(dates[0]) : ''; departure = dates[1] ? iso(dates[1]) : '';
+        inEl.textContent = dates[0] ? pretty(dates[0]) : ''; outEl.textContent = dates[1] ? pretty(dates[1]) : '';
+        build();
+        if (dates.length === 2) setTimeout(() => { inst.close(); go(); }, 350);   // both picked -> off to the reservation
+      }
+    }) : null;
+    box.addEventListener('click', () => fp && fp.open());
+    box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fp && fp.open(); } });
+    guests.addEventListener('change', build);
     build();
-    [arr, dep, guests].forEach(el => el.addEventListener('change', build));
-    cta.addEventListener('click', () => {
-      build();
-      if (window.gtag) gtag('event', 'availability_search', { house: 'Villa Celine', guests: guests.value });
+    cta.addEventListener('click', e => {
+      if (fp && !(arrival && departure)) { e.preventDefault(); fp.open(); return; }   // no dates yet -> calendar fades in
+      e.preventDefault(); go();
     });
   })();
 </script>

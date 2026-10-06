@@ -39,3 +39,6 @@ dev-server.js
 
 # Working notes — not for the deployed site (Netlify publishes the repo root)
 TESTIMONIALS.md
+
+# Local Lodgify widget test page — never deploy
+widget-test.html

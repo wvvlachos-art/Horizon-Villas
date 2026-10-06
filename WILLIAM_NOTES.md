@@ -15,9 +15,10 @@ Pulled straight from your logo: a warm **cream** background and a single **amber
 - Still to come: a proper **Tinos** page (linking your guest guide), an **Offers** page, and **Contact**.
 
 ## How booking works
-Your existing **Lodgify** reservation engine powers it. As of 6 Oct 2026, every "Check availability" button on the new site sends the guest to your Lodgify booking site at **horizonvillastinos.net**, landing on the search results with the location (Ormos Agiou Ioanni) already filled in. If the guest picked dates and guests on your site first, those are filled in too, and the results show only the houses free for those nights with the price for the stay. From there they pick a house and pay through Lodgify as before. Lodgify keeps your Airbnb/Booking.com calendars in sync, as before. **WhatsApp** stays one tap away everywhere for quick questions.
+Your existing **Lodgify** reservation engine powers it. As of 6 Oct 2026 the booking works in two ways. The main **Check availability** bars (home page top and bottom, About, Pool, Tinos) are Lodgify's own search widget in your yellow: pick dates and guests and the results open on your Lodgify booking site at **horizonvillastinos.net**, in a new tab, showing the houses free for those nights with prices. On each **house page**, the bar is ours but looks the same: press Check availability, a calendar fades in, pick your dates and you go straight to that house's reservation page with everything filled in. If you'd rather not pick dates, "Continue without dates" takes you to the reservation page's own calendar. On the houses list, "Check dates" also goes straight to that house's reservation page. Lodgify keeps your Airbnb/Booking.com calendars in sync, as before. **WhatsApp** stays one tap away everywhere for quick questions, but no Check availability button opens WhatsApp any more.
 
-One thing to know: the engine runs on Lodgify's servers (that's where the calendar, prices and card payments live), so it can't literally move to Netlify — no booking system can run on a static host. Because the booking now goes through horizonvillastinos.net, that site has to stay live; we should not redirect it to the new site.
+One thing to know: the engine runs on Lodgify's servers (that's where the calendar, prices and card payments live), so it can't literally move to Netlify — no booking system can run on a static host. Because the main search goes through horizonvillastinos.net, that site has to stay live; we should not redirect it to the new site.
+
 
 
 ## Languages
