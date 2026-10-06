@@ -448,8 +448,8 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-// booking bars: hand the chosen dates & guests to the houses page, which carries
-// them into each villa's Lodgify checkout link (the reservation engine)
+// booking bars: send the guest to the Lodgify-hosted booking site (horizonvillastinos.net)
+// all-properties results, with location, guests and (if chosen) dates prefilled
 document.querySelectorAll('form.bookbar').forEach(f => {
   const [arr, dep] = f.querySelectorAll('input');
   const today = new Date().toISOString().slice(0, 10);
@@ -460,13 +460,11 @@ document.querySelectorAll('form.bookbar').forEach(f => {
     if (dep.value && dep.value <= arr.value) dep.value = '';
   });
   f.addEventListener('submit', () => {
-    const guests = f.querySelector('select').value.replace(/\D+/g, '');
-    const p = new URLSearchParams();
-    if (arr.value) p.set('arrival', arr.value);
-    if (dep.value) p.set('departure', dep.value);
-    if (guests) p.set('guests', guests);
+    const guests = f.querySelector('select').value.replace(/\D+/g, '') || '1';
+    let q = 'selectedlocationid=0,88,0,1720&city=Ormos%20Agiou%20Ioanni&adults=' + guests + '&children=0&infants=0&pets=0';
+    if (arr.value && dep.value) q += '&arrival=' + arr.value.replace(/-/g, '') + '&departure=' + dep.value.replace(/-/g, '');
     if (window.gtag) gtag('event', 'availability_search', { guests });
-    location.href = 'accommodations.html' + (p.toString() ? '?' + p.toString() : '');
+    location.href = 'https://horizonvillastinos.net/en/all-properties/?' + q;
   });
 });
 </script>

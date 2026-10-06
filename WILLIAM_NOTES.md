@@ -15,9 +15,10 @@ Pulled straight from your logo: a warm **cream** background and a single **amber
 - Still to come: a proper **Tinos** page (linking your guest guide), an **Offers** page, and **Contact**.
 
 ## How booking works
-Your existing **Lodgify** reservation engine powers it — and as of 13 Aug 2026 it's **connected for real**. Guests pick dates and guests on your site; the "Check availability" buttons then open your own Lodgify checkout (the same one your old site used) with everything pre-filled — live calendar, price, secure payment. Lodgify keeps your Airbnb/Booking.com calendars in sync, as before. **WhatsApp** stays one tap away everywhere for quick questions.
+Your existing **Lodgify** reservation engine powers it. As of 6 Oct 2026, every "Check availability" button on the new site sends the guest to your Lodgify booking site at **horizonvillastinos.net**, landing on the search results with the location (Ormos Agiou Ioanni) already filled in. If the guest picked dates and guests on your site first, those are filled in too, and the results show only the houses free for those nights with the price for the stay. From there they pick a house and pay through Lodgify as before. Lodgify keeps your Airbnb/Booking.com calendars in sync, as before. **WhatsApp** stays one tap away everywhere for quick questions.
 
-One thing to know: the engine runs on Lodgify's servers (that's where the calendar, prices and card payments live), so it can't literally move to Netlify — no booking system can run on a static host. What guests see, though, is your site start to finish, with Lodgify only handling the checkout step.
+One thing to know: the engine runs on Lodgify's servers (that's where the calendar, prices and card payments live), so it can't literally move to Netlify — no booking system can run on a static host. Because the booking now goes through horizonvillastinos.net, that site has to stay live; we should not redirect it to the new site.
+
 
 ## Languages
 We launch in **English + French**. **German** comes next (it covers the big German-speaking Swiss share plus Germany). Greek stays for the summer/peak crowd but isn't the off-season focus — off-season is about Western European visitors (your reliable Swiss, French and UK guests).
@@ -26,7 +27,7 @@ We launch in **English + French**. **German** comes next (it covers the big Germ
 1. **A few real villa photos** — the hero pool shot, a house exterior, an interior, the view. They replace every "[ photo ]" placeholder and let me confirm the colours against your real light.
 2. **Where the domain is registered** (so we know whether to move it to Porkbun or just point it).
 3. **Your Lodgify plan** — whether it lets us brand the checkout page (`book.horizonvillastinos.com`), and a quick check that the subscription is active so payments go through.
-4. **A decision on horizonvillastinos.net** — your old Lodgify-built site is still live there. Best move is usually to redirect it to the new site so Google doesn't see two competing websites; say the word and it gets set up.
+4. **horizonvillastinos.net stays live** — it is now the booking site your guests land on, so we keep it rather than redirecting it to the new site.
 5. A later **yes/no on German**, once we can see the off-season traffic.
 
 ## How we work from here

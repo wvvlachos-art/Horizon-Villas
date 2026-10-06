@@ -303,13 +303,11 @@ document.querySelectorAll('form.bookbar').forEach(f => {
     if (dep.value && dep.value <= arr.value) dep.value = '';
   });
   f.addEventListener('submit', () => {
-    const guests = f.querySelector('select').value.replace(/\D+/g, '');
-    const p = new URLSearchParams();
-    if (arr.value) p.set('arrival', arr.value);
-    if (dep.value) p.set('departure', dep.value);
-    if (guests) p.set('guests', guests);
+    const guests = f.querySelector('select').value.replace(/\D+/g, '') || '1';
+    let q = 'selectedlocationid=0,88,0,1720&city=Ormos%20Agiou%20Ioanni&adults=' + guests + '&children=0&infants=0&pets=0';
+    if (arr.value && dep.value) q += '&arrival=' + arr.value.replace(/-/g, '') + '&departure=' + dep.value.replace(/-/g, '');
     if (window.gtag) gtag('event', 'availability_search', { guests });
-    location.href = 'accommodations.html' + (p.toString() ? '?' + p.toString() : '');
+    location.href = 'https://horizonvillastinos.net/en/all-properties/?' + q;
   });
 });
 </script>
