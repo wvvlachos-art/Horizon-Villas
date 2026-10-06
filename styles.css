@@ -88,6 +88,8 @@ h1, h2, h3, h4 {
 .btn-outline:hover { background: var(--ink); color: var(--cream); }
 .btn-outline-light { background: transparent; border-color: #D9A969; color: #D9A969; }
 .btn-outline-light:hover { background: #D9A969; color: var(--brown); }
+.btn-yellow { background: #f4a825; border-color: #f4a825; color: #333; }   /* the brand yellow (Lodgify widget colour) */
+.btn-yellow:hover { background: #fad492; border-color: #fad492; color: #333; }
 .btn-sm { padding: 9px 16px; }
 
 /* ---- Text link ---- */
