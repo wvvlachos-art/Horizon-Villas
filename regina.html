@@ -310,17 +310,20 @@
 
   // booking bar -> THIS villa's Lodgify checkout (the reservation engine), dates & guests prefilled.
   // Flow: "Check availability" fades in a two-month range calendar (flatpickr, themed like the
-  // Lodgify widget's). Picking both dates sends the guest straight to the checkout with them
-  // filled; "Continue without dates" (or no flatpickr) goes to the checkout's own live calendar.
+  // Lodgify widget's). Picking both dates sends the guest to the checkout's DATES step with them
+  // filled and the price shown (they press Continue there); "Continue without dates" (or no
+  // flatpickr) goes to the same step with an empty calendar and the chosen guest count.
   (function () {
     const box = document.getElementById('bf-dates'), inEl = document.getElementById('bf-in'), outEl = document.getElementById('bf-out');
     const guests = document.getElementById('bf-guests'), cta = document.getElementById('bf-book');
-    const base = 'https://checkout.lodgify.com/en/horizonvillas/425631/reservation?currency=EUR&adults=';
+    const root = 'https://checkout.lodgify.com/en/horizonvillas/425631/reservation?currency=EUR';
     let arrival = '', departure = '';
     const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     const pretty = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     const build = () => {
-      cta.href = base + guests.value + (arrival && departure ? '&arrival=' + arrival + '&departure=' + departure : '');
+      // with dates: NO guest count in the URL — Lodgify's server jumps straight to the contact step when it
+      // sees dates + guests (HTTP 307); dates alone keep the guest on the dates step with the price shown
+      cta.href = arrival && departure ? root + '&arrival=' + arrival + '&departure=' + departure : root + '&adults=' + guests.value;
     };
     const go = () => { build(); if (window.gtag) gtag('event', 'begin_checkout', { house: 'Villa Regina', guests: guests.value, dates: !!(arrival && departure) }); location.href = cta.href; };
     const fp = window.flatpickr ? flatpickr(document.getElementById('bf-range'), {

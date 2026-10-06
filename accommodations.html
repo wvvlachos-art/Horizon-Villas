@@ -384,9 +384,8 @@
   if (!a && !d && !g) return;
   document.querySelectorAll('a[href*="checkout.lodgify.com"]').forEach(link => {
     const u = new URL(link.href);
-    if (a) u.searchParams.set('arrival', a);
-    if (d) u.searchParams.set('departure', d);
-    if (g) u.searchParams.set('adults', Math.min(g, parseInt(link.dataset.maxGuests, 10) || g));
+    if (a && d) { u.searchParams.set('arrival', a); u.searchParams.set('departure', d); u.searchParams.delete('adults'); }   // dates + guests would skip to the contact step (307)
+    else if (g) u.searchParams.set('adults', Math.min(g, parseInt(link.dataset.maxGuests, 10) || g));
     link.href = u.toString();
   });
 })();
