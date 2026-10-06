@@ -775,7 +775,7 @@ a.trust-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(
   .ldg-bar .ldg-house { padding: 2px 6px 0; justify-content: center; }
 }
 /* flatpickr range calendar themed like the Lodgify widget's (same yellow, 0.5em cells, same shadow) */
-.flatpickr-calendar { font-family: "Source Sans Pro", Arial, sans-serif; border-radius: 8px; box-shadow: 0 24px 54px rgba(0,0,0,.14), 0 0 0 1px #e6e6e6; padding: 8px; }
+.flatpickr-calendar { font-family: "Source Sans Pro", Arial, sans-serif; border-radius: 8px; box-shadow: 0 24px 54px rgba(0,0,0,.14), 0 0 0 1px #e6e6e6; padding: 0; }   /* no padding: the calendar has a fixed width and clips its last column otherwise */
 .flatpickr-calendar.arrowTop:before, .flatpickr-calendar.arrowTop:after, .flatpickr-calendar.arrowBottom:before, .flatpickr-calendar.arrowBottom:after { display: none; }
 .flatpickr-months .flatpickr-month, .flatpickr-current-month { color: #333; font-weight: 600; }
 .flatpickr-months .flatpickr-prev-month:hover svg, .flatpickr-months .flatpickr-next-month:hover svg { fill: #f4a825; }
@@ -790,6 +790,7 @@ span.flatpickr-weekday { color: #666; font-weight: 400; }
 .flatpickr-day.flatpickr-disabled, .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay { color: #bbb; }
 .flatpickr-calendar.open { animation: ldgFade .28s var(--ease) both; }
 @keyframes ldgFade { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-.ldg-fp-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 8px 4px; margin-top: 6px; border-top: 1px solid #eee; font-size: 14px; color: #666; }
+.ldg-fp-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 12px; margin-top: 4px; border-top: 1px solid #eee; font-size: 14px; color: #666; }
+@media (max-width: 720px) { .ldg-fp-foot { justify-content: center; } .ldg-fp-foot span { display: none; } }
 .ldg-fp-foot a { color: #333; font-weight: 600; text-decoration: none; border-bottom: 1px solid #f4a825; padding-bottom: 1px; white-space: nowrap; }
 .ldg-fp-foot a:hover { color: #7a5413; }
