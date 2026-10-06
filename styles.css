@@ -733,10 +733,12 @@ a.trust-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(
   padding: 14px; display: flex; gap: 16px; align-items: stretch; width: 100%; margin: 0 auto; box-sizing: border-box;
 }
 .ldg-bar .ldg-l { display: block; font-size: 14px; line-height: 16px; color: #666; letter-spacing: 0; text-transform: none; }
-.ldg-bar .ldg-dates { flex: 1 1 300px; min-width: 0; display: flex; height: 58px; border: 0; border-radius: 57.28px; background: #f4a825; color: #333; box-sizing: border-box; transition: background .15s var(--ease); }
-.ldg-bar .ldg-dates:hover { background: #fad492; }
-.ldg-bar .ldg-dates .ldg-l { color: #5a4a2a; }
-.ldg-bar .ldg-dates .ldg-v { color: #333; }
+.ldg-bar .ldg-dates { flex: 1 1 300px; min-width: 0; display: flex; height: 58px; border: 1px solid #ddd; border-radius: 57.28px; background: #fff; color: #333; box-sizing: border-box; overflow: hidden; }
+/* only the check-in half is the yellow pill; check-out stays white */
+.ldg-bar .ldg-dates .ldg-half:first-child { background: #f4a825; margin: -1px 0 -1px -1px; transition: background .15s var(--ease); }
+.ldg-bar .ldg-dates:hover .ldg-half:first-child { background: #fad492; }
+.ldg-bar .ldg-dates .ldg-half:first-child .ldg-l { color: #5a4a2a; }
+.ldg-bar .ldg-dates .ldg-half:first-child .ldg-v { color: #333; }
 .ldg-bar .ldg-dates label { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; cursor: pointer; }
 .ldg-bar .ldg-dates label + label { border-left: 1px solid #ddd; }
 .ldg-bar input[type="date"], .ldg-bar select {
@@ -761,7 +763,7 @@ a.trust-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(
 .ldg-bar .ldg-v { display: block; font-size: 16px; line-height: 20px; color: #000; margin-top: 4px; white-space: nowrap; }
 .ldg-bar .ldg-v:empty { display: none; }
 .ldg-bar .ldg-dates .ldg-half { position: relative; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px 8px 22px; }
-.ldg-bar .ldg-dates .ldg-half + .ldg-half { border-left: 1px solid rgba(51,51,51,.18); }
+.ldg-bar .ldg-dates .ldg-half + .ldg-half { border-left: 1px solid #ddd; padding-left: 16px; }
 .ldg-bar .ldg-dates { cursor: pointer; position: relative; }
 .ldg-bar .ldg-dates:focus-visible { outline: 2px solid #7a5413; outline-offset: 2px; }
 .ldg-bar .ldg-range { position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; opacity: 0; border: 0; padding: 0; margin: 0; pointer-events: none; }
