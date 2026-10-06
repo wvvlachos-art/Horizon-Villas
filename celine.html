@@ -23,7 +23,7 @@
 <script defer src="consent.js?v=1"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -78,7 +78,7 @@
 <!-- ============ FLOATING BOOKING BAR — our own bar, styled like the Lodgify search widget, but it goes straight to THIS villa's Lodgify checkout with the dates & guests ============ -->
 <div id="book" class="book-float ldg-host">
   <div class="ldg-bar" role="group" aria-label="Check availability for Villa Celine">
-    <div class="ldg-house"><span class="ldg-l">House</span><span class="ldg-v">Villa Celine</span></div>
+    <div class="ldg-house"><span class="ldg-name">Celine</span></div>
     <div class="ldg-dates" id="bf-dates" role="button" tabindex="0" aria-label="Choose check-in and check-out dates">
       <span class="ldg-half"><span class="ldg-l">Check-in</span><span class="ldg-v" id="bf-in"></span></span>
       <span class="ldg-half"><span class="ldg-l">Check-out</span><span class="ldg-v" id="bf-out"></span></span>
@@ -308,22 +308,23 @@
     startAuto();
   })();
 
-  // booking bar -> THIS villa's Lodgify checkout (the reservation engine), dates & guests prefilled.
-  // Flow: "Check availability" fades in a two-month range calendar (flatpickr, themed like the
-  // Lodgify widget's). Picking both dates sends the guest to the checkout's DATES step with them
-  // filled and the price shown (they press Continue there); "Continue without dates" (or no
-  // flatpickr) goes to the same step with an empty calendar and the chosen guest count.
+  // booking bar -> THIS villa's page on the Lodgify booking site (horizonvillastinos.net), dates & guests
+  // prefilled. Flow: "Check availability" fades in a two-month range calendar (flatpickr, themed like
+  // the Lodgify widget's). Picking both dates lands the guest on the villa page with dates, guests and
+  // the price for the stay shown; they press Book Now there. "Continue without dates" (or no flatpickr)
+  // opens the same page with the guest count only, so they pick dates in Lodgify's own calendar.
   (function () {
     const box = document.getElementById('bf-dates'), inEl = document.getElementById('bf-in'), outEl = document.getElementById('bf-out');
     const guests = document.getElementById('bf-guests'), cta = document.getElementById('bf-book');
-    const root = 'https://checkout.lodgify.com/en/horizonvillas/425632/reservation?currency=EUR';
+    const page = 'https://horizonvillastinos.net/en/horizon-villas-celine?adults=';   // this villa on the Lodgify booking site
     let arrival = '', departure = '';
     const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     const pretty = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     const build = () => {
-      // with dates: NO guest count in the URL — Lodgify's server jumps straight to the contact step when it
-      // sees dates + guests (HTTP 307); dates alone keep the guest on the dates step with the price shown
-      cta.href = arrival && departure ? root + '&arrival=' + arrival + '&departure=' + departure : root + '&adults=' + guests.value;
+      // the villa page shows check-in/check-out + guests + the price for the stay, with a Book Now that
+      // continues to the checkout. (The checkout itself can't show dates AND a guest count on its dates
+      // step: with both in the URL its server 307s straight to the contact form.) Dates there are YYYYMMDD.
+      cta.href = page + guests.value + (arrival && departure ? '&arrival=' + arrival.replace(/-/g, '') + '&departure=' + departure.replace(/-/g, '') : '');
     };
     const go = () => { build(); if (window.gtag) gtag('event', 'begin_checkout', { house: 'Villa Celine', guests: guests.value, dates: !!(arrival && departure) }); location.href = cta.href; };
     const fp = window.flatpickr ? flatpickr(document.getElementById('bf-range'), {

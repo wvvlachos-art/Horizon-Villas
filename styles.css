@@ -733,7 +733,10 @@ a.trust-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(
   padding: 14px; display: flex; gap: 16px; align-items: stretch; width: 100%; margin: 0 auto; box-sizing: border-box;
 }
 .ldg-bar .ldg-l { display: block; font-size: 14px; line-height: 16px; color: #666; letter-spacing: 0; text-transform: none; }
-.ldg-bar .ldg-dates { flex: 1 1 300px; min-width: 0; display: flex; height: 58px; border: 1px solid #ddd; border-radius: 8px; background: #fff; box-sizing: border-box; }
+.ldg-bar .ldg-dates { flex: 1 1 300px; min-width: 0; display: flex; height: 58px; border: 0; border-radius: 57.28px; background: #f4a825; color: #333; box-sizing: border-box; transition: background .15s var(--ease); }
+.ldg-bar .ldg-dates:hover { background: #fad492; }
+.ldg-bar .ldg-dates .ldg-l { color: #5a4a2a; }
+.ldg-bar .ldg-dates .ldg-v { color: #333; }
 .ldg-bar .ldg-dates label { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; cursor: pointer; }
 .ldg-bar .ldg-dates label + label { border-left: 1px solid #ddd; }
 .ldg-bar input[type="date"], .ldg-bar select {
@@ -753,18 +756,19 @@ a.trust-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(
 }
 .ldg-bar .ldg-go:hover { background: #fad492; color: #333; }
 .ldg-bar .ldg-go svg { width: 24px; height: 24px; flex: none; }
-.ldg-bar .ldg-house { flex: 0 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 4px 8px 6px; }
+.ldg-bar .ldg-house { flex: 0 1 auto; min-width: 0; display: flex; align-items: center; padding: 8px 6px 8px 8px; }
+.ldg-bar .ldg-name { font-size: 18px; font-weight: 600; color: #333; white-space: nowrap; letter-spacing: .2px; }
 .ldg-bar .ldg-v { display: block; font-size: 16px; line-height: 20px; color: #000; margin-top: 4px; white-space: nowrap; }
 .ldg-bar .ldg-v:empty { display: none; }
-.ldg-bar .ldg-dates .ldg-half { position: relative; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; }
-.ldg-bar .ldg-dates .ldg-half + .ldg-half { border-left: 1px solid #ddd; }
+.ldg-bar .ldg-dates .ldg-half { position: relative; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px 8px 22px; }
+.ldg-bar .ldg-dates .ldg-half + .ldg-half { border-left: 1px solid rgba(51,51,51,.18); }
 .ldg-bar .ldg-dates { cursor: pointer; position: relative; }
-.ldg-bar .ldg-dates:focus-visible { outline: 2px solid #f4a825; outline-offset: 2px; }
+.ldg-bar .ldg-dates:focus-visible { outline: 2px solid #7a5413; outline-offset: 2px; }
 .ldg-bar .ldg-range { position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; opacity: 0; border: 0; padding: 0; margin: 0; pointer-events: none; }
 @media (max-width: 720px) {
   .ldg-bar { flex-wrap: wrap; padding: 10px; gap: 10px; }
   .ldg-bar .ldg-house, .ldg-bar .ldg-dates, .ldg-bar .ldg-guests, .ldg-bar .ldg-go { flex: 1 1 100%; }
-  .ldg-bar .ldg-house { padding: 4px 6px 0; }
+  .ldg-bar .ldg-house { padding: 2px 6px 0; justify-content: center; }
 }
 /* flatpickr range calendar themed like the Lodgify widget's (same yellow, 0.5em cells, same shadow) */
 .flatpickr-calendar { font-family: "Source Sans Pro", Arial, sans-serif; border-radius: 8px; box-shadow: 0 24px 54px rgba(0,0,0,.14), 0 0 0 1px #e6e6e6; padding: 8px; }
